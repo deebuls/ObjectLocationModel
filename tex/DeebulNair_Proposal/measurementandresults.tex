@@ -1,0 +1,38 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%											IMPLEMENTATION AND MEASUREMENTS																				%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{EVALUATION}
+
+
+For evaluation the proposed models 3 different approaches 
+\begin{itemize}
+	\item Artificial data generation \\
+	A data generator will be written to generate the artificial dataset to simulate object location of different objects with respect to time.
+	\item Human presence detection \\
+	The ‘Aruba’ dataset by \cite{cook2010learning} contains measurements collected by
+50 different sensors distributed over a 12×10 m, seven-
+room apartment over a period of 16 weeks. The apartment is
+occupied by a single person who is occasionally visited by
+other people. The dataset will be used to estimate person presence in a particular room.
+
+	\item Object detection \\
+	The KTH dataset by \cite {krajnik_life-long_2015} was collected
+by a SCITOS-G5 mobile robot, in the Computer Vision and Active Perception lab at KTH Stockholm,
+over the course of five weeks. During this time the robot
+conducted between two and six autonomous patrol runs
+per day (weekends were excluded), visiting three specific
+waypoints during each run. Upon reaching a waypoint, the
+robot would execute a pan-tilt sweep and collect data from
+its RGB-D sensor; the RGB-D frames collected during one
+sweep were then registered spatially to form an observation
+of that particular waypoint at that time. The KTH dataset
+contains approximately 100 observations per waypoint, and
+at each waypoint we extracted the dynamic elements of
+the environment using the ‘MetaRoom’ method described
+in \cite{}. These dynamic elements correspond to movable objects
+such as jackets, backpacks, laptops, chairs, bottles, mugs,
+etc. The objects were manually
+labeled to these dynamic clusters to obtain 37 different objects,
+out of which 14 tend to appear and disappear periodically.
+
+\end{itemize}

@@ -1,0 +1,32 @@
+c1 - Nils chair
+c2 - Johan chair
+c3 - Yuquan chair
+c4 - Yuquan laptop
+c5 - Nils Backpack
+c6 - trash can
+c7 - Yuquan bag
+c8 - Yuquan lamp
+c9 - Yuquan water bottle
+c10 - A bag on Johan's desk 
+c12 - Johan monitor
+c13 - Johan cup
+c14 - Yuquan cup
+c15 - Nils laptop
+c17 - Pillow
+c18 - Rares
+c19 - occulus
+c20 - lunch box 
+c21 - Nils jacket
+c25 - Johan backpack
+c26 - Table cloth
+c28 - Johan cap
+c29 - calibration board
+c30 - Nils bike helmet
+c31 - Johan laptop
+c32 - Nils cup
+c33 - Johan jacket
+c34 - box !!!
+c35 - 2nd backpack
+c36 - couch (was moved on 24.09)
+c37 - TV (was added to the room on 24.09).
+
