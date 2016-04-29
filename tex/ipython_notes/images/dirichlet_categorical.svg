@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="196.25002"
+   height="400.62354"
+   id="svg3342"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="dirichlet_categorical.svg">
+  <defs
+     id="defs3344">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible">
+      <path
+         id="path3796"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3227"
+       style="overflow:visible">
+      <path
+         id="path3229"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3231"
+       style="overflow:visible">
+      <path
+         id="path3233"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3235"
+       style="overflow:visible">
+      <path
+         id="path3237"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3239"
+       style="overflow:visible">
+      <path
+         id="path3241"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3243"
+       style="overflow:visible">
+      <path
+         id="path3245"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3247"
+       style="overflow:visible">
+      <path
+         id="path3249"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3251"
+       style="overflow:visible">
+      <path
+         id="path3253"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3255"
+       style="overflow:visible">
+      <path
+         id="path3257"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3259"
+       style="overflow:visible">
+      <path
+         id="path3261"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3263"
+       style="overflow:visible">
+      <path
+         id="path3265"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3267"
+       style="overflow:visible">
+      <path
+         id="path3269"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3271"
+       style="overflow:visible">
+      <path
+         id="path3273"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3271-1"
+       style="overflow:visible">
+      <path
+         id="path3273-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4015"
+       style="overflow:visible">
+      <path
+         id="path4017"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4019"
+       style="overflow:visible">
+      <path
+         id="path4021"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4023"
+       style="overflow:visible">
+      <path
+         id="path4025"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4027"
+       style="overflow:visible">
+      <path
+         id="path4029"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4031"
+       style="overflow:visible">
+      <path
+         id="path4033"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3271-5"
+       style="overflow:visible">
+      <path
+         id="path3273-7"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4592"
+       style="overflow:visible">
+      <path
+         id="path4594"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4596"
+       style="overflow:visible">
+      <path
+         id="path4598"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4600"
+       style="overflow:visible">
+      <path
+         id="path4602"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4604"
+       style="overflow:visible">
+      <path
+         id="path4606"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker4608"
+       style="overflow:visible">
+      <path
+         id="path4610"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3271-8"
+       style="overflow:visible">
+      <path
+         id="path3273-77"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.88896832"
+     inkscape:cx="745.16499"
+     inkscape:cy="-137.00096"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1362"
+     inkscape:window-height="745"
+     inkscape:window-x="0"
+     inkscape:window-y="19"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4418"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-211.87499px"
+       originy="-414.54223px" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata3347">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-211.87499,-237.19644)">
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:TeXGyreAdventor;-inkscape-font-specification:TeXGyreAdventor Bold"
+       x="-96.036362"
+       y="443.5881"
+       id="text4601"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4603"
+         x="-96.036362"
+         y="443.5881" /></text>
+    <text
+       xml:space="preserve"
+       x="-87.955139"
+       y="440.55765"
+       id="text4605"
+       style="stroke:#000000;stroke-width:1.77165353;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"><tspan
+         sodipodi:role="line"
+         id="tspan4607"
+         x="-87.955139"
+         y="440.55765" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="277.72012"
+       y="814.31409"
+       id="text4730"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4732"
+         x="277.72012"
+         y="814.31409" /></text>
+    <rect
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3541"
+       width="194.4903"
+       height="285.91888"
+       x="212.75485"
+       y="349.5708" />
+    <rect
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect4389"
+       width="111.42857"
+       height="122.85714"
+       x="254.28571"
+       y="489.6731" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 c 0,20.51343 -15.98983,37.14285 -35.71429,37.14285 -19.72445,0 -35.71428,-16.62942 -35.71428,-37.14285 0,-20.51344 15.98983,-37.14286 35.71428,-37.14286 19.72446,0 35.71429,16.62942 35.71429,37.14286 z"
+       transform="translate(2.1290295,3.0252078)" />
+    <path
+       transform="translate(2.8571392,144.45378)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-6"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 c 0,20.51343 -15.98983,37.14285 -35.71429,37.14285 -19.72445,0 -35.71428,-16.62942 -35.71428,-37.14285 0,-20.51344 15.98983,-37.14286 35.71428,-37.14286 19.72446,0 35.71429,16.62942 35.71429,37.14286 z" />
+    <path
+       transform="translate(1.3796399,-131.42856)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#b3defd;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-5"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 c 0,20.51343 -15.98983,37.14285 -35.71429,37.14285 -19.72445,0 -35.71428,-16.62942 -35.71428,-37.14285 0,-20.51344 15.98983,-37.14286 35.71428,-37.14286 19.72446,0 35.71429,16.62942 35.71429,37.14286 z" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 310,312.36218 0,60"
+       id="path4422"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 310,446.36218 0,66"
+       id="path4424"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="308.59796"
+       y="282.91934"
+       id="text4838"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4840"
+         x="308.59796"
+         y="282.91934"
+         style="font-weight:normal;-inkscape-font-specification:TeXGyreAdventor;font-size:16px">$\beta$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="309.34735"
+       y="417.37311"
+       id="text4842"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4844"
+         x="309.34735"
+         y="417.37311"
+         style="font-weight:normal;-inkscape-font-specification:TeXGyreAdventor;font-size:16px">$\theta$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="310.07547"
+       y="557.81165"
+       id="text4846"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4848"
+         x="310.07547"
+         y="557.81165"
+         style="font-weight:normal;-inkscape-font-specification:TeXGyreAdventor;font-size:16px">$y$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="333.59393"
+       y="605.7771"
+       id="text4850"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4852"
+         x="333.59393"
+         y="605.7771"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">$n_{trials}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="375.71481"
+       y="629.39996"
+       id="text4854"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4856"
+         x="375.71481"
+         y="629.39996"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">$n_{bags}$</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-9"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       transform="translate(263.58526,3.0252372)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       transform="translate(263.58526,144.45379)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-6-1"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 570.72811,312.36219 0,60.00002"
+       id="path4422-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 570.72811,446.36221 0,66"
+       id="path4424-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <rect
+       style="color:#000000;fill:#aaccee;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3870"
+       width="60.000011"
+       height="50"
+       x="540.72815"
+       y="260.36221"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="570.73364"
+       y="290.91937"
+       id="text4838-9"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4840-8"
+         x="570.73364"
+         y="290.91937"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">beta</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="570.73364"
+       y="417.37314"
+       id="text4842-7"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4844-2"
+         x="570.73364"
+         y="417.37314"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="570.17529"
+       y="557.81165"
+       id="text4846-9"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4848-1"
+         x="570.17529"
+         y="557.81165"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">L</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-9-3"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       transform="translate(402.85715,3.0252372)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       transform="translate(403.58526,144.45379)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-6-1-4"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 710,312.36219 0,60.00002"
+       id="path4422-5-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 710.72812,446.36221 0,66"
+       id="path4424-6-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-9-7"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       transform="translate(572.85715,3.0252372)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       transform="translate(573.58526,144.45379)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-6-1-2"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 880,312.36219 0,60.00002"
+       id="path4422-5-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 880.72812,446.36221 0,66"
+       id="path4424-6-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="484.5806"
+       y="404.716"
+       id="text3872"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3874"
+         x="484.5806"
+         y="404.716">Dirichlet</tspan><tspan
+         sodipodi:role="line"
+         x="484.5806"
+         y="420.716"
+         id="tspan3876">Disribution</tspan></text>
+    <flowRoot
+       transform="translate(212.60311,237.19647)"
+       xml:space="preserve"
+       id="flowRoot3878"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><flowRegion
+         id="flowRegion3880"><rect
+           id="rect3882"
+           width="70.868668"
+           height="34.871883"
+           x="550.07587"
+           y="156.52036" /></flowRegion><flowPara
+         id="flowPara3884">. . . . . </flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="570.86963"
+       y="610.82239"
+       id="text3886"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3888"
+         x="570.86963"
+         y="610.82239">time_0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="712.23767"
+       y="608.57257"
+       id="text3890"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3892"
+         x="712.23767"
+         y="608.57257">time_1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="881.03766"
+       y="608.57257"
+       id="text3894"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3896"
+         x="881.03766"
+         y="608.57257">time_23</tspan></text>
+    <rect
+       style="color:#000000;fill:#aaccee;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3870-1"
+       width="60.000011"
+       height="50"
+       x="680"
+       y="260.36221"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="710.00476"
+       y="290.91937"
+       id="text4838-9-2"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4840-8-2"
+         x="710.00476"
+         y="290.91937"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">beta</tspan></text>
+    <rect
+       style="color:#000000;fill:#aaccee;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3870-8"
+       width="60.000011"
+       height="50"
+       x="850"
+       y="260.36221"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="880.00476"
+       y="290.91937"
+       id="text4838-9-5"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4840-8-1"
+         x="880.00476"
+         y="290.91937"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">beta</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="710.73364"
+       y="417.37314"
+       id="text4842-7-0"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4844-2-7"
+         x="710.73364"
+         y="417.37314"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="880.73364"
+       y="417.37314"
+       id="text4842-7-7"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4844-2-6"
+         x="880.73364"
+         y="417.37314"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="710.17529"
+       y="557.81165"
+       id="text4846-9-4"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4848-1-0"
+         x="710.17529"
+         y="557.81165"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="880.17529"
+       y="557.81165"
+       id="text4846-9-3"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4848-1-3"
+         x="880.17529"
+         y="557.81165"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="472.45486"
+       y="289.10117"
+       id="text3999"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4001"
+         x="472.45486"
+         y="289.10117">Prior</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="474.5806"
+       y="554.716"
+       id="text3872-7"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_simple.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         x="474.5806"
+         y="554.716"
+         id="tspan3876-2">Categorical</tspan><tspan
+         sodipodi:role="line"
+         x="474.5806"
+         y="570.716"
+         id="tspan4382">Distribution</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-9-9"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       transform="translate(323.58526,543.02524)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       transform="translate(323.58526,684.45379)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-6-1-1"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 630.72811,986.36221 0,65.99999"
+       id="path4424-6-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="630.73364"
+       y="957.37317"
+       id="text4842-7-72"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4844-2-0"
+         x="630.73364"
+         y="957.37317"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="630.17529"
+       y="1097.8116"
+       id="text4846-9-8"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4848-1-9"
+         x="630.17529"
+         y="1097.8116"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">L</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-9-3-8"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       transform="translate(462.85715,543.02524)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       transform="translate(463.58526,684.45379)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-6-1-4-6"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 769.99524,707.80502 0,60.00002"
+       id="path4422-5-6-0"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 770.72812,986.36221 0,65.99999"
+       id="path4424-6-5-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-9-7-3"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       transform="translate(632.85715,543.02524)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       transform="translate(633.58526,684.45379)"
+       sodipodi:type="arc"
+       style="color:#000000;fill:#aaccee;fill-opacity:1;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-6-1-2-3"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 940.72812,986.36221 0,65.99999"
+       id="path4424-6-3-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="532.24078"
+       y="944.716"
+       id="text3872-71"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3874-2"
+         x="532.24078"
+         y="944.716">Dirichlet</tspan><tspan
+         sodipodi:role="line"
+         x="532.24078"
+         y="960.716"
+         id="tspan3876-24">Disribution</tspan></text>
+    <flowRoot
+       transform="translate(272.60311,777.19647)"
+       xml:space="preserve"
+       id="flowRoot3878-6"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><flowRegion
+         id="flowRegion3880-4"><rect
+           id="rect3882-6"
+           width="70.868668"
+           height="34.871883"
+           x="550.07587"
+           y="156.52036" /></flowRegion><flowPara
+         id="flowPara3884-2">. . . . . </flowPara></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="630.86963"
+       y="1150.8224"
+       id="text3886-9"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3888-3"
+         x="630.86963"
+         y="1150.8224">time_0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="772.23767"
+       y="1148.5725"
+       id="text3890-2"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3892-1"
+         x="772.23767"
+         y="1148.5725">time_1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="941.03766"
+       y="1148.5725"
+       id="text3894-1"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan3896-0"
+         x="941.03766"
+         y="1148.5725">time_23</tspan></text>
+    <rect
+       style="color:#000000;fill:#aaccee;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="rect3870-1-8"
+       width="60.000011"
+       height="50"
+       x="739.99524"
+       y="655.80499"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="770"
+       y="686.36218"
+       id="text4838-9-2-1"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4840-8-2-2"
+         x="770"
+         y="686.36218"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">beta</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="770.73364"
+       y="957.37317"
+       id="text4842-7-0-7"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4844-2-7-4"
+         x="770.73364"
+         y="957.37317"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="940.73364"
+       y="957.37317"
+       id="text4842-7-7-3"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4844-2-6-3"
+         x="940.73364"
+         y="957.37317"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="770.17529"
+       y="1097.8116"
+       id="text4846-9-4-6"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4848-1-0-9"
+         x="770.17529"
+         y="1097.8116"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="940.17529"
+       y="1097.8116"
+       id="text4846-9-3-9"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4848-1-3-1"
+         x="940.17529"
+         y="1097.8116"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">L</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="532.4549"
+       y="777.1012"
+       id="text3999-1"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4001-6"
+         x="532.4549"
+         y="777.1012"></tspan><tspan
+         sodipodi:role="line"
+         x="534.67365"
+         y="793.1012"
+         id="tspan6225">Prior </tspan><tspan
+         sodipodi:role="line"
+         x="532.4549"
+         y="809.1012"
+         id="tspan6227">(Dirichlet</tspan><tspan
+         sodipodi:role="line"
+         x="532.4549"
+         y="825.1012"
+         id="tspan6219">Concentration)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="532.49554"
+       y="1094.7159"
+       id="text3872-7-0"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         x="532.49554"
+         y="1094.7159"
+         id="tspan3876-2-2">Categorical</tspan><tspan
+         sodipodi:role="line"
+         x="532.49554"
+         y="1110.7159"
+         id="tspan4382-9">Distribution</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="color:#000000;fill:none;stroke:#000000;stroke-width:1.77165353;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       id="path4391-9-3-8-7"
+       sodipodi:cx="307.14285"
+       sodipodi:cy="406.64789"
+       sodipodi:rx="35.714287"
+       sodipodi:ry="37.142857"
+       d="m 342.85714,406.64789 a 35.714287,37.142857 0 1 1 -71.42857,0 35.714287,37.142857 0 1 1 71.42857,0 z"
+       transform="translate(462.12351,398.01428)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.04880881px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271)"
+       d="m 769.99448,841.35124 0,66"
+       id="path4424-6-5-6-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans Bold"
+       x="770"
+       y="812.36218"
+       id="text4842-7-0-7-9"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan4844-2-7-4-0"
+         x="770"
+         y="812.36218"
+         style="font-size:16px;font-weight:normal;-inkscape-font-specification:TeXGyreAdventor">C</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271-8)"
+       d="m 528.12501,585.16577 -110,90"
+       id="path4827"
+       inkscape:connector-curvature="0"
+       transform="translate(211.87499,237.19644)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker3271-8)"
+       d="m 588.12501,585.16577 140,90"
+       id="path4829"
+       inkscape:connector-curvature="0"
+       transform="translate(211.87499,237.19644)"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:TeXGyreAdventor;-inkscape-font-specification:Sans"
+       x="531.81201"
+       y="685.06573"
+       id="text6221"
+       sodipodi:linespacing="100%"
+       inkscape:export-filename="/data/dataDeebul/thesis/tex/ipython_notes/images/dirichlet_categorical_hierarchical.png"
+       inkscape:export-xdpi="90.482155"
+       inkscape:export-ydpi="90.482155"><tspan
+         sodipodi:role="line"
+         id="tspan6223"
+         x="531.81201"
+         y="685.06573">Hyper Prior</tspan></text>
+  </g>
+</svg>
