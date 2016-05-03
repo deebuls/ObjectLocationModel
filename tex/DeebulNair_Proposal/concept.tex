@@ -29,11 +29,11 @@ Can machines learn from experience? Machine learning as a science has been tryin
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.5]{pictures/Lifecycle.png}
-\caption{Steps involved in probabilistic modelling  \url{ http://www.mbmlbook.com/LifeCycle.html}}
+\caption{Steps involved in probabilistic modelling  \protect\footnotemark }
 \label{}
 \end{figure}
 
-
+\footnotetext{\url{ http://www.mbmlbook.com/LifeCycle.html}}
 
 
 % section probability modelling (end)
@@ -42,7 +42,7 @@ Predicting object location based on the previous seen observations has a lot of 
 \begin{itemize}
 	\item  Sparse dataset:-\\
 Since the robot is moving around the home and recording the position of objects it has perceived the dataset on which learning has to be performed is sparse. Classical pattern recognition like PCA(eigen vectors)
-and variable hidden markov model will not be able to find pattern in such
+and variable hidden Markov model will not be able to find pattern in such
 sparse dataset. We therefore need a method that can fill in (extrapolate from
 observations) large periods of no observability.
     \item Occlusions :- \\
@@ -187,12 +187,12 @@ For the mixture model mentioned above are defined for a fixed number of categori
 \section{Tools for Probability Modelling}
 \label{sec:tools}
 
-The separation of the model choices and the inference engine for generating machine algorithms have gave rise to a new set of software framework.
+The separation of the model choices and the inference engine for generating machine algorithms have given rise to a new kind of software frameworks.
 In the software framework you need to provide the description of your model and the selection of the inference engine, which internally produces the code for the machine learning algorithm.
-Examples of software frameworks that implement the probabilistic modelling philosophy  include CHURCH \cite{goodman_church_2012}, Venture \cite{mansinghka_venture_2014}, PyMC3 \cite{salvatier_probabilistic_2015}, BayesPy \cite{luttinen_bayespy_2014} and Infer.net \cite{minka_2010} .
+Examples of software frameworks that implement the probabilistic modelling philosophy  include CHURCH \cite{goodman_church_2012}, Venture \cite{mansinghka_venture_2014}, PyMC3 \cite{salvatier_probabilistic_2015}, BayesPy \cite{luttinen_bayespy_2014} and Infer.net \cite{minka_2010}.
 
 
-\textbf{BayesPy} provides tools to do probabilistic modelling. In BayesPy users construct their models, observes data then runs inference. The inference engine present in BayesPy is variational Bayesian inference.
+\textbf{BayesPy} provides tools to do probabilistic modelling. In BayesPy users construct their models, observes data and then runs inference. The inference engine present in BayesPy is variational Bayesian inference.
 
 \textbf{PyMC3} is python module for Bayesian modelling. It provides intuitive model specification syntax for designing the models. The inference is primarily focussed on advanced Markov chain Monto Carlo fitting algorithms.
 
@@ -207,7 +207,7 @@ In the thesis we predict the object locations based on previous observations. Th
 The data collection as explained is a passive process. Basically it means that the robot collects the data when it is doing its daily activity. So if the robot doesn't happen to do any other activity the data collection is stopped.
 There are also chances that when the robot is on a particular place the object is occluded always.
 
-If the frequency of the data collection is less than the movement of the object the model will be limited in making predictions only on the locations it has data. So for the locations which the model has no data predictions will not be made.
+If the frequency of the data collection is less than the movement of the object the model will be limited in making predictions only on the locations it has data. So for the locations which the model has no recordings, predictions will not be made.
 
 
 % subsection  (end)

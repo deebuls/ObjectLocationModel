@@ -2,6 +2,7 @@ asw/*
 blog/*
 book/*
 prototype/*
+__pycache__
 .ipynb_checkpoints
 *.zip
 *.rar

@@ -3,13 +3,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{EVALUATION}
 
+\section*{Datasets}
 
-For evaluation the proposed models 3 different approaches 
+For evaluation the proposed models 3 different dataset will be used. 
 \begin{itemize}
 	\item Artificial data generation \\
 	A data generator will be written to generate the artificial dataset to simulate object location of different objects with respect to time.
+	The artificial data generator helps in generating specific datasets as per needs. We will then sparsify the dataset to match the dataset we receive while a robot is doing the data collection. We need to make use of the data generator because even though we have datasets of objects with long term autonomy we still don't datasets with the ground truth of objects. Thus, the Artificial dataset generator will be used to create different ground truths. This will help us in understanding what patterns can/cannot be learned. Also it helps in understanding how data will be needed to learn a temporal pattern.
+	
 	\item Human presence detection \\
-	The ‘Aruba’ dataset by \cite{cook2010learning} contains measurements collected by
+	The Aruba dataset by \cite{cook2010learning} contains measurements collected by
 50 different sensors distributed over a 12×10 m, seven-
 room apartment over a period of 16 weeks. The apartment is
 occupied by a single person who is occasionally visited by
@@ -21,18 +24,24 @@ by a SCITOS-G5 mobile robot, in the Computer Vision and Active Perception lab at
 over the course of five weeks. During this time the robot
 conducted between two and six autonomous patrol runs
 per day (weekends were excluded), visiting three specific
-waypoints during each run. Upon reaching a waypoint, the
-robot would execute a pan-tilt sweep and collect data from
-its RGB-D sensor; the RGB-D frames collected during one
-sweep were then registered spatially to form an observation
-of that particular waypoint at that time. The KTH dataset
-contains approximately 100 observations per waypoint, and
-at each waypoint we extracted the dynamic elements of
-the environment using the ‘MetaRoom’ method described
-in \cite{}. These dynamic elements correspond to movable objects
-such as jackets, backpacks, laptops, chairs, bottles, mugs,
-etc. The objects were manually
+waypoints during each run. Each waypoint it identifies the objects on the location. The objects were manually
 labeled to these dynamic clusters to obtain 37 different objects,
 out of which 14 tend to appear and disappear periodically.
 
+
+\section*{Evaluation Strategy}
+
+
+
+\textbf{ Posterior predictive check :} The posterior predictive check requires one to generate new data from the predicted model. What it means is that after learning from sparse dataset, the model will generate the samples. This sample set can be compared with the actual full dataset. Comparing the actual and the generated dataset we can make conclusions on the quality of the learning of the model
+
+\textbf{Bayes Factor :} This is more of an analytical method of Bayesian learning. Bayes Factor is an analytical method which is used to compare two models with each
+other. This can be used to compare the different proposed model on the different sparse datasets.
+
+
+
+\textbf{Test and Train Data :} In this method the dataset is divided into test and train sets. The test set is used to learn the model while the train set is used to verify the learning of the model.
+
+\textbf{Time based Evaluation : } The major objective of object location prediction is to search for the objects. So for the ARUBA dataset we create the topology of the house and give timings for moving from one room to other. We then measure the time taken by the robot to search for the person based on the predictions provided by the model.
+  
 \end{itemize}
