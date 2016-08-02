@@ -1,0 +1,31 @@
+1,Nils chair
+2,Johan chair
+3,Yuquan chair
+4,Yuquan laptop
+5,Nils Backpack
+6,trash can
+7,Yuquan bag
+8,Yuquan lamp
+9,Yuquan water bottle
+10,A bag on Johan's desk 
+12,Johan monitor
+13,Johan cup
+14,Yuquan cup
+15,Nils laptop
+17,Pillow
+18,Rares
+19,occulus
+20,lunch box 
+21,Nils jacket
+25,Johan backpack
+26,Table cloth
+28,Johan cap
+29,calibration board
+30,Nils bike helmet
+31,Johan laptop
+32,Nils cup
+33,Johan jacket
+34,box !!!
+35,2nd backpack
+36,couch
+37,TV

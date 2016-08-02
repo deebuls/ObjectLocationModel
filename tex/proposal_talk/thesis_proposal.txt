@@ -1,0 +1,87 @@
+% Predicting Object Location
+% Deebul Nair
+% May 11, 2016
+
+## Some Questions
+
+Suppose you have been moved to a new home and you dont know anything
+about the home. Now let me ask some questions. Please analyze how the brain
+works.
+
+. . .
+
+- Where will you find a milk bottle
+
+. . .
+
+- Where will you find a plate
+
+. . .
+
+- Where will you find a cup
+
+
+# Learning from experience
+
+
+## Predicting Object Location
+
+- The theme of the thesis is to predict the location of objects in a dynamic
+environment
+- Subject to constraints:
+    - Data used to locate will be collected by a mobile robot
+    - The robot has semantic information of the environment
+    - Minimum external information to be used
+
+## Example
+
+- insert images
+
+## What have other people done:
+
+- Mind map and explain
+
+## Enabling Factors :
+
+- Long term Autonomous robots are becoming a reality now.
+    - Problems of **long term navigation** are getting solved
+    - This enables is having robots which will run forever in highly dynamic
+      environments
+- Database technologies in Robots
+    - This enables the robot to keep track of all information it has generated
+
+## Why this is challenging 
+
+- Sparsity of the data
+
+## How do we predict?
+
+- Count the object locations. The location with highest count becomes the most
+  probable location.
+- TODO : Bar Plot
+- Hypothesis 1 :
+    - Adding time dimension to the data improves the prediction than the
+      prediction made without.
+
+# Approach
+
+# Model Based Machine Learning
+
+## Classical Machine Learning
+    - TODO blackbox approach
+    - Image with all learning algorithms
+
+## Model Based Machine Learning
+    - TODO Image
+. . .
+- Hypothesis 2:
+    MBML will provide better predictions than classical machine learning 
+    algorithms in sparse dataset
+
+# Conclusion
+
+# Contributions of Work
+
+
+
+

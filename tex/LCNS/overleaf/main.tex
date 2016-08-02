@@ -1,0 +1,165 @@
+% This is based on the LLNCS.DEM the demonstration file of
+% the LaTeX macro package from Springer-Verlag
+% for Lecture Notes in Computer Science,
+% version 2.4 for LaTeX2e as of 16. April 2010
+%
+% See http://www.springer.com/computer/lncs/lncs+authors?SGWID=0-40209-0-0-0
+% for the full guidelines.
+%
+\documentclass{llncs}
+\usepackage{graphicx}
+\begin{document}
+
+\title{Learning Probabilistic Models for Object Location }
+%
+\titlerunning{Hamiltonian Mechanics}  % abbreviated title (for running head)
+%                                     also used for the TOC unless
+%                                     \toctitle is used
+%
+\author{Deebul Nair\inst{1} \and Tim Niemueller \inst{2}
+\and Gerhard Pl\"{o}ger \inst{1} \and Gerhard Lakemeyer \inst{2}}
+%
+\authorrunning{Deebul Nair et al.} % abbreviated author list (for running head)
+%
+%
+\institute{Bonn-Rhein-Sieg University of Applied Sciences\\Department of Computer Science\\ 
+Sankt Augustin, Germany\\
+\email{{<first\_name>.<last\_name>}@inf.h-brs.de},
+\and
+Knowledge-based Systems Group\\
+RWTH Aachen University, Aachen, Germany \\
+\email{{<niemueller, gerhard>}@kbsg.rwth-aachen.de}}
+\maketitle              % typeset the title of the contribution
+
+\begin{abstract}
+Our aim is to predict locations of objects in a particular home environment, where we
+have a prior map of the environment and the knowledge of the previous locations of the
+objects . The prediction of the location of the object helps in reducing the search time for
+objects in known environments. In this paper, we propose to develop a probabilistic model
+to capture the dynamics of observed objects in any particular environment, called as the
+object location model. The object location model will make use of both spatial and
+temporal information recorded by the robot to make predictions. Even though all homes
+show much similarity in their spatial organization, the usage of the space and the objects
+in it is entirely based on the user’s preferences. Most of the previous work on object
+location prediction is based upon predicting the object’s location in a generic home while
+the proposed model will make predictions for a specific home. The model will explicitly
+reason about the user’s preferences for the location of the objects.
+\keywords{Probabilistic Models, Spatio-Temporal learning}
+\end{abstract}
+%
+\section{Introduction}
+As robots move from more structured environments of laboratories to unstructured environments like homes and offices, multiple challenges arises. One of the challenge is
+estimating the location of objects in less structured and more uncertain environments.
+This challenge led to probabilistic mapping of objects location in the environment, which
+enables estimating objects location based on last seen information. Some authors have
+made effort to obtain information about the world dynamics and proposed representations
+that model the object dynamics explicitly. This representation lead to potential improvement in the search for objects in highly dynamic environment. However, as robots achieve
+long term autonomy, a new challenge appeared that the object locations in natural environment are subject to change in a particular pattern. Although the probabilistic state
+estimation of objects can deal with changes in the location of objects, their approach is
+rooted in making conclusions based on the last seen location. This approach is good for
+estimating the location of object in a world model. But it does not consider the information available based on the movement of the object for predicting the object location.
+This information of the current state if recorded then analysis can be run on the object
+location to understand the mobility pattern in the object location over time. Modeling
+this object mobility pattern will help in predicting the object location in the environment.
+The prediction of location will further enhance the search of objects.
+In classical object search, the search is on a generic home which causes the learning
+of the object location to be finite. Whereas the object search problem in real life is a
+continuous learning process which never stops. Unlike the classical object search, the pro-
+posed spatio-temporal object location learning is a daily task which the robot has to carry
+out along with its daily routine. A typical spatio-temporal object location learning will
+consist of repeated observations of different objects in the environment spread throughout
+the robot’s operational time. Based on the observations the object model will be generated
+and updated. The learned model will then be used to predict the searched object location
+thus reducing the search time.
+The generic home scenario, in classical object search doesn’t take into account the
+differences in object locations from home to home. Based on practical experience we know
+that the even though homes have same base structure in space but the usage of the space
+is based on the user preferences. Each home is different from other home because of the
+humans which reside in them use it according to their likes. The proposed model will try to learn these user preferences in each home. So rather than learning object locations in
+a generalized home the proposed model shall learn object locations in a specific home.
+
+Consider a domestic robot which has been placed in a home environment with a
+known map and semantic information of the different locations in the home. The domestic
+robot while doing its daily activities makes a record of the objects seen in the environment
+with their location and time. Now the robot has been asked to bring the coffee mug of the
+user. The robot has to make a decision which part of the home it has to go to look for the
+coffee mug. The robot can make this decision based on the previous observations of the
+location of the coffee mug. The robot using the previous observations and the time of those
+observations makes a prediction about where the coffee mug can be found at the current
+time. Based on previous observation it can be inferred that the coffee mug is usually found
+in any of the following three location dishwasher/platform/cupboard. Assuming that the
+time now is morning, from previous observations it can be found that the coffee mug was
+always found in the dishwasher. The above example illustrate the main aspects of object
+location prediction we wish to capture in our work.
+The model needs to capture two main elements; first that objects in a human environment are not placed randomly but usually have a certain set of places where they are
+placed. These places of object placement differ from home to home. These object locations entirely depends on the users preferences. Second, that human behavior is related
+to time i.e. Humans have daily routines and the object locations are influenced by these
+routines. Thus human behavior not only has a spatial behavior but also has a temporal
+behavior. The model will reason on both user preference of the object location and the
+object-time relation.
+
+%
+\section{State of the Art}
+\includegraphics[width=\textwidth]{Object_Location.png}
+
+%
+\section{Approach}
+\includegraphics[width=\textwidth]{Lifecycle.png}
+\subsection{Model Based Machine Learning}
+\subsubsection{Graphical modeling}
+\subsubsection{Probabilistic Programming}
+
+\subsection{Object Location Model}
+\subsubsection{Dirichlet-Binomial model}
+\subsubsection{Hierarchical model}
+\includegraphics[width=\textwidth]{lda-model.pdf}
+
+\subsubsection{Beta-Binomial Model}
+\subsubsection{Hierarchical model}
+\subsection{Learning from no data}
+\subsubsection{}
+%
+\section{Evaluation}
+\subsection{Posterior Model check}
+\subsection{Bayes Factor}
+\subsection{Cross Validation}
+
+\section{Future Works}
+
+\section{Conclusion}
+% ---- Bibliography ----
+%
+\begin{thebibliography}{5}
+%
+\bibitem {clar:eke}
+Clarke, F., Ekeland, I.:
+Nonlinear oscillations and
+boundary-value problems for Hamiltonian systems.
+Arch. Rat. Mech. Anal. 78, 315--333 (1982)
+
+\bibitem {clar:eke:2}
+Clarke, F., Ekeland, I.:
+Solutions p\'{e}riodiques, du
+p\'{e}riode donn\'{e}e, des \'{e}quations hamiltoniennes.
+Note CRAS Paris 287, 1013--1015 (1978)
+
+\bibitem {mich:tar}
+Michalek, R., Tarantello, G.:
+Subharmonic solutions with prescribed minimal
+period for nonautonomous Hamiltonian systems.
+J. Diff. Eq. 72, 28--55 (1988)
+
+\bibitem {tar}
+Tarantello, G.:
+Subharmonic solutions for Hamiltonian
+systems via a $\bbbz_{p}$ pseudoindex theory.
+Annali di Matematica Pura (to appear)
+
+\bibitem {rab}
+Rabinowitz, P.:
+On subharmonic solutions of a Hamiltonian system.
+Comm. Pure Appl. Math. 33, 609--633 (1980)
+
+\end{thebibliography}
+
+\end{document}

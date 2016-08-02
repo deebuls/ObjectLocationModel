@@ -1,0 +1,15 @@
+ssh -L 8088:robocam:8088 dnair@kbsg.rwth-aachen.de
+
+spycam
+pwd : trustno1
+
+first login into kirk
+
+$ ssh dnair@kirk.kbsg.rwth-aachen.de
+
+then wakeup other machine
+$ wakemachine -l
+
+$ wakemachine enterprise
+
+

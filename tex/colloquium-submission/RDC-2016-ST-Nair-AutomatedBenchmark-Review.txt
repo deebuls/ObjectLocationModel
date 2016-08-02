@@ -1,0 +1,72 @@
+
+Paper Author(s):   Mohammed Shameer Abubucker, Sven Schneider, Gerhard K.Kraetzschmar
+
+Paper Title: Automated Approach for Comparative Evaluation of Motion Planners in Manipulation
+
+Reviewer: Deebul Nair
+
+
+================
+Overall Ratings:
+================
+
+- Relevance: 9
+
+- Originality and novelty: 7
+
+- Significance: 8
+
+- Readability and organization: 6
+
+- Technical quality and soundness: 7
+
+- Overall recommendation: 7
+
+
+- Reviewer Confidence: 7
+
+======================
+Comments to author(s):
+======================
+
+SUMMARY: 
+- The paper is titled to be about a Automated approach to evaluating Motion Planners.
+But most of the paper talks about the usage of the automated approach. It compares
+different motion planner and their performances as recorded by the automated approach.
+
+ORIGINALITY: 
+- The approach to evaluation ic completely new. The evaluation strategy is automated.
+- The paper points out the differences from related research as the current work 
+is completely automated. The comparison of motion planning algorithms is studied
+in depth. Automated motion planning evaluation research paradigm is discussed in 
+detail.
+
+SIGNIFICANCE 
+- The work is important for providing quantitative analysis of the motion planning
+approaches
+- It clearly advances the state of the art based on the evaluation strategy.
+- Yes, the paper stimulate discussion of important issues or alternative poins of view.
+
+TECHNICAL QUALITY 
+- The paper is rechnically sound.
+- The argument of automated evaluation strategy for planning methods is quite revelaing.
+- The contributions of the work is not clearly mentioned.
+- The methods compares all the available motion planning techniques.
+- The paper evaluated all the methods
+
+QUALITY OF PRESENTATION 
+- The writting can be improved specially more details of the automated planning 
+has to be added
+- The paper motivates the research on the field on automated testing.
+- The results are well documented
+
+
+
+===============================================
+Summary of review (to author(s) and PC members)
+===============================================
+SUMMARY OF REVIEW:
+
+The paper is titled as the Automated testing but it gives very scant on the 
+bechmarking tools and automation. The comparison of the different motion planning
+algorithms is through evaluation of all the motion planning algorithms available.

@@ -1,0 +1,64 @@
+\documentclass[a4paper]{article}
+
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{bayesnet}
+%\pgfrealjobname{example} % name of this file
+
+\title{Graphical Models in Tikz}
+\author{Laura Dietz, Jaakko Luttinen}
+
+\begin{document}
+
+\begin{equation*}
+	\alpha = <1, 1, .... , 1 > 
+\end{equation*}
+\begin{equation*}
+	\theta \sim Dirichlet(\alpha)
+\end{equation*}
+\begin{equation*}
+	y \sim Categorical(\theta)
+\end{equation*}
+
+
+\tikz {
+\node [latent]                  (alpha) {$\alpha$};
+\node [below=of alpha, latent]  (theta) {$\theta$};
+\node [below=of theta, obs]     (y)     {$y$};
+\edge {alpha} {theta};
+\edge {theta} {y};
+\plate {trials} {(y)} {presence};
+\plate {bags} {(theta)(y)(trials)} {time};
+}
+
+
+
+
+
+\tikz {
+ % Define nodes
+  \node[latent]                                 (theta) {$\theta$};
+  \node[latent, above=of theta, xshift=-1.2cm]  (alpha) {$\alpha$};
+  \node[latent, above=of theta, xshift=1.2cm]   (beta) {$\beta$};
+  \node[obs, below=of theta]                    (y)     {$y$}; 
+  % Connect the nodes
+  \edge {alpha,beta} {theta} ; %
+  \edge {theta} {y};
+  % plates
+  \plate {location} {(y)} {location};
+  \plate {time} {(theta)(y)(location)} {time};
+}
+
+
+
+\begin{equation*}
+	\alpha = 2 ; \beta = 2;
+\end{equation*}
+\begin{equation*}
+	\theta \sim Beta(\alpha, \beta);
+\end{equation*}
+\begin{equation*}
+	y = Bernoulli(\theta)
+\end{equation*}
+
+\end{document}

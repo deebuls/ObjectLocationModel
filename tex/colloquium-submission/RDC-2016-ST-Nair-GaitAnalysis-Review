@@ -1,0 +1,75 @@
+
+Paper Author(s):  Daniel Alberto V´azquez Ure˜na
+
+Paper Title: Anomaly Detection in Human Gait Patterns
+
+Reviewer: Deebul Nair
+
+
+================
+Overall Ratings:
+================
+
+- Relevance: 7
+
+- Originality and novelty:  3
+
+- Significance: 6
+
+- Readability and organization: 6
+
+- Technical quality and soundness: 5
+
+- Overall recommendation: 5
+
+
+- Reviewer Confidence: 5
+
+======================
+Comments to author(s):
+======================
+
+SUMMARY: 
+- The paper is about doing gait analysis in outddor environments with moving 
+cameras. 
+
+ORIGINALITY: 
+- The paper is the review of all the current approaches available in the field
+of outdoor gait analysis.
+- The paper compares the different aproaches based on the 8 parameters. It doesnt
+addresses any new method . 
+
+SIGNIFICANCE 
+- Work is significant for any other student working on the gait analysis.
+- It doesnt advance the state of the art but surely states the state of the art.
+- The paper clearly maintains all the advanatages and disadvantages of the 
+state of the art methods.
+
+TECHNICAL QUALITY 
+- The paper is technically sound.
+- Are the paper's arguments compelling? 
+- No the paper doesnt carefully evaluate the strengths and limitations of its contributions? 
+- The paper doesnt create new form of evidence against but states from the previous papers.
+- The paper adds information of the state of gait analysis
+- There is a careful evaluation in the paper.
+- The paper lacks in its comparison the evaluation on real dataset.
+
+QUALITY OF PRESENTATION 
+- Yes, the paper clearly written.
+- The paper motivate the research.
+- The results are clearly evaluated.
+
+===============================================
+Summary of review (to author(s) and PC members)
+===============================================
+SUMMARY OF REVIEW:
+
+The paper mentions of the 8 parameters on which the methods were compared.
+The paper stops at mentioning the different approaches and stating what was stated 
+in the other paper. The author should have looked into how good the mention 
+parameters of gait analysis worked. Which worked better and which didnt work.
+Some paper claimed to work in outdoor, but to what level is not known.
+No added information on the comparison on each feature mentioned.
+
+
+
