@@ -1,0 +1,179 @@
+\documentclass[11pt]{book}
+%Gummi|063|=)
+\title{\textbf{Complete this book }}
+\author{Deebul Nair}
+\date{}
+
+\usepackage{amsmath}
+\usepackage{todonotes}
+\begin{document}
+
+\maketitle
+\chapter{Basics}
+
+The goal of this chapter is to provide the reader with the basic information regarding Bayesian methods of machine learning used in the thesis. A good introduction to the field can be found in books of Bishop \cite{}, Kirchop \cite{} and LeeWagenmakers \cite{} . 
+
+\section{Bayesian Model Learning}
+
+Bayesian models are represented as probability distributions. Probability is used to quantify "uncertainty" or "Degree of belief". The models are initialized with some prior probabilities(beliefs). The observed data are used to update the prior beliefs to become posterior beliefs.
+
+We can explain this with an example. Assume we have a bag with 50 marbles with 2 colours, red and blue. We randomly take 10 marbles out of the bag and observe their colour with replacement. What we have to model is the colour distribution in the bag, which we can define as $\theta$ . We cannot directly observe the bag. All that we can observe are the colours of the 10 picked marbles.
+
+Before we do anything else we need to specify our prior belief with respect to the colour distribution $\theta$ . This belief needs to be expressed as a probability distribution, called the \emph{prior distribution}. A reasonable "prior distribution" denoted by $p(\theta)$ is one which takes uniform value between 0 and 1. Lets assume $p(\theta)$ is belief of red marbles in bag then $1 - p(\theta)$  is the belief of blue marbles in the bag. This uniform distribution is shown as dotted line in the figure 
+
+Now we consider the observed colour of the 10 marbles from the bag. We observe 8 red marbles and 2 blue marbles. After observing the data, the updated knowledge about $\theta$ is described by a \emph{posterior distribution}, denoted by $p(\theta | D)$, where D indicates the observed data. The distribution represents the updated belief after observing the colour picked marbles. Bayes rule specifies how we can combine the information from the data, that is how to determine the posterior distribution $p (\theta | D)$ using  the prior distribution $p(\theta)$ and the likelihood  $p (D | \theta)$ :
+\begin{equation}
+	p(\theta | D) = \frac{p(D | \theta) p(\theta)}{p(D)}
+\end{equation}
+
+The equation is often verbalized as :
+\begin{equation}
+	posterior = \frac{likelihood * prior}{marginal likelihood}
+\end{equation}
+
+We note here that the posterior distribution is a combination of the prior information we had and what we have learned from the data. 
+
+
+
+\missingfigure{Image of the prior posterior}
+
+\section{Prediction}
+
+\section{Graphical Models}
+
+\section{Probabilistic Programming}
+
+\section{Model Evaluation}
+\chapter{Introduction}
+\section{ The Right Kind of Smarts }
+Smart robots humbly predict our needs and modestly adjust as little as possible to accommodate them. Imagine if your robot could learn how you arrange the breakfast table by looking at the data from previous days? 
+We can also have a conversation with smart robots. They can tell us what they’re up to when we ask, or tell us something’s wrong when it’s essential. They can observe our lives and provide small insights we don’t even notice. They can pass along helpful information to humans, like observing our sleep habits and tell us when we are not having adequate sleeps.
+We can have a new relationship with our robots, one where the previously mute boxes of plastic and metal become new platforms—not as replacement, but for meaning and value. By learning how we interact with our homes and how we live our lives, robots will be able to provide services to us we can’t see right now. They’ll set themselves up and fit into the existing household by knowing what—and who—is there and adapting to them. Robots will grow and change with you and the house.
+
+\chapter{Fault tolerant object search}
+\label{cha}
+
+Efficient searching for objects in the environment is one of the application for the knowledge being learned from object locations. The learned knowledge is as heuristics to improve the search time of objects. There are 2 basic methods in which we can use the learned knowledge as heuristics, first we can search for objects in the decreasing order of the learned probabilities or alternatively we can use the descriptive model to predict based on its learned probabilities. However the probabilistic representation of the learned knowledge can be used in ingenious way to solve more complex problems. Markov Decision Process (MDP) based planners can use the learned probabilities in their decision process to make more informed decisions. To illustrate this flexibility we have used the learned probabilities to make a sequential decision search algorithm which can accommodate the recognition failure in the vision algorithms.
+\missingfigure{Image with false detection}
+Household robots need to be able to recognize the objects they’re supposed to search and manipulate. But while object recognition is one of the most widely studied topics in artificial intelligence, even the best object detectors still fail much of the time. As a result there are very much possibilities that even though the search algorithm has provided the correct location the object detector might fail to locate the object. An alternative will be provide a search algorithm which can accommodate the object detector failures. All these object detectors along with the detection also publish the confidence(probability) of the detection. The proposed algorithm here combines both the \emph{detection probability} and the \emph{learned probability} of the objects and provide sequential decisions for the next location to search.
+
+\section{Search as a decision Framework}
+\todo[inline, caption={search1}]{Introduce the topic name}
+\todo[inline, caption={search2}]{Add the 2 papers as the related work of probabilistic search in robotics}
+\todo[inline, caption={search3}]{ and that the below model is a reduced version and simplified model}
+
+The  contributions  of  this  paper  include  the  formulation of the search control problem as a decision-making problem rather  than  a  sensing  task,  where  measures  associated  with decisions,  e.g.  confidence  and  robustness  of  the  decision or  time  until  the  decision  is  made,  are  used  to  design  an appropriate  control  policy.  Our  formulation  of  the  search problem  as  a  detection  problem  also  allows  us  to  include practical  sensor  artifacts  (such  as  false  alarms  and  missed detections)  which  have  not  be  completely  considered  in other  formulations  [6]  of  the  search  problem.
+
+
+A Decision-Making Framework for Control Strategies
+in Probabilistic Search
+Timothy H. Chung and Joel W. Burdick
+
+A probabilistic framework for object
+search with 6-DOF pose estimation 
+\todo[inline]{robotics search in robots as POMDP in its related work}
+\section{Model}
+The idea is use the learned knowledge of the object locations as the first guess (prior ) of the probabilities that the object in question is located in each of the possible object locations. The prior probabilities suggest which location to search first. If the object is not found in that location, the prior probabilities are then updated (yielding the posterior), and the process is repeated until the object is found. 
+
+Assume that the domain of interest is a home we call $D_s$, which is made up of n spatial areas. Let $Y_i = 1$ if the object is in the \emph{i}th location, and then $Y_i = 0$ if it is not; $ i = 1, .... , n$. Now as discussed above object detectors can fail to detect the object. So, let $Z_i = 1$ if the object is found in the \emph{i}th location, and $Z_i = 0$ if not.
+
+We can define two terms \emph{detection probability},
+\begin{equation}
+	p_i = Pr(Z_i = 1| Y_i =1), \qquad  i = 1,...,n,
+\end{equation}
+which is a conditional probability, and the \emph{occurrence probability},
+\begin{equation}
+	\pi_i = Pr(Y_i = 1),\qquad  i = 1, .... , n.
+\end{equation}
+
+This can be expressed in probabilistic programming form:
+\begin{gather}
+	Z_i | Y_i \sim Bernoulli (Y_i, p_i), \qquad  i  = 1,....,n \\
+	Y_i \sim Bernoulli(\pi_i),\qquad   i = 1,...,n,
+\end{gather}
+
+where, the occurrence probability {$\pi_i$} is given by the learned probabilities, while the detection probability {$\pi_i$} is provided by the object detector algorithm.
+
+Now, assume that hte \emph{i}th location is searched by the robot and the object is not found (i.e., $Z_i = 0$). In that case, the probability that the object is in the \emph{i}th location is updated using Bayes' Theorem. This yields the posterior probability,
+
+\begin{align*}
+	Pr(Y_i = 1 | Z_i = 0) &= \frac{Pr(Z_i = 0|Y_i=1)Pr(Y_i=1)} {Pr(Z_i=0)} \\
+	                       &= \frac{Pr(Z_i = 0| Y_i =1 )Pr(Y_i =1)}{Pr(Z_i=0|Y_i =1)Pr(Y_i = 1) + Pr(Z_i=0|Y_i=0)Pr(Y_i=0)} \\
+	                       &= \frac{(1 - p_i)\pi_i}{(1 - p_i)\pi_i + (1)(1 - \pi_i)} \\
+	                       &= \frac{(1 - p_i)\pi_i}{1 - p_i\pi_i}
+\end{align*}
+
+where we assume that there are no false-positive detection (i.e., $Pr(Z_i =0| Y_i = 0) = 1$). Note that the new posterior is less than the prior probability $\pi_i$ as the object was not observed.
+
+Since the object is not found in the searched location, then this should also affect the posterior probability in the other grid boxes. For example, consider the \emph{j}th location, where $j \neq i$. Then,
+\begin{align*}
+	Pr(Y_j = 1 | Z_i=0) &= \frac{Pr(Z_i = 0 | Y_j = 1)Pr(Y_j = 1)}{Pr(Z_i = 0)} \\
+	                    &= \frac{\pi_j}{ 1 - p_i\pi_i}
+\end{align*}
+
+Thus, the posterior probability of the object being the \emph{j}th location is greater than the prior probability $\pi_j$ . These new posteriors will then become the next prior probabilities is a sequential procedure that would determine the next location to search.
+
+\section{Example}
+\todo{split as 2 example , 1 with high detection probablity 0.9 and other with 0.6}
+\todo{show the different sequence}
+Suppose we have a domestic robot which has learned the location probabilities of a cup in a home. The robot has learned that the cup can be found 3 locations in the home, thus the domain for search can be defined as $D_s = \{cupboard, table, dishwasher \}$ . 
+Now lets assume the robot has been in the room for long enough and made some observations. Based on these observations it learns the occurrence probabilities as $p_i = \{ 0.8, 0.1, 0.1\}$ . The object detector for the cup has a \emph{detection probability} of $p_{cup} =  0.6$ .
+
+As you can see there is a strong probability of finding the cup in the cupboard. The algorithm selects to search the cupboard. But the object detector fails and is not able to detect the cup. If we are not using the algorithm the robot will move on to the next location to search the cup in the next location.
+
+
+\missingfigure{Illustration of the proabbiliities and how they change with each observation}
+
+However our algorithm on the failure detection will update its probabilities and the updated posterior probability will be $ p_i = \{ 0.44, 0.27, 0.27\}$ and it still selects to search the cupboard for the next time. This illustrates the algorithm understands the limitation in the object detector and updates its beliefs to accommodate this limitation and make better \emph{informed} decisions.  
+
+ 
+\section{Evaluation}
+hey you didnt think about evaluation ? 
+% chapter  (end)
+
+\chapter{No information is also knowledge}
+
+This chapter presents an work around approach to the problem of learning knowledge of object placement habits of humans on a sparse data collected using a mobile robot equipped with a camera.
+The basic requirement of machine learning is the availability of data, from which information and knowledge can be learnt. But one of the major challenges in learning knowledge about the object placement habits in home environment is the absence of the data. Basically in the home, we like to store our food, cooking equipment, silverware and dishes inside closed cabinets like drawers, cupboards and refrigerators. So basically most of the time the objects are inside cabinets which cannot be observed using a vision sensor. 
+
+For a domestic robot with only camera as a sensor, the chances of observing  the object is drastically reduced as the object is always occluded. Hence our hypothesis that we can learn knowledge about object locations, quantitatively i.e. learning patterns from the data observed, becomes a herculean task to prove.
+
+
+
+
+\chapter{Cleaning robot scenario}
+
+If you grew up watching the Jetsons, the idea of having a robot helper that cleans and cooks for your family has always been a fantasy. People want to have a robot do the housework and the good news is that great minds are working on it.
+
+Elon Musk announced back in June that his OpenAI robotic institute was working on developing software that would enable off-the-shelf robots to do household chores and various other engineers are working on robots that could accomplish cleaning and organizing tasks.
+
+ In order for a robot to clean an entire house, it would have to be able to fully understand its environment and make decisions based on the state of each room -- something that is beyond the current abilities of artificial intelligence. 
+ \cite{http://www.treehugger.com/gadgets/want-robot-clean-your-house-youll-have-wait-bit-longer.html}
+ 
+\chapter{Modeling}
+Data Modeling.
+Each data scientist in practice uses tools and viewpoints from
+both
+of
+Leo Breiman's modeling cultures:
+
+Generative modeling
+, in which one proposes a stochastic model that could have generated
+the data, and derives methods to infer properties of the underlying generative mechanism.
+This roughly speaking coincides with traditional Academic statistics and its o shoots.
+31
+
+Predictive modeling
+, in which one constructs methods which predict well over some some
+given data universe { i.e.  some very speci c concrete dataset.  This roughly coincides with
+modern Machine Learning, and its industrial o shoots.
+
+\chapter{Useful wordings}
+
+\begin{itemize}
+	\item Experience based machine intelligence \textbf{and the benefits it could engender such as} fixing model-specific problems and product efficiency \textbf{are good reasons to enable network connectivity}.
+	\item Not all data is created equal, and certainly not all of it is meaningful to collect and display.
+\end{itemize}
+
+%\listoftodos
+\end{document}
