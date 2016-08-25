@@ -1,0 +1,55 @@
+\documentclass[11pt]{book}
+%Gummi|063|=)
+\title{\textbf{Complete this book }}
+\author{Deebul Nair}
+\date{}
+
+\usepackage{amsmath}
+\usepackage{todonotes}
+
+\begin{document}
+
+\chapter{Absence of Information is also Knowledge}
+
+This chapter presents an alternative approach to the problem of learning object placement habits of humans from previous observations collected of the object collected a domestic robot using a vision sensor in an occluded environment.
+Generally in domestic environments like our home, we humans prefer to store our food, cooking equipment, silverware and dishes inside closed cabinets like drawers, cupboards and refrigerators. So most of the time the objects are inside cabinets which cannot be observed using a vision sensor. For a domestic robot with only camera as a sensor, the chances of observing  these objects inside closed cabinets is drastically reduced.
+\missingfigure{Occluded kitchen with labeled location names and bounding box object name}
+The basic requirement of machine learning is data, from which information and knowledge can be learnt. But in highly occluded environments like kitchen its difficult for a domestic robot to make an observation of the object and record the object location.  Hence our hypothesis that we can learn knowledge about object locations quantitatively i.e. learning patterns from the data observed, becomes a herculean task to prove.
+
+An alternative approach to counter the sparsity of data is by recording the absence of the object in visible locations and learning knowledge about where objects are not located. Consider an motivating example, as depicted in Figure 1 \todo{cite the image} . Here, a mobile robot is in a kitchen in the morning. The following locations can be scanned by the robot: kitchen-sink, counter-top and stove, while the cabinets, dishwasher and refrigerator are occluded. The robot will make observations of cup and kettle on counter-top , spoon on the sink top. Assume that the robot is also learning object locations of cooking pot. If the robot only records the observed objects then there is no data recorded for the cooking-pot and no knowledge is learned about the cooking-pot. A possible solution is to even record the absence of cooking-pot on the visible locations. From this the robot can learn that the cooking-pot is less probable to be on the kitchen-sink, counter-top and stove during morning time. Supplementary the robot can also learn that there is higher probability for the cooking-pot being in the cabinet or dishwasher.
+
+\section{Simulated Dataset: Kitchen Object Dataset}
+
+To demonstrate the proposed approach we have generated a kitchen object dataset. The dataset consist observations(presence and absence) of a cup in a kitchen environment made by a domestic robot. The robot can scan 4 locations in the kitchen: sink, counter-top, stove and cabinet. The time of the scan is discretized into 3 times of the day: morning, afternoon and night. 
+\missingfigure{4 Images, sink, counter-top, stove, cabinet}
+
+\section{Dirichlet-Categorical-Bernoulli model}
+
+For incorporating the negative instances we modified the Dirichlet-Categorical model explained in section \todo{cite chapter} with a Bernoulli model. But Bernoulli 
+
+\section{Evaluation}
+
+The proposed models are evaluated on the simulated dataset. We compare the Dirichlet-Categorical-Bernoulli model with the Hierarchical-Dirichlet-Categorical model explained in \todo{cite }. We compare the dirichlet probability used to generate the simulated dataset and the learned probabilities and evaluate the performance of the learning. 
+We use the adopted  Bhattacharyya distance \todo{cite } to quantify the similarity between the simulated and the learned distribution.
+
+ The Bhattacharyya distance is a measure of divergence between
+probability distributions, that allows measuring the dissimilarity between two continuous or discrete probability distributions. It can take values from 0-$\inf$. The value is 0 when both the distributions are similar and $\inf$ when there is no overlap between the distributions. Adopting the  Bhattacharya distance to Dirichlet distributions [Rauber et al ]\todo{cite Rauber} we get :
+\begin{multline}
+	D_B(Dir_a(x_1, \dots ,x+n), Dir(y_1, \dots , y_n)) = \nonumber\\
+	 \Gamma \Bigg( \frac{1}{2}  \sum_{i \in {1, \dots, n}} x_i +  \frac{1}{2}\sum_{i \in {1, \dots, n}} y_i\Bigg) + 
+	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma (x_i) + 
+	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma (y_i) - \\ 
+	\sum_{i \in {1, \dots, n}} \Gamma \bigg(\frac{1}{2} (x_i + y_i) \bigg) - \frac{1}{2}  \Gamma \Bigg(  \sum_{i \in {1, \dots, n}} x_i \Bigg) + \frac{1}{2}  \Gamma \Bigg( \sum_{i \in {1, \dots, n}} y_i\Bigg)
+\end{multline}
+
+The distance
+
+\section{ss}
+
+
+A . Bhattacharyya.  On  a  measure  of  divergence  between two  statistical populations  defined  by  their  probability distributions.    Bull.  Calcutta Math.  Soc.,  49:214–224, 1943
+
+T.W. Rauber, A. Conci, T. Braun, and K. Berns. Bhattacharyya probabilistic distance of the dirichlet density and its application to split-and-merge image seg- mentation. In WSSIP08 , pages 145–148, 2008. 
+
+
+\end{document}

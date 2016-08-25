@@ -10,6 +10,10 @@
 
 \begin{document}
 
+\noindent
+\begin{minipage}{0.3\textwidth}
+\centering
+
 \begin{equation*}
 	\alpha = <1, 1, .... , 1 > 
 \end{equation*}
@@ -20,19 +24,21 @@
 	y \sim Categorical(\theta)
 \end{equation*}
 
+\end{minipage}%
+\begin{minipage}{0.7\textwidth}
 
 \tikz {
-\node [latent]                  (alpha) {$\alpha$};
+\node [const]                  (alpha) {$\alpha$};
 \node [below=of alpha, latent]  (theta) {$\theta$};
 \node [below=of theta, obs]     (y)     {$y$};
 \edge {alpha} {theta};
 \edge {theta} {y};
-\plate {trials} {(y)} {presence};
-\plate {bags} {(theta)(y)(trials)} {time};
+\plate {trials} {(y)} {N};
+\plate {bags} {(theta)(y)(trials)} {T};
 }
 
 
-
+\end{minipage}
 
 
 \tikz {

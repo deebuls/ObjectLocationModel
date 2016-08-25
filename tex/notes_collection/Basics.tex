@@ -9,15 +9,28 @@
 \begin{document}
 
 \maketitle
+
+
+\chapter{Introduction}
+
+
+In this thesis, we consider methods for learning dynamical models for time series with complex and uncertain behavior patterns. Specifically, we address how Bayesian nonparametric methods can be used to provide a flexible and computationally efficient structure for learning and inference of these complex systems.
+\section{ The Right Kind of Smarts }
+Smart robots humbly predict our needs and modestly adjust as little as possible to accommodate them. Imagine if your robot could learn how you arrange the breakfast table by looking at the data from previous days? 
+We can also have a conversation with smart robots. They can tell us what they’re up to when we ask, or tell us something’s wrong when it’s essential. They can observe our lives and provide small insights we don’t even notice. They can pass along helpful information to humans, like observing our sleep habits and tell us when we are not having adequate sleeps.
+We can have a new relationship with our robots, one where the previously mute boxes of plastic and metal become new platforms—not as replacement, but for meaning and value. By learning how we interact with our homes and how we live our lives, robots will be able to provide services to us we can’t see right now. They’ll set themselves up and fit into the existing household by knowing what—and who—is there and adapting to them. Robots will grow and change with you and the house.
+
+robots with a greater awareness of the world around them.
 \chapter{Basics}
 
-The goal of this chapter is to provide the reader with the basic information regarding Bayesian methods of machine learning used in the thesis. A good introduction to the field can be found in books of Bishop \cite{}, Kirchop \cite{} and LeeWagenmakers \cite{} . 
+IN this background chapter, we review the statistical methodologies 
+The goal of this chapter is to provide the basic information regarding Bayesian methods of machine learning used in the thesis. A good introduction to the field can be found in books of Bishop \cite{}, Kirchop \cite{} and LeeWagenmakers \cite{} . 
 
 \section{Bayesian Model Learning}
 
 Bayesian models are represented as probability distributions. Probability is used to quantify "uncertainty" or "Degree of belief". The models are initialized with some prior probabilities(beliefs). The observed data are used to update the prior beliefs to become posterior beliefs.
 
-We can explain this with an example. Assume we have a bag with 50 marbles with 2 colours, red and blue. We randomly take 10 marbles out of the bag and observe their colour with replacement. What we have to model is the colour distribution in the bag, which we can define as $\theta$ . We cannot directly observe the bag. All that we can observe are the colours of the 10 picked marbles.
+We can explain this with an example. Assume we have a bag with 50 marbles with 2 colours, red and blue. We randomly take 10 marbles out of the bag and observe their colour with replacement. What we have to model is, our belief of the numbers of colours inside the bag, in bayesian  terms colour distribution in the bag, which we can define as $\theta$ . We cannot directly observe the bag. All that we can observe are the colours of the 10 picked marbles.
 
 Before we do anything else we need to specify our prior belief with respect to the colour distribution $\theta$ . This belief needs to be expressed as a probability distribution, called the \emph{prior distribution}. A reasonable "prior distribution" denoted by $p(\theta)$ is one which takes uniform value between 0 and 1. Lets assume $p(\theta)$ is belief of red marbles in bag then $1 - p(\theta)$  is the belief of blue marbles in the bag. This uniform distribution is shown as dotted line in the figure 
 
@@ -39,18 +52,34 @@ We note here that the posterior distribution is a combination of the prior infor
 
 \section{Prediction}
 
+\section{Distributions }
+
+Dirichlet, Categorical, Bernoulli 
+
+Conjugate prior  need to explain this 
+
 \section{Graphical Models}
 
 \section{Probabilistic Programming}
 
-\section{Model Evaluation}
-\chapter{Introduction}
-\section{ The Right Kind of Smarts }
-Smart robots humbly predict our needs and modestly adjust as little as possible to accommodate them. Imagine if your robot could learn how you arrange the breakfast table by looking at the data from previous days? 
-We can also have a conversation with smart robots. They can tell us what they’re up to when we ask, or tell us something’s wrong when it’s essential. They can observe our lives and provide small insights we don’t even notice. They can pass along helpful information to humans, like observing our sleep habits and tell us when we are not having adequate sleeps.
-We can have a new relationship with our robots, one where the previously mute boxes of plastic and metal become new platforms—not as replacement, but for meaning and value. By learning how we interact with our homes and how we live our lives, robots will be able to provide services to us we can’t see right now. They’ll set themselves up and fit into the existing household by knowing what—and who—is there and adapting to them. Robots will grow and change with you and the house.
+Until recently, Bayesian Model learning have been limited in scope, and have been hard to apply to many real-world applications. Probabilistic programming is a new approach which makes Bayesian learning easier to build and more applicable. 
+\subsection{PyMC3}
 
-\chapter{Fault tolerant object search}
+\subsection{BayesPy}
+
+\subsection{WebPPL}
+
+\section{Model Evaluation}
+
+\section{DIKW Pyramid }
+
+%######################################################################
+
+%\input{human_location}
+
+%######################################################################
+
+\chapter{Knowledge-enabled fault tolerant object search}
 \label{cha}
 
 Efficient searching for objects in the environment is one of the application for the knowledge being learned from object locations. The learned knowledge is as heuristics to improve the search time of objects. There are 2 basic methods in which we can use the learned knowledge as heuristics, first we can search for objects in the decreasing order of the learned probabilities or alternatively we can use the descriptive model to predict based on its learned probabilities. However the probabilistic representation of the learned knowledge can be used in ingenious way to solve more complex problems. Markov Decision Process (MDP) based planners can use the learned probabilities in their decision process to make more informed decisions. To illustrate this flexibility we have used the learned probabilities to make a sequential decision search algorithm which can accommodate the recognition failure in the vision algorithms.
@@ -130,16 +159,6 @@ However our algorithm on the failure detection will update its probabilities and
 \section{Evaluation}
 hey you didnt think about evaluation ? 
 % chapter  (end)
-
-\chapter{No information is also knowledge}
-
-This chapter presents an work around approach to the problem of learning knowledge of object placement habits of humans on a sparse data collected using a mobile robot equipped with a camera.
-The basic requirement of machine learning is the availability of data, from which information and knowledge can be learnt. But one of the major challenges in learning knowledge about the object placement habits in home environment is the absence of the data. Basically in the home, we like to store our food, cooking equipment, silverware and dishes inside closed cabinets like drawers, cupboards and refrigerators. So basically most of the time the objects are inside cabinets which cannot be observed using a vision sensor. 
-
-For a domestic robot with only camera as a sensor, the chances of observing  the object is drastically reduced as the object is always occluded. Hence our hypothesis that we can learn knowledge about object locations, quantitatively i.e. learning patterns from the data observed, becomes a herculean task to prove.
-
-
-
 
 \chapter{Cleaning robot scenario}
 
