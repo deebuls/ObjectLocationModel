@@ -74,7 +74,7 @@ class HierarchicalDirichletCategorical:
             p_conc_night.initialize_from_value(np.ones(self.N_LOCATIONS))
 
             morning_time = np.arange(6,19)
-            night_time = np.append(np.arange(0,6) , np.arange(18,24))
+            night_time = np.append(np.arange(0,6) , np.arange(19,24))
 
             p_theta_morning = nodes.Dirichlet(p_conc_morning,
                                       plates = (morning_time.size,),
