@@ -1,0 +1,47 @@
+\documentclass[11pt]{book}
+%Gummi|063|=)
+\title{\textbf{Complete this book }}
+\author{Deebul Nair}
+\date{}
+\usepackage[scaled=0.85]{beramono}
+%\usepackage[hmargin=3cm,vmargin=3.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{todonotes}
+\begin{document}
+
+
+
+\chapter{Introduction}
+
+
+For robots to make a smooth ingress into dynamic human environments like home and office, the robots need to be able to close the \emph{perceive-action-learning} loop. Essentially these domestic service robots should perceive the environment, interact with the environment, learn from experiences and repeat. The robot interacts with the environment by choosing a sequence of low-level actions . For example, lets take the high-level task of ``making tea", this will require the following actions to be executed sequentially: fill the kettle, boil water, find the teabag, find a cup, put teabag into the cup and pour hot water into the cup. But for executing some of the actions like finding the kettle, finding teabag, finding cup etc. requires the robot to have prior knowledge about the possible locations. Such knowledge about the environment or the user needs to be learned by the robot. The goal of this thesis is to enable domestic service robots to gain knowledge about common behaviours and preferences of the user in a non-intrusive manner. Specifically, we address how Bayesian methods can be used to provide a flexible and computationally efficient structure for acquiring knowledge using limited spatio-temporal information collected by these service robots.
+
+\todo[inline]{
+
+Robots need to be able to automatically (and quickly) adapt to a new environment. Machine learning is a good way for automatic adaption, but in order to adapt quickly the robot needs to be able to extract valuable information from small amounts of data, i.e., the learning algorithms need to be data efficient. Data-efficient machine learning can be summarized as “the ability to learn in complex domains without requiring large quantities of data” [1], and ideas toward data-efficient learning include transfer learning (e.g., how can I exploit knowledge about playing baseball when I start learning softball?), incorporation of structural prior knowledge (e.g., engineering prior knowledge or symmetries) and Bayesian optimization (data-efficient automatic optimization method).
+}
+
+To illustrate the relevance of the topics presented in this thesis, we motivate our work using a typical task of a domestic service robot.   We assume that the robot is given the task of ``making coffee" for the user Waldo, which requires the robot to locate the coffee cup of Waldo first, make coffee and then to locate Waldo for delivering it to him. To begin the search for the coffee cup, it would help the robot to have some prior knowledge regarding Waldo's habits; in particular the typical locations where he keeps his cup. This enables the robot to funnel its search for the object from a large number of locations to the most probable ones. Once the coffee cup is located and grasped the robot needs to reason about where it can currently find Waldo for delivering it to him. This in turn, requires the robot to have knowledge about the likely locations of Waldo at that time.
+
+This motivating example leads us to the two research topics in knowledge acquisition we address in this thesis:
+\begin{enumerate}
+	\item How can a domestic service robot acquire knowledge about user preferences in placing objects in the environment?
+	\item How can a domestic service robot acquire knowledge about the user's temporal location behaviour?
+	\item How can a domestic service robot acquire the above knowledge using small amounts of information?
+\end{enumerate}
+
+The service robot operating in dynamic human environments needs to perceive the world using its own sensors, and subsequently build a cognitive model of the user preferences and behaviour. Data-efficient machine learning can be summarized as “the ability to learn in complex domains without requiring large quantities of data” [1], and ideas toward data-efficient learning include transfer learning (e.g., how can I exploit knowledge about playing baseball when I start learning softball?), incorporation of structural prior knowledge (e.g., engineering prior knowledge or symmetries) and Bayesian optimization (data-efficient automatic optimization method). The service robots can use this 
+
+\todo[inline]{
+In this thesis, we consider methods for learning dynamical models for time series with complex and uncertain behaviour patterns. Specifically, we address how Bayesian non-parametric methods can be used to provide a flexible and computationally efficient structure for learning and inference of these complex systems.}
+\todo[inline]{
+Some of the deepest questions of cognitive development are: How does abstract knowledge influence learning of specific knowledge? How can abstract knowledge be learned? In this section we will see how such hierarchical knowledge can be modeled with hierarchical generative models: generative models with uncertainty at several levels, where lower levels depend on choices at higher levels.}
+
+\section{ The Right Kind of Smarts }
+Smart robots humbly predict our needs and modestly adjust as little as possible to accommodate them. Imagine if your robot could learn how you arrange the breakfast table by looking at the data from previous days? 
+We can also have a conversation with smart robots. They can tell us what they’re up to when we ask, or tell us something’s wrong when it’s essential. They can observe our lives and provide small insights we don’t even notice. They can pass along helpful information to humans, like observing our sleep habits and tell us when we are not having adequate sleeps.
+We can have a new relationship with our robots, one where the previously mute boxes of plastic and metal become new platforms—not as replacement, but for meaning and value. By learning how we interact with our homes and how we live our lives, robots will be able to provide services to us we can’t see right now. They’ll set themselves up and fit into the existing household by knowing what—and who—is there and adapting to them. Robots will grow and change with you and the house robots with a greater awareness of the world around them.
+
+
+
+\end{document}

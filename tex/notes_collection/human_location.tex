@@ -1,4 +1,4 @@
-\documentclass[11pt]{book}
+\documentclass[11pt]{report}
 %Gummi|063|=)
 \title{\textbf{Complete this book }}
 \author{Deebul Nair}
@@ -14,7 +14,7 @@
 
 \begin{document}
 
-\chapter{In-House Human Presence Model}
+\chapter{Temporal Location Behaviour Model}
 
 Domestic robots in future should be able to gather knowledge about the favourite places of the humans in the home and also the time period when they mostly occupy their favourite places. This acquired knowledge of the human presence patterns shall enable the robots to make better decisions. For example what time particular rooms are unoccupied for cleaning or when to turn on the heater of the room. 
 
@@ -26,17 +26,6 @@ while Krajnik's  work is first step towards learning human mobility behaviour in
 
 
 
-
-\begin{thebibliography}{99}
-
-\bibitem{c1} J.  McInerney,  J.  Zheng,  A.  Rogers,  and  N.  R.  Jennings.Modelling heterogeneous location habits in human populations for location prediction under data sparsity. In Interna-tional Joint Conference on Pervasive andUbiquitous Com-puting (UbiComp 2013)
-\bibitem{c2}  S.  Scellato,   M.  Musolesi,   C.  Mascolo,   V.  Latora,   and A.  Campbell. Nextplace:   a  spatio-temporal  prediction framework for pervasive systems.  InPervasive Computing
-\bibitem{c3} L. Song, D. Kotz, R. Jain, and X. He.  Evaluating next-cell predictors with extensive wi-fi mobility data. IEEE Trans-actions on Mobile Computing , 5(12):1633–1649, 2006 pages 152–169, San Francisco, CA, USA, 2011. Springer.
-\bibitem{c4}N. Eagle and A. S. Pentland.   Eigenbehaviors:  identifying structure in routine. Behavioral Ecology and Sociobiology ,63(7):1057–1066, 2009.
-\bibitem{c5} H.  Gao,  J.  Tang,  and  H.  Liu.   Exploring  social-historical ties on location-based social networks.  In6th InternationalAAAI Conference on Weblogs and Social Media, 2012
-\bibitem{c6} Krajnik, Tomas, Miroslav Kulich, Lenka Mudrova, Rares Ambrus, and Tom Duckett. “Where’s Waldo at Time T? Using Spatio-Temporal Models for Mobile Robot Search.” In Robotics and Automation (ICRA), 2015 IEEE International Conference on, 2140–2146.
-
-\end{thebibliography}
 
 
 
@@ -52,29 +41,48 @@ The testbed where the dataset was collected is a  three-bedroom apartment locate
 \end{figure}
 As shown in Figure \cite{aruba}, the smart apartment test bed includes three bedrooms, one bathroom, a kitchen, and a living / dining room.  The apartment is equipped with motion sensors distributed approximately 1 meter apart throughout the space. The Aruba dataset was extracted from these motion sensor dataset provided by CASAS. The dataset contains the location of a person in the apartment every minute for 16 weeks.
 
+
+We visualize the dataset as a heatmap over locations distributed over different periods. As explained in the section \todo{cite the central thesis}, we try to learn daily patterns by dividing the observations into per hour periods. As we can see there are some prominent patterns present which can be learned. For example the usage of the bedroom, living room, outside and kitchen.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth]{images/aruba-data.png}
+\caption{Aruba Dataset Heatmap : The X -axis are the locations of the home, Y-axis are the hours of the day. The intensity of the color in each box indicates the number of times the person is present in that location. Higher the intensity means more time is spent by the person in that location at that time.}
+\label{aruba-visual}
+\end{figure}
+
+A histogram visualization of the observations over different location in the home is show in Figure \cite{aruba-hist}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth]{images/aruba-hist.png}
+\caption{Aruba Dataset Histogram : Each box corresponds to histogram of each locations. The x - axis represents the time of the day(0-24) }
+\label{aruba-hist}
+\end{figure}
+
+
 \subsection*{Sparsification}
 Aruba dataset is a large dataset as compared to an person location dataset we assume the robot will be able to generate. The Aruba dataset has recordings of every minute for 118 days, which is 161280 readings.
 On the contrary the assumed dataset which will be collected by the robot by autonomously roaming in a home will be just 3-5 readings per day.
 So for simulating the sparsity in the object location dataset we will sparsify the ARUBA dataset by random selecting only selecting 3-5 readings each day.
 
-\subsection*{Visualization}
-We visualize the dataset to find out if as humans we can find any patterns in the data. Since the observations are of 2 dimension(location vs time) the visualization is feasible. As explained in the section \todo{cite the central thesis}, we try to learn daily patterns by dividing the data into per hour cycle. As visualized in Figure \cite{aruba-visual} we can find that there are some prominent patterns emerging which can be learned. For example the usage of the Bedroom, Living room, outside and kitchen.
+After sparsification by randomly selecting 5 readings per day the dataset is reduced to 590 observations. The heatmap the of the sparsified dataset is shown in Figure \cite{aruba-reduced-hist}. 
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=\textwidth]{images/aruba-data.png}
-\caption{Aruba Dataset Visualization : The X -axis are the locations of the home, Y-axis are the hours of the day. The intensity of the color in each box indicates the number of times the person is present in that location. Higher the intensity means more time is spent by the person in that location at that time.}
-\label{aruba-visual}
+\includegraphics[width=\textwidth]{images/aruba-reduced-heatmap.png}
+\caption{Aruba Sparcified Dataset Heatmap :The X -axis are the locations of the home, Y-axis are the hours of the day. Compared to the complete observations the sparcified data set the patterns are not distinct}
+\label{aruba-reduced-hist}
 \end{figure}
 
 
 \section{Dirichlet Categorical model }
 
-Dirichlet Categorical model (DCM) is a 2 level Bayesian model. The basic idea is that observations of each time period is characterized by a distribution over the possible locations.
+Dirichlet Categorical model (DCM) is a two-level Bayesian model. The basic idea is that observations of each time period is characterized by a distribution over the possible locations.
 
 The data are the observed human location $x_{ij}$ for $i = 1 \dots T$ time periods and then $j = 1, \dots , N$  are the observations.  We assume that the latent pattern in the persons location per period are distributed as a categorical distribution. The number of periods $T$ for our model is fixed to 24 corresponding to the number of hours in a day. 
 
-The Dirichlet-Categorical model is the generalization of the Beta-Binomial model to multiple classes of a categorical or multinomial distribution. The conjugate prior for the categorical distribution is the Dirichlet distribution. The model estimates the posterior distribution of $\theta_i$ given our current data and prior beliefs. Our prior beliefs are encoded in the model through the hyperparameter $\alpha$, which represents pseudocounts of what we believe the data should look like – typically set as 1's for weak uniform beliefs. The graphical diagram of the model is shown in Figure \cite{dcm}
+The Dirichlet-Categorical model is the generalization of the Beta-Binomial model to multiple classes of a categorical or multinomial distribution. The conjugate prior for the categorical distribution is the Dirichlet distribution. The model estimates the posterior distribution of $\theta_i$ given our current data and prior beliefs. Our prior beliefs are encoded in the model through the hyperparameter $\alpha$, which represents pseudocounts of what we believe the data should look like – typically set as 1's for weak uniform beliefs. The probabilistic graphical model of  DCM is shown in Figure \cite{dcm}
 
 \noindent
 \begin{figure}[htp]
@@ -88,7 +96,7 @@ The Dirichlet-Categorical model is the generalization of the Beta-Binomial model
 \node [below=of theta, obs]     (x)     {$x_{ij}$};
 \edge {alpha} {theta};
 \edge {theta} {x};
-\plate {trials} {(x)} {j data};
+\plate {trials} {(x)} {j location};
 \plate {bags} {(theta)(x)(trials)} {i time};
 }
 
@@ -105,29 +113,91 @@ The Dirichlet-Categorical model is the generalization of the Beta-Binomial model
 	x_{ij} \sim Categorical(\theta_i)
 \end{equation*}
 \end{minipage}
-\caption{Graphical model representation of DCM. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of places within each hour.}
+\caption{Graphical model representation of DCM. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
 \label{dcm}
 \end{figure}
 
+With the graphical model, the dependencies among the many variables can be captured concisely. The boxes are “plates” representing replicates. The outer plate represents the hours of the day, while the inner plate represents the repeated choice of locations within each hour. Thus:
+
+	$\alpha$ is  parameter of the dirichlet prior on per-period location distribution, 
+	
+	$\theta_i$ is the location distribution for period $i$  ,
+	
+	$x_{ij}$ is the observed location of the person in period $i$.
+	
+The $ x_{ij}$ are the only observable variables, and the other variables are latent variables. 
+
+\section{Hierarchical Dirichlet Categorical Model}
+
+Observations made only by a domestic robot using internal sensors and not using any external sensors creates the serious problem of sparsity. There are very much likely that some time periods there will be no observations available to learn. Maximum likelihood estimates of the categorical parameters assign uniform probability to the locations in these time periods. The standard approach to coping with this problem is to sharing statistical strength between time periods: it is as if the location we observe for each time period also provides weaker indirect location relevant to other time periods. In machine learning and statistical science this phenomenon is often called \emph{learning to learn} or \emph{transfer learning}. Intuitively, knowing something about the location of person in the 9'o clock can help in gaining some information at 10'o clock. 
+
+By placing a Dirichlet hyper-prior on the several Dirichlet parameter we obtain a hierarchical model. The hyper-prior makes it possible for sharing the learned knowledge from one prior to another. Thus learning about the location pattern at a higher level of abstraction helps to share it with the lower levels which have no observations.
+
+The probabilistic graphical model of  hierarchical model is shown in Figure \cite{hdcm}
+
+\noindent
+\begin{figure}[htp]
+
+\begin{minipage}{0.3\textwidth}
+\centering
+
+\tikz {
+\node [const]                   (alpha) {$\alpha$};
+\node [below=of alpha, latent]  (beta)  {$\beta$};
+\node [below=of beta, latent]   (theta) {$\theta_i$};
+\node [below=of theta, obs]     (x)     {$x_{ij}$};
+\edge {alpha} {beta};
+\edge {beta} {theta};
+\edge {theta} {x};
+\plate {trials} {(x)} {j location};
+\plate {bags} {(theta)(x)(trials)} {i time};
+}
+
+\end{minipage}%
+\begin{minipage}{0.7\textwidth}
+
+\begin{equation*}
+	\alpha = <1, 1, .... , 1 > 
+\end{equation*}
+\begin{equation*}
+	\beta \sim Dirichlet(\alpha)
+\end{equation*}
+\begin{equation*}
+	\theta_i  \sim Dirichlet(\beta)
+\end{equation*}
+\begin{equation*}
+	x_{ij} \sim Categorical(\theta_i)
+\end{equation*}
+\end{minipage}
+\caption{Hierarchical Dirichlet Categorical Model. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
+\label{hdcm}
+\end{figure}
+
+The model can be explained as:
+
+	\boldmath{$\alpha$} is  constant dirichlet prior for the hyperprior, 
+	
+	$\beta$ is a Dirichlet hyperprior,
+	
+	$\theta_i$ is the location distribution for period $i$  ,
+	
+	$x_{ij}$ is the observed location of the person in period $i$.
+	
+Thus we have categorical variables dependent on multiple priors sharing a hyperprior.
+
+\section{Evaluation}
+
+In these experiments, we estimated the parameters of the DCM using the sparsified observations. We then trained a support vector machine(SVM) and Random Forest on the same sparsified observations. Then compared the results of SVM\todo{cite}, Random forest\todo{cite}, DCM and HDCM by cross validation.
 
 
-\section{Explanation : From LDA}
-All the models in the thesis are based on the ``bag of words" assumption-- that the order of the data in a day can be neglected.
-In language of probability theory, this is an assumption of \emph{exchangeability} for the words in the document (Aldous, 1985)
 
-from : http://blog.nullspace.io/motivating-bayesian.html
-an important class of models called exchangeable models are guaranteed by de Finetti’s theorem to decompose cleanly into the definition of the Bayesian framework.
+\missingfigure{Cross validation results}
 
-One reason exchangeability is interesting is because prima facie, although it seems to be similar to the assumption of iid, it is actually much richer, and much less restrictive. Consider, for example, if we have a document whose words have been shuffled. Intuitively, if we see an Arabic word, then even it is much more likely that we will encounter other Arabic words elsewhere in the document, since there is a reasonable probability the document itself is in Arabic. The assumption of iid does not capture this, because the words are assumed to be completely independent. Exchangeability doesn’t assume independence, however, only that ordering doesn’t matter, so this will be captured in a model that is exchangeable.
+The models were also compared with the models developed my Kranjik \todo{cite} based on the average time required by the robot to locate the user in the home.
 
-This is a critical aspect of Bayesian inference that many people simply don’t understand, and it has all sorts of consequences, like making Bayesian nonparametrics possible, and making conditional probabilities uncomputable in general. It is so convenient to think of this class of problems as Bayesian that it seems like a crime to not use Bayesian inference.
+\missingfigure{Timing results}
 
 
-\begin{itemize}
-	\item Generative probabilistic model
-	\item three-level hierarchical Bayesian model
-	\item 
-\end{itemize}
 
 
 \section{Discussions}
@@ -139,5 +209,18 @@ The point of the story in that slide is that flat priors consistently give bad i
 \label{sec:}
 
 % section  (end)
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{c1} J.  McInerney,  J.  Zheng,  A.  Rogers,  and  N.  R.  Jennings.Modelling heterogeneous location habits in human populations for location prediction under data sparsity. In Interna-tional Joint Conference on Pervasive andUbiquitous Com-puting (UbiComp 2013)
+\bibitem{c2}  S.  Scellato,   M.  Musolesi,   C.  Mascolo,   V.  Latora,   and A.  Campbell. Nextplace:   a  spatio-temporal  prediction framework for pervasive systems.  InPervasive Computing
+\bibitem{c3} L. Song, D. Kotz, R. Jain, and X. He.  Evaluating next-cell predictors with extensive wi-fi mobility data. IEEE Trans-actions on Mobile Computing , 5(12):1633–1649, 2006 pages 152–169, San Francisco, CA, USA, 2011. Springer.
+\bibitem{c4}N. Eagle and A. S. Pentland.   Eigenbehaviors:  identifying structure in routine. Behavioral Ecology and Sociobiology ,63(7):1057–1066, 2009.
+\bibitem{c5} H.  Gao,  J.  Tang,  and  H.  Liu.   Exploring  social-historical ties on location-based social networks.  In6th InternationalAAAI Conference on Weblogs and Social Media, 2012
+\bibitem{c6} Krajnik, Tomas, Miroslav Kulich, Lenka Mudrova, Rares Ambrus, and Tom Duckett. “Where’s Waldo at Time T? Using Spatio-Temporal Models for Mobile Robot Search.” In Robotics and Automation (ICRA), 2015 IEEE International Conference on, 2140–2146.
+
+\end{thebibliography}
 \end{document}
 

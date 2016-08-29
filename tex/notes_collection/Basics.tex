@@ -1,4 +1,4 @@
-\documentclass[11pt]{book}
+\documentclass[11pt]{report}
 %Gummi|063|=)
 \title{\textbf{Complete this book }}
 \author{Deebul Nair}
@@ -11,19 +11,9 @@
 \maketitle
 
 
-\chapter{Introduction}
-
-
-In this thesis, we consider methods for learning dynamical models for time series with complex and uncertain behavior patterns. Specifically, we address how Bayesian nonparametric methods can be used to provide a flexible and computationally efficient structure for learning and inference of these complex systems.
-\section{ The Right Kind of Smarts }
-Smart robots humbly predict our needs and modestly adjust as little as possible to accommodate them. Imagine if your robot could learn how you arrange the breakfast table by looking at the data from previous days? 
-We can also have a conversation with smart robots. They can tell us what they’re up to when we ask, or tell us something’s wrong when it’s essential. They can observe our lives and provide small insights we don’t even notice. They can pass along helpful information to humans, like observing our sleep habits and tell us when we are not having adequate sleeps.
-We can have a new relationship with our robots, one where the previously mute boxes of plastic and metal become new platforms—not as replacement, but for meaning and value. By learning how we interact with our homes and how we live our lives, robots will be able to provide services to us we can’t see right now. They’ll set themselves up and fit into the existing household by knowing what—and who—is there and adapting to them. Robots will grow and change with you and the house.
-
-robots with a greater awareness of the world around them.
 \chapter{Basics}
 
-IN this background chapter, we review the statistical methodologies 
+In this background chapter, we review the statistical and probabilistic methodologies .
 The goal of this chapter is to provide the basic information regarding Bayesian methods of machine learning used in the thesis. A good introduction to the field can be found in books of Bishop \cite{}, Kirchop \cite{} and LeeWagenmakers \cite{} . 
 
 \section{Bayesian Model Learning}
@@ -55,6 +45,8 @@ We note here that the posterior distribution is a combination of the prior infor
 \section{Distributions }
 
 Dirichlet, Categorical, Bernoulli 
+\subsection*{Dirichlet distribution}
+The Dirichlet distribution is part of the exponential family. It has finite dimensional sufficient statistics. It is conjugate to the multinomial and categorical distribution. 
 
 Conjugate prior  need to explain this 
 
@@ -73,6 +65,36 @@ Until recently, Bayesian Model learning have been limited in scope, and have bee
 
 \section{DIKW Pyramid }
 
+\section{Notation and terminology}
+Throughout the thesis, we are referring to entities such as ``locations," ``hours," and ``observations".
+This helps to guide intuition and maintain continuity of thoughts as we guide through related problems involving collections of data.
+Formally we define the following terms:
+\begin{itemize}
+	\item A \emph{location} is the basic unit of the discrete data, defined to be an item from a set of locations. These locations can be rooms of the home or different compartments of the kitchen. 
+	\item An \emph{period} is a sequence of $N$ locations denoted by $\textbf{p} = {x_1;x_2;:::;x_N}$. These represents the locations observed in a particular period of time.
+	\item A \emph{observations} is a collection of $T$ periods denoted by $ D = {p_1;p_2;:::;p_T}$. These represents the complete data collected by the robot.
+\end{itemize}
+
+\section{TO explain or to Predict}
+
+From either a frequentist or a Bayesian perspective, it is essential to distinguish the
+ultimate goal of modeling when confronting a statistical data analysis project. Geisser
+and Eddy (1979) challenge research workers two fundamental questions that should
+be asked in advance of any procedure conducted for model selection:
+• Which of the models best explains a given set of data?
+• Which of the models yields the best predictions for future observations from
+the same process which generated the given set of data?
+The former, which cares about how accurately a model describes the current data in
+the explanatory point of view, has been the problem of empirical science for many
+years; whereas the latter, which focuses on predicting future data as accurately as
+possible in the predictive perspective, is more crucial and difficult to answer and has
+drawn more attentions in recent decade.
+If an infinitely large quantity of data is available, the predictive perspective and
+the explanatory perspective might not differ significantly. With only limited number
+of observations in practice, it is a more difficult task for predictive model selection
+
+from " Bayesian Model Selection in terms of Kullback-Leibler discrepancy
+Shouhao Zhou
 %######################################################################
 
 %\input{human_location}
