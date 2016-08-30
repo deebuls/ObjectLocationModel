@@ -1,0 +1,81 @@
+
+\chapter{Knowledge-enabled fault tolerant object search}
+\label{cha}
+
+Efficient searching for objects in the environment is one of the application for the knowledge being learned from object locations. The learned knowledge is as heuristics to improve the search time of objects. There are 2 basic methods in which we can use the learned knowledge as heuristics, first we can search for objects in the decreasing order of the learned probabilities or alternatively we can use the descriptive model to predict based on its learned probabilities. However the probabilistic representation of the learned knowledge can be used in ingenious way to solve more complex problems. Markov Decision Process (MDP) based planners can use the learned probabilities in their decision process to make more informed decisions. To illustrate this flexibility we have used the learned probabilities to make a sequential decision search algorithm which can accommodate the recognition failure in the vision algorithms.
+\missingfigure{Image with false detection}
+Household robots need to be able to recognize the objects they’re supposed to search and manipulate. But while object recognition is one of the most widely studied topics in artificial intelligence, even the best object detectors still fail much of the time. As a result there are very much possibilities that even though the search algorithm has provided the correct location the object detector might fail to locate the object. An alternative will be provide a search algorithm which can accommodate the object detector failures. All these object detectors along with the detection also publish the confidence(probability) of the detection. The proposed algorithm here combines both the \emph{detection probability} and the \emph{learned probability} of the objects and provide sequential decisions for the next location to search.
+
+\section{Search as a decision Framework}
+\todo[inline, caption={search1}]{Introduce the topic name}
+\todo[inline, caption={search2}]{Add the 2 papers as the related work of probabilistic search in robotics}
+\todo[inline, caption={search3}]{ and that the below model is a reduced version and simplified model}
+
+The  contributions  of  this  paper  include  the  formulation of the search control problem as a decision-making problem rather  than  a  sensing  task,  where  measures  associated  with decisions,  e.g.  confidence  and  robustness  of  the  decision or  time  until  the  decision  is  made,  are  used  to  design  an appropriate  control  policy.  Our  formulation  of  the  search problem  as  a  detection  problem  also  allows  us  to  include practical  sensor  artifacts  (such  as  false  alarms  and  missed detections)  which  have  not  be  completely  considered  in other  formulations  [6]  of  the  search  problem.
+
+
+A Decision-Making Framework for Control Strategies
+in Probabilistic Search
+Timothy H. Chung and Joel W. Burdick
+
+A probabilistic framework for object
+search with 6-DOF pose estimation 
+\todo[inline]{robotics search in robots as POMDP in its related work}
+\section{Model}
+The idea is use the learned knowledge of the object locations as the first guess (prior ) of the probabilities that the object in question is located in each of the possible object locations. The prior probabilities suggest which location to search first. If the object is not found in that location, the prior probabilities are then updated (yielding the posterior), and the process is repeated until the object is found. 
+
+Assume that the domain of interest is a home we call $D_s$, which is made up of n spatial areas. Let $Y_i = 1$ if the object is in the \emph{i}th location, and then $Y_i = 0$ if it is not; $ i = 1, .... , n$. Now as discussed above object detectors can fail to detect the object. So, let $Z_i = 1$ if the object is found in the \emph{i}th location, and $Z_i = 0$ if not.
+
+We can define two terms \emph{detection probability},
+\begin{equation}
+	p_i = Pr(Z_i = 1| Y_i =1), \qquad  i = 1,...,n,
+\end{equation}
+which is a conditional probability, and the \emph{occurrence probability},
+\begin{equation}
+	\pi_i = Pr(Y_i = 1),\qquad  i = 1, .... , n.
+\end{equation}
+
+This can be expressed in probabilistic programming form:
+\begin{gather}
+	Z_i | Y_i \sim Bernoulli (Y_i, p_i), \qquad  i  = 1,....,n \\
+	Y_i \sim Bernoulli(\pi_i),\qquad   i = 1,...,n,
+\end{gather}
+
+where, the occurrence probability {$\pi_i$} is given by the learned probabilities, while the detection probability {$\pi_i$} is provided by the object detector algorithm.
+
+Now, assume that hte \emph{i}th location is searched by the robot and the object is not found (i.e., $Z_i = 0$). In that case, the probability that the object is in the \emph{i}th location is updated using Bayes' Theorem. This yields the posterior probability,
+
+\begin{align*}
+	Pr(Y_i = 1 | Z_i = 0) &= \frac{Pr(Z_i = 0|Y_i=1)Pr(Y_i=1)} {Pr(Z_i=0)} \\
+	                       &= \frac{Pr(Z_i = 0| Y_i =1 )Pr(Y_i =1)}{Pr(Z_i=0|Y_i =1)Pr(Y_i = 1) + Pr(Z_i=0|Y_i=0)Pr(Y_i=0)} \\
+	                       &= \frac{(1 - p_i)\pi_i}{(1 - p_i)\pi_i + (1)(1 - \pi_i)} \\
+	                       &= \frac{(1 - p_i)\pi_i}{1 - p_i\pi_i}
+\end{align*}
+
+where we assume that there are no false-positive detection (i.e., $Pr(Z_i =0| Y_i = 0) = 1$). Note that the new posterior is less than the prior probability $\pi_i$ as the object was not observed.
+
+Since the object is not found in the searched location, then this should also affect the posterior probability in the other grid boxes. For example, consider the \emph{j}th location, where $j \neq i$. Then,
+\begin{align*}
+	Pr(Y_j = 1 | Z_i=0) &= \frac{Pr(Z_i = 0 | Y_j = 1)Pr(Y_j = 1)}{Pr(Z_i = 0)} \\
+	                    &= \frac{\pi_j}{ 1 - p_i\pi_i}
+\end{align*}
+
+Thus, the posterior probability of the object being the \emph{j}th location is greater than the prior probability $\pi_j$ . These new posteriors will then become the next prior probabilities is a sequential procedure that would determine the next location to search.
+
+\section{Example}
+\todo{split as 2 example , 1 with high detection probablity 0.9 and other with 0.6}
+\todo{show the different sequence}
+Suppose we have a domestic robot which has learned the location probabilities of a cup in a home. The robot has learned that the cup can be found 3 locations in the home, thus the domain for search can be defined as $D_s = \{cupboard, table, dishwasher \}$ . 
+Now lets assume the robot has been in the room for long enough and made some observations. Based on these observations it learns the occurrence probabilities as $p_i = \{ 0.8, 0.1, 0.1\}$ . The object detector for the cup has a \emph{detection probability} of $p_{cup} =  0.6$ .
+
+As you can see there is a strong probability of finding the cup in the cupboard. The algorithm selects to search the cupboard. But the object detector fails and is not able to detect the cup. If we are not using the algorithm the robot will move on to the next location to search the cup in the next location.
+
+
+\missingfigure{Illustration of the proabbiliities and how they change with each observation}
+
+However our algorithm on the failure detection will update its probabilities and the updated posterior probability will be $ p_i = \{ 0.44, 0.27, 0.27\}$ and it still selects to search the cupboard for the next time. This illustrates the algorithm understands the limitation in the object detector and updates its beliefs to accommodate this limitation and make better \emph{informed} decisions.  
+
+ 
+\section{Evaluation}
+hey you didnt think about evaluation ? 
+% chapter  (end)
