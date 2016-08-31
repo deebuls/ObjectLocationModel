@@ -3,13 +3,13 @@
 
 As robots achieve long term autonomy and they intend to stay longer in human environments, they should be able to adapt quickly to the corresponding environments and the user. Since they are service robots its acceptable for a new robot to ask for help from its user in the initial days it moves to a new home, for eg. Where to find a cup?. But as the robot stays longer in a home it becomes less acceptable that the robots ask the user for the same questions, i.e. they should have the capabilities to learn from previous information provided by the user. Also it should be able to reason and learn from its own the previous observations of the user or environment to generate new knowledge about the user or environment. For example, the robot can learn about the user preferences in the cutlery used to setup a breakfast table from previous days observations of breakfast tables. In this chapter we look at such one example of knowledge generation based on previous observations, for learning the user preferences in object placement.
 
-The main advantage of learning user preference would be in object search. In classical object search, the search is based on the knowledge of object locations in a generic home (For eg: cups are found in kitchen, books in shelves). Thus these generic home knowledge based classical object search doesn't take into account the differences in object locations from home to home. Based on practical experience we know that the even though homes have same base structure in space but the usage of the space is based on the user preferences. Each home is different from other home because of the humans which reside in them use it according to their likes (For eg: some users the keep books on the study table). The proposed model will try to learn these user preferences in each home. So rather than learning object locations in a generalized home the proposed model shall learn object locations in a specific home.
+The main advantage of learning user preference about object placement would be in object search. In classical object search, the search is based on the knowledge of object locations in a generic home (For eg: cups are found in kitchen, books in shelves)\todo{cite MIT object search}. Thus these generic home knowledge based classical object search doesn't take into account the differences in object locations from home to home. Based on practical experience we know that the even though homes have same base structure in space but the usage of the space is based on the user preferences. Each home is different from other home because of the humans which reside in them use it according to their likes (For eg: some users the keep books on the study table and not on shelves). The proposed model will try to learn these user preferences in each home. So rather than learning object locations in a generalized home the proposed model shall learn object locations in a specific home.
 
 
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.4]{pictures/scenario.png}
-\caption{Robot recording perceived objects location and time. Based on the
+\caption[Example scenario of robot recording objects location and time]{Robot recording objects location and time. Based on the
 recordings robot making prediction on the location of the cup for current time
 Images courtesy : \url{https://www.flickr.com/photos/willowgarage} }
 \label{scenario}
@@ -44,15 +44,14 @@ Thus human behaviour not only  has a spatial behaviour but also has a temporal b
 The model will reason on both user preference of the object placement and the
 object-time relation.
 
-\section{Beta-Bernoulli model}
+\section{Hierarchical Beta Bernoulli model}
 
 
-Beta Bernoulli model is a two-level Bayesian model. The basic idea is that observations of all the objects at each location, each time period is characterized by a distribution.
+Hierarchical Beta Bernoulli model is a three-level Bayesian model. The basic idea is that observations of the presence of an object at a location(first level), is characterized by a distribution for each hour(second level), which share information via a common latent distribution(third level).
 
-The data are the boolean observation of the object at a location $x_{ij}$ for $i = 1 \dots T$ time periods and then $j = 1, \dots , N$  are the observations.  We assume that the latent pattern for finding the user to place the object at a  location in a particular period can be represented as a Bernoulli distribution. The number of periods $T$ for our model is fixed to 24 corresponding to the number of hours in a day. 
+The data are the boolean observation of the object at a location $x_{ij}$ for $i = 1 \dots T$ time periods and then $j = 1, \dots , N$  are the observations.  We assume that the latent pattern that the user will place the object at a  location in a particular period can be represented as a Bernoulli distribution. The number of periods $T$ for our model is fixed to 24 corresponding to the number of hours in a day. 
 
 The conjugate prior for the Bernoulli distribution is the Beta distribution. The model estimates the posterior distribution of $\theta_i$ given our current data and prior beliefs. Our prior beliefs are encoded in the model through the prior $\alpha$ and $\beta$, which represents pseudocounts of what we believe the data should look like – currently taken as same values representing no prior information. The probabilistic graphical model is shown in Figure \cite{bbm}
-
 
 \noindent
 \begin{figure}[htp]
@@ -65,7 +64,7 @@ The conjugate prior for the Bernoulli distribution is the Beta distribution. The
   \node[latent]                                 (theta) {$\theta$};
   \node[latent, above=of theta, xshift=-1.2cm]  (alpha) {$\alpha$};
   \node[latent, above=of theta, xshift=1.2cm]   (beta) {$\beta$};
-  \node[obs, below=of theta]                    (y)     {$y$}; 
+  \node[obs, below=of theta]                    (y)     {$x$}; 
   % Connect the nodes
   \edge {alpha,beta} {theta} ; %
   \edge {theta} {y};
@@ -78,21 +77,33 @@ The conjugate prior for the Bernoulli distribution is the Beta distribution. The
 \begin{minipage}{0.7\textwidth}
 
 \begin{equation*}
-	\alpha = 2 ; \beta = 2;
+	\alpha \sim Beta(2,2) ; \beta \sim Beta(2, 2);
 \end{equation*}
 \begin{equation*}
 	\theta \sim Beta(\alpha, \beta);
 \end{equation*}
 \begin{equation*}
-	y = Bernoulli(\theta)
+	x = Bernoulli(\theta)
 \end{equation*}
 \end{minipage}
-\caption{Graphical model representation of Beta-Bernoulli model. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the observed locations within each hour.}
-\label{dcm}
+\caption[Beta-Bernoulli graphical model]{Graphical model representation of Beta-Bernoulli model. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents if object was observed at the location each hour.}
+\label{bbm}
 \end{figure}
 
-\section{Hierarchical Beta-Bernoulli model}
+
+\section{KTH Object Dataset}
+
+The KTH Object dataset was collected by a SCITOS-G5 mobile robot, in the Computer Vision and Active Perception lab at KTH Stockholm, over  the  course  of  five  weeks.  During  this  time  the  robot conducted  between  two  and  six  autonomous  patrol  runs per  day  (weekends  were  excluded),  visiting  three  specific waypoints  during  each  run.  Upon  reaching  a  waypoint,  the robot  would  execute  a  pan-tilt  sweep  and  collect  data  from its RGB-D sensor; the RGB-D frames collected during one sweep were then registered spatially to form an observation of  that  particular  waypoint  at  that  time.  The  KTH  dataset contains  approximately  100 observations  per  waypoint,  and at  each  waypoint, the  dynamic  elements  of the  environment  using  the  ‘MetaRoom’  method  described in \cite{ambrucs2014meta}. These  dynamic  elements  correspond  to  movable  objects such  as  jackets,  backpacks,  laptops,  chairs,  bottles,  mugs, etc. These dynamic clusters,  manually labeled  to obtain 37 different objects, out  of  which  14  tend  to  appear  and  disappear  periodically \cite{krajnik_wheres_2015}. 
 
 \section{Evaluation}
+
+Using the first four weeks of the KTH dataset, dynamic models  of  these  objects’ presence  were  created.  The  remaining week was used as testing data.
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth]{images/learning_evaluation.png}
+\caption[Cross validation results]{Cross validation results. x-axis is the name of the object, y-axis represents the accuracy in predicting the locations of the objects }
+\label{object_evaluation}
+\end{figure}
 
 \section{Discussion}

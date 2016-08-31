@@ -33,6 +33,11 @@ We note here that the posterior distribution is a combination of the prior infor
 
 \section{Distributions }
 
+The basic idea of Bayesian analysis is that what we know, and
+what we do not know, about the variables of interest is always
+represented by
+probability distributions
+
 Dirichlet, Categorical, Bernoulli 
 \subsection*{Dirichlet distribution}
 The Dirichlet distribution is part of the exponential family. It has finite dimensional sufficient statistics. It is conjugate to the multinomial and categorical distribution. 
@@ -40,19 +45,62 @@ The Dirichlet distribution is part of the exponential family. It has finite dime
 Conjugate prior  need to explain this 
 
 \section{Graphical Models}
+Graphical models is a visual method to represent complete and interpretable representation of a Bayesian probabilistic model. It is a graph with the nodes represent all the variables that are relevant to the problem. The
+graph structure is used to indicate dependencies between the variables, with children depending on their parents. We use the conventions of re
+presenting unobserved variables without shading and observed variables with shading.
+The nodes represent variables, and the
+graph structure connecting them represents dependencies.
+The plates are used to indicate replication.
+
+\missingfigure{graphical model of above mentioned example}
 
 \section{Probabilistic Programming}
 
 Until recently, Bayesian Model learning have been limited in scope, and have been hard to apply to many real-world applications. Probabilistic programming is a new approach which makes Bayesian learning easier to build and more applicable. 
+
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.8\textwidth]{pictures/Lifecycle.png}
+\caption[Steps involved in probabilistic modelling ]{Steps involved in probabilistic modelling  \protect\footnotemark }
+\label{}
+\end{figure}
+
+\footnotetext{\url{ http://www.mbmlbook.com/LifeCycle.html}}
+\textbf{Probabilistic Programming} gives us a framework in which we can create any model, based on our assumptions of the process. The model is basically expressing the assumptions in a mathematical form. The assumptions are the number of variables in the model, the relation between these variables, changes in which variables affects which other variables. This model is then used to generate a problem specific algorithm which can be used to solve the machine learning problem in hand. 
+
+\subsection*{Steps required in Probabilistic Modelling}
+\label{sub:steps}
+\begin{enumerate}
+	\item \textbf{Gather data} to be used for training and evaluation.
+    \item \textbf{Gather knowledge} required for model building.
+    \item \textbf{Visualise} the data to understand it. This is useful also for gathering knowledge. After visualization the insight gained can be used for assumptions in model building.
+    \item \textbf{Construct a model} based on the knowledge of the problem statement available and data visualization. 
+    \item \textbf{Perform inference} using both the data and the constructed model. The variables of the model are tuned based on the data available. Predictions can be made to find out the knowledge gained by the model.
+    \item \textbf{Evaluate} the performance of the model based on evaluation metric.
+    \item \textbf{Diagnose} the model and the assumptions if the evaluation is below some acceptable range
+    \item \textbf{Refine the system} by adapting different model structure, inference engine
+
+\end{enumerate}
+% subsection steps (end)
+
+
+The separation of the model choices and the inference engine for generating machine algorithms have given rise to a new kind of software frameworks.
+In the software framework you need to provide the description of your model and the selection of the inference engine, which internally produces the code for the machine learning algorithm.
+Examples of software frameworks that implement the probabilistic modelling philosophy  include CHURCH \cite{goodman_church_2012}, Venture \cite{mansinghka_venture_2014}, PyMC3 \cite{salvatier_probabilistic_2015}, BayesPy \cite{luttinen_bayespy_2014} and Infer.net \cite{minka_2010}.
+
 \subsection{PyMC3}
+
+\textbf{PyMC3} is python module for Bayesian modelling. It provides intuitive model specification syntax for designing the models. The inference is primarily focussed on advanced Markov chain Monto Carlo fitting algorithms.
+
 
 \subsection{BayesPy}
 
+\textbf{BayesPy} provides tools to do Bayesian modelling. In BayesPy users construct their models, observes data and then runs inference. The inference engine present in BayesPy is variational Bayesian inference.
+
 \subsection{WebPPL}
 
-\section{Model Evaluation}
-
-\section{DIKW Pyramid }
+\textbf{WebPPL} is a javascript module for Bayesian modelling. The inference is using Markov chain Monto Carlo algorithms. Its particularly useful for doing learning inside web based database like MongoDB.
 
 \section{Notation and terminology}
 Throughout the thesis, we are referring to entities such as ``locations," ``hours," and ``observations".

@@ -1,0 +1,52 @@
+
+\chapter{Problem Formulation}
+\label{sec:Problem formulation}
+
+The problem can be formulated as getting an accurate probability density of possible locations given the previous observed locations. Given the corresponding observations of $D_{o_i}$, the probability distribution over the locations of $o_i$ at time $T$ is governed by the following formula 
+
+    \begin{equation} \label{eq:1}
+	    P(l_i | t_i, D_{o_i})
+    \end{equation}
+
+   Various temporal information related to periodic patterns can be implied by $T$, to indicate the location distribution. Such as specific hours of the day (11:00 pm), a day of the week(Friday), or a month of the year(February). We use the \textbf{temporal state} to represent such information and introduce $r(t)$ to denote temporal state extracted from time $T$,.  Dependency on the type of the temporal state $r(t)$ can be a different function. For example,if $r(t)$ denotes temporal state in terms of hours of the day then $r(t) \in {0,1 ... , 23}$, if $r(t)$ denotes temporal state in terms of day of the week, then $r(t) \in {0,1, .. 6}$ . Without loss of generality, we use $r(t)$ to denote a type of temporal state in the following description, Equation \ref{eq:1} is reformulated as 
+    
+    \begin{equation}
+	    P( l_i | r(t), D_{o_i})
+    \end{equation}
+    
+    Applying Bayes Rule
+    
+    \begin{equation}\label{eq:3}
+	P( l_i | r(t), D_{o_i}) \propto P(r(t) | l_i, D_{o_i})  P(l_i | D_{o_i})
+    \end{equation}
+    Where:
+    \begin{itemize}[label=]
+    \item $P(r(t) | l_i, D_{o_i})$ : Temporal context 
+    \item $P(l_i | D_{o_i})$ : Spatial context
+    \end{itemize}
+    
+     The spatial context $P(l_i | D_{o_i})$ indicates the location distribution of object or person $o_i$ given the previous observed location $D_{o_i}$ . The temporal context $P(r(t) | l_i, D_{o_i})$ represents the temporal state distribution of object $o_i$, being observed at location $l_i$ with corresponding $D_{o_i}$
+    
+
+
+\begin{tabular}{cp{8cm}}
+    \hline
+	Symbol & Meaning\\
+	\hline
+	O & Set of all objects or persons\\
+	$o_i$ & Single object from the set $O$, $o_i \in O$ \\
+	$L$ & Set of all locations\\
+	$l_i$ & Single location from the set $L$. $l_i\in L$\\
+    $T$ & Time interval\\
+    \hline
+	$<o_i,l_i,t_i>$ & object $o_i$ was located at location $l_i$ at time $t_i$\\
+	$D$ & Collection of all objects all observed locations\\
+	$D_{o_i}$ & Previous observed locations of $o_i$\\ 
+    \hline
+     $P(r(t) | l_i, D_{o_i})$ &  Temporal context representing the temporal state distribution of $o_i$ at location $l_i$ given previous observations $D_i$\\
+     $P(l_i | D_{o_i})$ & Spatial context representing the location distribution of object $o_i$ given the previous observations $D_{o_i}$\\
+    \hline
+\end{tabular}
+% section Problem formulati (end)
+
+% section  Things to study (end)

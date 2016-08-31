@@ -106,25 +106,40 @@ For incorporating the negative instances we modified the Dirichlet-Categorical m
 
 \section{Evaluation}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/absent_learned.png}
+       
+    \begin{minipage}[t]{.35\textwidth}
+    %\centering
+    \subcaption{Ground Truth}\label{fig:absent-gt}
+    \end{minipage}%
+    \begin{minipage}[t]{.3\textwidth}
+    %\centering
+    \subcaption{HDC model}\label{fig:absent-hdcm}
+    \end{minipage}
+    \begin{minipage}[t]{.25\textwidth}
+    %\centering
+    \subcaption{HDCB model}\label{fig:absent-hdcmb}
+    \end{minipage}
+
+\caption[Model Evaluation of HDC and HDCB ]{Model Evaluation: \ref{fig:absent-gt} is ground truth of the distribution. \ref{fig:absent-hdcm} is the learned distribution using the HDC model. \ref{fig:absent-hdcmb} is the learned distribution using the HDCB  model }
+        \label{fig:absent-eval}
+    
+\end{figure}
+
+
+
+
 The proposed models are evaluated on the simulated dataset. We compare the Dirichlet-Categorical-Bernoulli model with the Hierarchical-Dirichlet-Categorical model explained in \todo{cite }. We compare the dirichlet probability used to generate the simulated dataset and the learned probabilities and evaluate the performance of the learning. 
 We use the adopted  Bhattacharyya distance \todo{cite } to quantify the similarity between the simulated and the learned distribution.
 
- The Bhattacharyya distance is a measure of divergence between
-probability distributions, that allows measuring the dissimilarity between two continuous or discrete probability distributions. It can take values from 0-$\inf$. The value is 0 when both the distributions are similar and $\inf$ when there is no overlap between the distributions. Adopting the  Bhattacharya distance to Dirichlet distributions [Rauber et al ]\todo{cite Rauber} we get :
-\begin{multline}
-	D_B(Dir_a(x_1, \dots ,x+n), Dir(y_1, \dots , y_n)) = \nonumber\\
-	 \Gamma \Bigg( \frac{1}{2}  \sum_{i \in {1, \dots, n}} x_i +  \frac{1}{2}\sum_{i \in {1, \dots, n}} y_i\Bigg) + 
-	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma (x_i) + 
-	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma (y_i) - \\ 
-	\sum_{i \in {1, \dots, n}} \Gamma \bigg(\frac{1}{2} (x_i + y_i) \bigg) - \frac{1}{2}  \Gamma \Bigg(  \sum_{i \in {1, \dots, n}} x_i \Bigg) + \frac{1}{2}  \Gamma \Bigg( \sum_{i \in {1, \dots, n}} y_i\Bigg)
-\end{multline}
-
-The distance
-
-\section{ss}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=\textwidth]{images/bhatta-distance.png}
+\caption[Model evaluation : Bhattacharyya distance]{Bhattacharyya distance between the ground truth and the learned distributions for different size of training data. }
+\label{}
+\end{figure}
 
 
-A . Bhattacharyya.  On  a  measure  of  divergence  between two  statistical populations  defined  by  their  probability distributions.    Bull.  Calcutta Math.  Soc.,  49:214–224, 1943
-
-T.W. Rauber, A. Conci, T. Braun, and K. Berns. Bhattacharyya probabilistic distance of the dirichlet density and its application to split-and-merge image seg- mentation. In WSSIP08 , pages 145–148, 2008. 
 

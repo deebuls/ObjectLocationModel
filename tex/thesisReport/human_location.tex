@@ -1,12 +1,12 @@
 
 
-\chapter{Temporal Location Behaviour Model}
+\chapter{Modelling In-door Human Location Behaviour }
 
 Domestic service robots in future should be able to gather knowledge about all the favourite locations in the home, the user likes to hang around. Additionally they should also know the time period when the users occupy their favourite places. This acquired knowledge of the human location behaviour shall enable the robots to make informed decisions for completing their tasks. For example what time to clean a particular room based  on least unoccupied time period or when to turn on the heater of the room. 
 
 In this chapter we focus on this knowledge accession of users location behaviour based on spatio-temporal observations made by the robot. The advancement in long term autonomous navigation \todo{cite} and the rapid adoption of databases in the robots \todo{cite} made the data collection for such knowledge generation possible in service robots. However even with these advancements there are some challenges which still needs to be addressed.  In more details, these challenges are the (i) modelling human presence (ii) prediction of future location (iii) learning all these with sparse observations made by the robots. 
 
-Significant progress has been made the problem by researchers in the field of human location behaviour, which is to learn the patterns in human location outdoors. Approaches for learning routine mobility  range from purely temporal (\cite{c1, c2}), spatial (\cite{c5,c3}), to a combination  of  both  (\cite{c4}). Non-parametric Bayesian methods are also gaining popularity given their ability to refine models as more data arrives. Chen et al. (2012) used a Gaussian process to model congestion on road networks, while Gao et al. (2012) used a hierarchical Pitman Yor process to model check-in behaviour on location-based social networks. Indoor human location behaviour was studied by \todo{cite}Krajnik et al.  using Fourier transform methods and Gaussian mixture models. 
+Significant progress has been made the problem by researchers in the field of human location behaviour, which is to learn the patterns in human location outdoors. Approaches for learning routine mobility  range from purely temporal (\cite{mcinerney2013modelling, scellato2011nextplace}), spatial (\cite{gao2012exploring,song2006evaluating}), to a combination  of  both  (\cite{eagle2009eigenbehaviors}). Non-parametric Bayesian methods are also gaining popularity given their ability to refine models as more data arrives. Chen et al. (2012) used a Gaussian process to model congestion on road networks, while Gao et al. (2012) used a hierarchical Pitman Yor process to model check-in behaviour on location-based social networks. Indoor human location behaviour was studied by \cite{krajnik_wheres_2015} using Fourier transform methods and Gaussian mixture models. 
 
 While Krajnik's  work is first step towards learning human mobility behaviour in indoor environments, it failed short to address the challenge of sparse dataset in domestic robots. As we have discussed earlier the observations on which the knowledge has to be learned, are sparse. We aim to demonstrate in this chapter that, by using Bayesian models, we can capture the human behaviour patterns in a sparse dataset.
 
@@ -49,7 +49,7 @@ The Dirichlet-Categorical model is the generalization of the Beta-Binomial model
 	x_{ij} \sim Categorical(\theta_i)
 \end{equation*}
 \end{minipage}
-\caption{Graphical model representation of DCM. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
+\caption[Dirichlet categorical graphical model representation]{Graphical model representation of DCM. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
 \label{dcm}
 \end{figure}
 
@@ -105,7 +105,7 @@ The probabilistic graphical model of  hierarchical model is shown in Figure \cit
 	x_{ij} \sim Categorical(\theta_i)
 \end{equation*}
 \end{minipage}
-\caption{Hierarchical Dirichlet Categorical Model. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
+\caption[Hierarchical dirichlet categorical graphical model representation]{Hierarchical Dirichlet Categorical Model. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
 \label{hdcm}
 \end{figure}
 
@@ -140,7 +140,7 @@ We visualize the dataset as a heatmap over locations distributed over different 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=\textwidth]{images/aruba-data.png}
-\caption{Aruba Dataset Heatmap : The X -axis are the locations of the home, Y-axis are the hours of the day. The intensity of the color in each box indicates the number of times the person is present in that location. Higher the intensity means more time is spent by the person in that location at that time.}
+\caption[Aruba dataset heatmap]{Aruba dataset heatmap : The x-axis are the locations of the home, y-axis are the hours of the day. The intensity of the color in each box indicates the number of times the person is present in that location. Higher the intensity means more time is spent by the person in that location at that time.}
 \label{aruba-visual}
 \end{figure}
 
@@ -149,7 +149,7 @@ A histogram visualization of the observations over different location in the hom
 \begin{figure}[htp]
 \centering
 \includegraphics[width=\textwidth]{images/aruba-hist.png}
-\caption{Aruba Dataset Histogram : Each box corresponds to histogram of each locations. The x - axis represents the time of the day(0-24) }
+\caption[Aruba dataset histogram]{Aruba Dataset Histogram : Each box corresponds to histogram of each locations. The x - axis represents the time of the day(0-24) }
 \label{aruba-hist}
 \end{figure}
 
@@ -164,7 +164,7 @@ After sparsification by randomly selecting 5 readings per day the dataset is red
 \begin{figure}[htp]
 \centering
 \includegraphics[width=\textwidth]{images/aruba-reduced-heatmap.png}
-\caption{Aruba Sparcified Dataset Heatmap :The X -axis are the locations of the home, Y-axis are the hours of the day. Compared to the complete observations the sparcified data set the patterns are not distinct}
+\caption[Aruba sparcified dataset heatmap]{Aruba sparcified dataset heatmap :The x-axis are the locations of the home, y-axis are the hours of the day. Compared to the complete observations the sparcified data set the patterns are not distinct}
 \label{aruba-reduced-hist}
 \end{figure}
 
@@ -178,7 +178,7 @@ In these experiments, we estimated the parameters of the DCM using the sparsifie
 
 \missingfigure{Cross validation results}
 
-The models were also compared with the models developed my Kranjik \todo{cite} based on the average time required by the robot to locate the user in the home.
+The models were also compared with the models developed by \cite{krajnik_wheres_2015}  based on the average time required by the robot to locate the user in the home.
 
 \missingfigure{Timing results}
 
@@ -197,15 +197,5 @@ The point of the story in that slide is that flat priors consistently give bad i
 
 
 
-\begin{thebibliography}{99}
-
-\bibitem{c1} J.  McInerney,  J.  Zheng,  A.  Rogers,  and  N.  R.  Jennings.Modelling heterogeneous location habits in human populations for location prediction under data sparsity. In Interna-tional Joint Conference on Pervasive andUbiquitous Com-puting (UbiComp 2013)
-\bibitem{c2}  S.  Scellato,   M.  Musolesi,   C.  Mascolo,   V.  Latora,   and A.  Campbell. Nextplace:   a  spatio-temporal  prediction framework for pervasive systems.  InPervasive Computing
-\bibitem{c3} L. Song, D. Kotz, R. Jain, and X. He.  Evaluating next-cell predictors with extensive wi-fi mobility data. IEEE Trans-actions on Mobile Computing , 5(12):1633–1649, 2006 pages 152–169, San Francisco, CA, USA, 2011. Springer.
-\bibitem{c4}N. Eagle and A. S. Pentland.   Eigenbehaviors:  identifying structure in routine. Behavioral Ecology and Sociobiology ,63(7):1057–1066, 2009.
-\bibitem{c5} H.  Gao,  J.  Tang,  and  H.  Liu.   Exploring  social-historical ties on location-based social networks.  In6th InternationalAAAI Conference on Weblogs and Social Media, 2012
-\bibitem{c6} Krajnik, Tomas, Miroslav Kulich, Lenka Mudrova, Rares Ambrus, and Tom Duckett. “Where’s Waldo at Time T? Using Spatio-Temporal Models for Mobile Robot Search.” In Robotics and Automation (ICRA), 2015 IEEE International Conference on, 2140–2146.
-
-\end{thebibliography}
 
 

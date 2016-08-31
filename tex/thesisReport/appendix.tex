@@ -1,15 +1,16 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                 %
-%                            APPENDICES                           %
-%                                                                 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-\appendix    % This command is used only once!
-%\addcontentsline{toc}{chapter}{APPENDICES}             %toc entry  or:
-\addtocontents{toc}{\parindent0pt\vskip12pt APPENDICES} %toc entry, no page #
+\begin{appendices}
+	
+\chapter{Bhattacharyya distance}
+	 The Bhattacharyya distance\cite{bhattachayya1943measure} is a measure of divergence between
+probability distributions, that allows measuring the dissimilarity between two continuous or discrete probability distributions. It can take values from 0-$\inf$. The value is 0 when both the distributions are similar and $\inf$ when there is no overlap between the distributions. Adopting the  Bhattacharya distance to Dirichlet distributions \cite{rauber2008bhattacharyya} we get :
+\begin{multline}
+	D_B(Dir_a(x_1, \dots ,x+n), Dir(y_1, \dots , y_n)) = \nonumber\\
+	 \Gamma \Bigg( \frac{1}{2}  \sum_{i \in {1, \dots, n}} x_i +  \frac{1}{2}\sum_{i \in {1, \dots, n}} y_i\Bigg) + 
+	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma (x_i) + 
+	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma (y_i) - \\ 
+	\sum_{i \in {1, \dots, n}} \Gamma \bigg(\frac{1}{2} (x_i + y_i) \bigg) - \frac{1}{2}  \Gamma \Bigg(  \sum_{i \in {1, \dots, n}} x_i \Bigg) + \frac{1}{2}  \Gamma \Bigg( \sum_{i \in {1, \dots, n}} y_i\Bigg)
+\end{multline}
 
-\chapter{APP 1 title}
-your first appendix
 
-\chapter{APP 2 title}
-your second chapter appendix
+\end{appendices} 
+

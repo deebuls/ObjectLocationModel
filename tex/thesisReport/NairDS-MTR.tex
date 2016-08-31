@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 % document definition 
-\documentclass[a4paper,11pt,chap,twoside]{report}
+\documentclass[a4paper,11pt,chap,oneside]{report}
 
 % Use the first command below if you want captions over 1 line indented. A side
 % effect of this is to remove the use of bold for captions. To restore bold,
@@ -13,14 +13,6 @@
 
 %\usepackage[hang]{caption2}     
 
-\usepackage{enumitem}
-\usepackage[table]{xcolor} 
-%\usepackage{graphicx}
-\usepackage{color} 
-\usepackage{placeins}
-\usepackage{transparent} 
-\usepackage{hyperref}
-\usepackage{tabto}
 % to indent subsequent lines of captions
 %\renewcommand{\captionfont}{\bfseries} 
 																			 % 
@@ -32,7 +24,7 @@
 \begin{document}
 \pagenumbering{gobble}
 \input{Title}   
-
+\onehalfspacing
 \pagenumbering{roman}
 
 \include{statementpage}
@@ -41,13 +33,14 @@
 
 \tableofcontents
 \listoffigures
-\listoftables
 
 \include{00Abbreviations}
 % the main contents %
 \pagenumbering{arabic}
 \include{introduction}
 \include{basics}
+\include{problem_statement}
+\include{object_placement}
 \include{human_location}
 \include{absent_information}
 \include{cleaning}
@@ -60,8 +53,8 @@
 
 %\include{conclusion}
 % bibliography and appendixes
-%\include{bibliography}
-%\include{appendix}
+\include{bibliography}
+\include{appendix}
 %\emptypage
 %\emptypage
 
