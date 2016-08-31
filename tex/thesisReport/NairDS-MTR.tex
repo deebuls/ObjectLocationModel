@@ -11,7 +11,7 @@
 % effect of this is to remove the use of bold for captions. To restore bold,
 % also include the second line below.
 
-\usepackage[hang]{caption2}     
+%\usepackage[hang]{caption2}     
 
 \usepackage{enumitem}
 \usepackage[table]{xcolor} 
@@ -22,7 +22,7 @@
 \usepackage{hyperref}
 \usepackage{tabto}
 % to indent subsequent lines of captions
-\renewcommand{\captionfont}{\bfseries} 
+%\renewcommand{\captionfont}{\bfseries} 
 																			 % 
 % create the following file in the input from the template
 \input{ThesisInformation}
@@ -37,10 +37,12 @@
 
 \include{statementpage}
 \include{abstract}
-
 \include{acknowledgement}
+
+\tableofcontents
 \listoffigures
 \listoftables
+
 \include{00Abbreviations}
 % the main contents %
 \pagenumbering{arabic}
