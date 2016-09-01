@@ -1,14 +1,14 @@
 
 
-\chapter{Modelling In-door Human Location Behaviour }
+\chapter{Modelling Indoor Human Location Behaviour }
 
-Domestic service robots in future should be able to gather knowledge about all the favourite locations in the home, the user likes to hang around. Additionally they should also know the time period when the users occupy their favourite places. This acquired knowledge of the human location behaviour shall enable the robots to make informed decisions for completing their tasks. For example what time to clean a particular room based  on least unoccupied time period or when to turn on the heater of the room. 
+Domestic service robots in future should be able to gather knowledge about all the locations in the home, the user likes to hang around. Additionally they should also know the time period when the users occupy their favourite places. This acquired knowledge of the human location behaviour shall enable the robots to make informed decisions for completing their tasks. For example what time to clean a particular room based  on least unoccupied time period or when to turn on the heater of the room. 
 
-In this chapter we focus on this knowledge accession of users location behaviour based on spatio-temporal observations made by the robot. The advancement in long term autonomous navigation \todo{cite} and the rapid adoption of databases in the robots \todo{cite} made the data collection for such knowledge generation possible in service robots. However even with these advancements there are some challenges which still needs to be addressed.  In more details, these challenges are the (i) modelling human presence (ii) prediction of future location (iii) learning all these with sparse observations made by the robots. 
+In this chapter we focus on this knowledge accession of users location behaviour based on spatio-temporal observations made by the robot. The advancement in long term autonomous navigation \cite{krajnik_life-long_2015} and the rapid adoption of databases in the robots \cite{niemueller2012generic}, has made the information collection for such knowledge generation possible in service robots. However even with these advancements there are some challenges which still needs to be addressed.  In more details, these challenges are the (i) modelling human location behvioud (ii) prediction of future location (iii) learning all these with sparse observations made by the robots. 
 
 Significant progress has been made the problem by researchers in the field of human location behaviour, which is to learn the patterns in human location outdoors. Approaches for learning routine mobility  range from purely temporal (\cite{mcinerney2013modelling, scellato2011nextplace}), spatial (\cite{gao2012exploring,song2006evaluating}), to a combination  of  both  (\cite{eagle2009eigenbehaviors}). Non-parametric Bayesian methods are also gaining popularity given their ability to refine models as more data arrives. Chen et al. (2012) used a Gaussian process to model congestion on road networks, while Gao et al. (2012) used a hierarchical Pitman Yor process to model check-in behaviour on location-based social networks. Indoor human location behaviour was studied by \cite{krajnik_wheres_2015} using Fourier transform methods and Gaussian mixture models. 
 
-While Krajnik's  work is first step towards learning human mobility behaviour in indoor environments, it failed short to address the challenge of sparse dataset in domestic robots. As we have discussed earlier the observations on which the knowledge has to be learned, are sparse. We aim to demonstrate in this chapter that, by using Bayesian models, we can capture the human behaviour patterns in a sparse dataset.
+While \cite{krajnik_wheres_2015}  work is first step towards learning human mobility behaviour in indoor environments, it failed to address the challenge of sparse dataset in domestic robots. As we have discussed earlier the observations on which the knowledge has to be learned, are sparse. We aim to demonstrate in this chapter that, by using Bayesian models, we can capture the human behaviour patterns in a sparse dataset.
 
 We build Bayesian models which incorporate explicit domain knowledge and the structural knowledge about our data. Human behaviours are periodic in nature with a daily cycle. The models developed use this domain knowledge to extract the patterns emerging from the data caused by periodicity.
 
@@ -53,7 +53,7 @@ The Dirichlet-Categorical model is the generalization of the Beta-Binomial model
 \label{dcm}
 \end{figure}
 
-With the graphical model, the dependencies among the many variables can be captured concisely. The boxes are “plates” representing replicates. The outer plate represents the hours of the day, while the inner plate represents the repeated choice of locations within each hour. Thus:
+With the graphical model, the dependencies among the many variables can be captured concisely. The boxes are ``plates” representing replicates. The outer plate represents the hours of the day, while the inner plate represents the repeated choice of locations within each hour. Thus:
 
 	$\alpha$ is  parameter of the dirichlet prior on per-period location distribution, 
 	
@@ -64,6 +64,7 @@ With the graphical model, the dependencies among the many variables can be captu
 The $ x_{ij}$ are the only observable variables, and the other variables are latent variables. 
 
 \section{Hierarchical Dirichlet Categorical Model}
+\label{sec: HDCM}
 
 Observations made only by a domestic robot using internal sensors and not using any external sensors creates the serious problem of sparsity. There are very much likely that some time periods there will be no observations available to learn. Maximum likelihood estimates of the categorical parameters assign uniform probability to the locations in these time periods. The standard approach to coping with this problem is to sharing statistical strength between time periods: it is as if the location we observe for each time period also provides weaker indirect location relevant to other time periods. In machine learning and statistical science this phenomenon is often called \emph{learning to learn} or \emph{transfer learning}. Intuitively, knowing something about the location of person in the 9'o clock can help in gaining some information at 10'o clock. 
 
@@ -123,7 +124,7 @@ Thus we have categorical variables dependent on multiple priors sharing a hyperp
 
 
 \section{Aruba Dataset}
-In our thesis we used a  publicly-available  dataset  Aruba published by the Lincoln Center for Autonomous Systems, LCAS \todo{cite \cite{STRANDS}}. The dataset is of person presence collected at a smart apartment by the Center for Advanced Studies in Adaptive Systems, CASAS \todo{cite \cite{STRANDS}}.
+In our thesis, we have used a  publicly-available  dataset Aruba, published by the Lincoln Center for Autonomous Systems(LCAS). The dataset is of a person's location in a home collected at a smart apartment by \cite{aruba} from the Center for Advanced Studies in Adaptive Systems, CASAS .
 
 The testbed where the dataset was collected is a  three-bedroom apartment located on the Washington State University that is part of CASAS smart home project. 
 \begin{figure}[htp]
@@ -135,7 +136,7 @@ The testbed where the dataset was collected is a  three-bedroom apartment locate
 As shown in Figure \cite{aruba}, the smart apartment test bed includes three bedrooms, one bathroom, a kitchen, and a living / dining room.  The apartment is equipped with motion sensors distributed approximately 1 meter apart throughout the space. The Aruba dataset was extracted from these motion sensor dataset provided by CASAS. The dataset contains the location of a person in the apartment every minute for 16 weeks.
 
 
-We visualize the dataset as a heatmap over locations distributed over different periods. As explained in the section \todo{cite the central thesis}, we try to learn daily patterns by dividing the observations into per hour periods. As we can see there are some prominent patterns present which can be learned. For example the usage of the bedroom, living room, outside and kitchen.
+We visualize the dataset as a heatmap over locations distributed over different periods. As explained in chapter \ref{sec:Problem formulation}, we try to learn daily patterns by dividing the observations into per hour periods. As we can see there are some prominent patterns present which can be learned. For example the usage of the bedroom, living room, outside and kitchen.
 
 \begin{figure}[htp]
 \centering
@@ -159,7 +160,7 @@ Aruba dataset is a large dataset as compared to an person location dataset we as
 On the contrary the assumed dataset which will be collected by the robot by autonomously roaming in a home will be just 3-5 readings per day.
 So for simulating the sparsity in the object location dataset we will sparsify the ARUBA dataset by random selecting only selecting 3-5 readings each day.
 
-After sparsification by randomly selecting 5 readings per day the dataset is reduced to 590 observations. The heatmap the of the sparsified dataset is shown in Figure \cite{aruba-reduced-hist}. 
+After sparsification by randomly selecting 5 readings per day the dataset is reduced to 590 observations. The heatmap the of the sparsified dataset is shown in Figure \ref{aruba-reduced-hist}. 
 
 \begin{figure}[htp]
 \centering
@@ -171,7 +172,7 @@ After sparsification by randomly selecting 5 readings per day the dataset is red
 \FloatBarrier
 
 \section{Evaluation}
-
+\todo[inline]{TODO}
 In these experiments, we estimated the parameters of the DCM using the sparsified observations. We then trained a support vector machine(SVM) and Random Forest on the same sparsified observations. Then compared the results of SVM\todo{cite}, Random forest\todo{cite}, DCM and HDCM by cross validation.
 
 
@@ -186,11 +187,11 @@ The models were also compared with the models developed by \cite{krajnik_wheres_
 
 
 \section{Discussions}
-
+\todo[inline]{
 http://andrewgelman.com/2016/08/22/bayesian-inference-completely-solves-the-multiple-comparisons-problem/
 http://andrewgelman.com/2013/11/21/hidden-dangers-noninformative-priors/
 
-The point of the story in that slide is that flat priors consistently give bad inferences. Or, to put it another way, the routine use of flat priors results in poor frequency properties in realistic settings where studies are noisy and effect sizes are small.
+The point of the story in that slide is that flat priors consistently give bad inferences. Or, to put it another way, the routine use of flat priors results in poor frequency properties in realistic settings where studies are noisy and effect sizes are small.}
 \label{sec:}
 
 % section  (end)

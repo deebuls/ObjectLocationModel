@@ -3,13 +3,13 @@
 \chapter{Basics}
 
 In this background chapter, we review the statistical and probabilistic methodologies .
-The goal of this chapter is to provide the basic information regarding Bayesian methods of machine learning used in the thesis. A good introduction to the field can be found in books of Bishop \cite{}, Kirchop \cite{} and LeeWagenmakers \cite{} . 
+The goal of this chapter is to provide the basic information regarding Bayesian methods of machine learning used in the thesis. A good introduction to the field can be found in books of \cite{bishop2007pattern}, \cite{kruschke2014doing} and \cite{lee2014bayesian} . 
 
 \section{Bayesian Model Learning}
 
 Bayesian models are represented as probability distributions. Probability is used to quantify "uncertainty" or "Degree of belief". The models are initialized with some prior probabilities(beliefs). The observed data are used to update the prior beliefs to become posterior beliefs.
 
-We can explain this with an example. Assume we have a bag with 50 marbles with 2 colours, red and blue. We randomly take 10 marbles out of the bag and observe their colour with replacement. What we have to model is, our belief of the numbers of colours inside the bag, in bayesian  terms colour distribution in the bag, which we can define as $\theta$ . We cannot directly observe the bag. All that we can observe are the colours of the 10 picked marbles.
+We can explain this with an example. Assume we have a bag with 50 marbles with 2 colours, red and blue. We randomly take 10 marbles out of the bag and observe their colour with replacement. What we have to model is, our belief of the numbers of colours inside the bag, in Bayesian  terms colour distribution in the bag, which we can define as $\theta$ . We cannot directly observe the bag. All that we can observe are the colours of the 10 picked marbles.
 
 Before we do anything else we need to specify our prior belief with respect to the colour distribution $\theta$ . This belief needs to be expressed as a probability distribution, called the \emph{prior distribution}. A reasonable "prior distribution" denoted by $p(\theta)$ is one which takes uniform value between 0 and 1. Lets assume $p(\theta)$ is belief of red marbles in bag then $1 - p(\theta)$  is the belief of blue marbles in the bag. This uniform distribution is shown as dotted line in the figure 
 
@@ -29,30 +29,25 @@ We note here that the posterior distribution is a combination of the prior infor
 
 \missingfigure{Image of the prior posterior}
 
-\section{Prediction}
 
 \section{Distributions }
 
-The basic idea of Bayesian analysis is that what we know, and
-what we do not know, about the variables of interest is always
-represented by
-probability distributions
-
-Dirichlet, Categorical, Bernoulli 
+The basic idea of Bayesian analysis is that quantifying the \emph{state of belief} or the \emph{state of uncertainty}, about the variables of interest. These variable(latent and observed) are always represented by probability distributions. In this thesis we exhaustively use the Dirichlet, Categorical and Bernoulli distributions. 
+ 
 \subsection*{Dirichlet distribution}
 The Dirichlet distribution is part of the exponential family. It has finite dimensional sufficient statistics. It is conjugate to the multinomial and categorical distribution. 
 
-Conjugate prior  need to explain this 
+\subsection*{Categorical distribution}
+\todo[inline]{Explain}
+
+\subsection*{Bernoulli distribution}
+\todo[inline]{Explain}
 
 \section{Graphical Models}
-Graphical models is a visual method to represent complete and interpretable representation of a Bayesian probabilistic model. It is a graph with the nodes represent all the variables that are relevant to the problem. The
-graph structure is used to indicate dependencies between the variables, with children depending on their parents. We use the conventions of re
-presenting unobserved variables without shading and observed variables with shading.
-The nodes represent variables, and the
-graph structure connecting them represents dependencies.
-The plates are used to indicate replication.
+Graphical models is a method to visualize complete and interpretable representation of a Bayesian probabilistic model. The nodes in the graph represent variables of the problem, and the edges connecting them represents dependencies. The graph structure is used to indicate dependencies between the variables, with children depending on their parents. The plates are used to indicate replication. We use the conventions of representing unobserved variables without shading and observed variables with shading.
 
 \missingfigure{graphical model of above mentioned example}
+
 
 \section{Probabilistic Programming}
 

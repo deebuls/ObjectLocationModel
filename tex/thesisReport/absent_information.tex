@@ -4,14 +4,17 @@
 
 This chapter presents an alternative approach to the problem of learning object placement habits of humans in an occluded environment. We assume there is a domestic service robot which while interacting in human environments records all the information generated using its vision sensor.
 Generally in domestic environments like our home, we humans prefer to store our food, cooking equipment, silverware and dishes inside closed cabinets like drawers, cupboards and refrigerators. So most of the time the objects are inside cabinets which cannot be observed using a vision sensor. For a domestic robot with only camera as a sensor, the chances of observing  these objects inside closed cabinets is drastically reduced.
-\missingfigure{Occluded kitchen with labelled location names and bounding box object name}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.8\textwidth]{images/kitchen_crop_ano.png}
+\caption{Kitchen environment with occluded spaces}
+\label{fig:kitchen occluded}
+\end{figure}
 The basic requirement of machine learning is data, from which information and knowledge can be learnt. But in highly occluded environments like kitchen its difficult for a domestic robot to make an observation of the object and record the object location.  Hence our hypothesis that we can learn knowledge about object locations quantitatively i.e. learning patterns from the data observed, becomes a herculean task to prove.
 
-An alternative approach to counter the sparsity of data is by recording the absence of the object in visible locations and learning knowledge about where objects are not located. Consider an motivating example, as depicted in Figure \cite{fig:alllocations} . Here, a mobile robot is in a kitchen in the morning. The following locations can be scanned by the robot: kitchen-sink, counter-top and stove, while the cabinets, dishwasher and refrigerator are occluded. The robot will make observations of cup and kettle on counter-top , spoon on the sink top. Assume that the robot is also learning object locations of cooking pot. If the robot only records the observed objects then there is no data recorded for the cooking-pot and no knowledge is learned about the cooking-pot. \emph{A possible solution is to even record the \textbf{absence} of cooking-pot on the visible locations}. From this the robot can learn that the cooking-pot is less probable to be on the kitchen-sink, counter-top and stove during morning time. Supplementary the robot can also learn that there is higher probability for the cooking-pot being in the cabinet or dishwasher.
+An alternative approach to counter the sparsity of data is by recording the absence of the object in visible locations and learning knowledge about where objects are not located. Consider an motivating example, as depicted in Figure \ref{fig:alllocations} . Here, a mobile robot is in a kitchen in the morning. The following locations can be scanned by the robot: kitchen-sink, counter-top and stove, while the cabinets, dishwasher and refrigerator are occluded. The robot will make observations of cup and kettle on counter-top , spoon on the sink top. Assume that the robot is also learning object locations of cooking pot. If the robot only records the observed objects then there is no data recorded for the cooking-pot and no knowledge is learned about the cooking-pot. \emph{A possible solution is to even record the \textbf{absence} of cooking-pot on the visible locations}. From this the robot can learn that the cooking-pot is less probable to be on the kitchen-sink, counter-top and stove during morning time. Supplementary the robot can also learn that there is higher probability for the cooking-pot being in the cabinet or dishwasher.
 
-\section{Simulated Dataset: Kitchen Object Dataset}
-
-To demonstrate the proposed approach we have generated a kitchen object dataset. The dataset consist observations(presence and absence) of a cup in a kitchen environment made by a domestic robot. The robot can scan 4 locations in the kitchen: sink, counter-top, stove and cabinet. The time of the scan is discretized into 3 times of the day: morning, afternoon and night. 
 
 \begin{figure}
     \centering
@@ -37,35 +40,15 @@ To demonstrate the proposed approach we have generated a kitchen object dataset.
     \caption{Different possible object locations}\label{fig:alllocations}
 \end{figure}
 
-The generative process for each possible observation(present and absent) in the dataset 
-\begin{itemize}
-    \item Choose $ \theta \sim Dirichlet(\alpha)$ (Distribution of object over location-time)
-    \item Choose randomly the time period $i$.
-	\item Choose the location $x_n$ $\sim$ Categorical$(\theta_i)$
-	\item Choose the presence of object $p_n$, in time period $i$ and location $x_n$  $p_n$ $\sim$ Bernoulli$(\beta) $
-\end{itemize}
-
-Ground truth of the distribution in the object location distribution over time in shown in Figure \todo{cite image}.
-
-
-\begin{figure}[htp]
-\centering
-\includegraphics[width=0.6\textwidth]{images/absent_groundtruth.png}
-\caption{Simulated object location ground truth distribution}
-\medskip
-\small
-The x-axis represents the locations the y axis represents the timezones. The size of the white box indicates the probability of the object presence.
-\label{absent-gt}
-\end{figure}
-
-From the ground truth we can observe that there is higher probability to find the object in the sink during night time and in the cabinet during the other time periods. We need to develop models which can learn these temporal patterns from the observations
-
-
+\FloatBarrier
 \section{Dirichlet-Categorical-Bernoulli model}
 
-For incorporating the negative instances we modified the Dirichlet-Categorical model explained in section \todo{cite chapter} with a Bernoulli model. But Bernoulli 
+For incorporating the negative instances we modified the Dirichlet-Categorical model explained in section  with a Bernoulli model.
+\todo[inline]{Explaination TODO}
 
 
+\noindent
+\begin{figure}[htp]
 \begin{minipage}{0.3\textwidth}
 \centering
 
@@ -98,14 +81,52 @@ For incorporating the negative instances we modified the Dirichlet-Categorical m
 \begin{equation*}
 	\gamma  \sim Bernoulli(k)
 \end{equation*}
-
 \begin{equation*}
 	x_{ij} \sim Categorical(\theta_i)
 \end{equation*}
 \end{minipage}
 
+\caption[Dirichlet Categorical Bernoulli graphical model]{Graphical model representation of Dirichlet Categorical Bernoulli model. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents if object was observed at the location each hour.}
+\label{dcbm}
+\end{figure}
+
+
+
+
+The proposed model is  evaluated on simulated dataset. 
+
+
+\section{Simulated Dataset: Kitchen Object Dataset}
+
+To demonstrate the proposed approach we have generated a kitchen object dataset. The dataset consist observations(presence and absence) of a cup in a kitchen environment made by a domestic robot. The robot can scan 4 locations in the kitchen: sink, counter-top, stove and cabinet. The time of the scan is discretized into 3 times of the day: morning, afternoon and night. 
+
+The generative process for each possible observation(present and absent) in the dataset 
+\begin{itemize}
+    \item Choose $ \theta \sim Dirichlet(\alpha)$ (Distribution of object over location-time)
+    \item Choose randomly the time period $i$.
+	\item Choose the location $x_n$ $\sim$ Categorical$(\theta_i)$
+	\item Choose the presence of object $p_n$, in time period $i$ and location $x_n$  $p_n$ $\sim$ Bernoulli$(\beta) $
+\end{itemize}
+
+Ground truth of the distribution in the object location distribution over time in shown in Figure \ref{absent-gt}.
+
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.6\textwidth]{images/absent_groundtruth.png}
+\caption[Simulated object location ground truth distribution]{Simulated object location ground truth distribution.
+The x-axis represents the locations the y axis represents the timezones. The size of the white box indicates the probability of the object presence.}
+\label{absent-gt}
+\end{figure}
+
+From the ground truth we can observe that there is higher probability to find the object in the sink during night time and in the cabinet during the other time periods. We need to develop models which can learn these temporal patterns from the observations
+
 \section{Evaluation}
 
+\todo[inline]{TODO}
+
+We compare the Dirichlet-Categorical-Bernoulli model with the Hierarchical-Dirichlet-Categorical model explained in \ref{sec: HDCM}. We compare the ground truth dirichlet probabilities, used to generate the simulated dataset and the learned probabilities and evaluate the performance of the learning. 
+We use the adopted  Bhattacharyya distance \cite{rauber2008bhattacharyya} to quantify the similarity between the simulated and the learned Dirichlet distribution.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/absent_learned.png}
@@ -128,11 +149,6 @@ For incorporating the negative instances we modified the Dirichlet-Categorical m
     
 \end{figure}
 
-
-
-
-The proposed models are evaluated on the simulated dataset. We compare the Dirichlet-Categorical-Bernoulli model with the Hierarchical-Dirichlet-Categorical model explained in \todo{cite }. We compare the dirichlet probability used to generate the simulated dataset and the learned probabilities and evaluate the performance of the learning. 
-We use the adopted  Bhattacharyya distance \todo{cite } to quantify the similarity between the simulated and the learned distribution.
 
 \begin{figure}[htp]
 \centering
