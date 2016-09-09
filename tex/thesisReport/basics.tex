@@ -42,15 +42,20 @@ The Dirichlet distribution is part of the exponential family. It has finite dime
 
 \subsection*{Bernoulli distribution}
 \todo[inline]{Explain}
+Bernoulli distribution is used when there are a number of iterations of some activity, where each iteration (or observation) may turn out to be a "success" or a "failure". From the data on T observations, we want to estimate the probability of "success"
+
 
 \section{Graphical Models}
+
+\todo[inline]{formal lingua franca for probabilistic Bayesian modelling}
 Graphical models is a method to visualize complete and interpretable representation of a Bayesian probabilistic model. The nodes in the graph represent variables of the problem, and the edges connecting them represents dependencies. The graph structure is used to indicate dependencies between the variables, with children depending on their parents. The plates are used to indicate replication. We use the conventions of representing unobserved variables without shading and observed variables with shading.
 
 \missingfigure{graphical model of above mentioned example}
 
 
-\section{Probabilistic Programming}
+\section{Probabilistic Programming Languages}
 
+Probabilistic programming languages(PPL) are new languages developed to program probabilistic graphical models and to run inference in them. 
 Until recently, Bayesian Model learning have been limited in scope, and have been hard to apply to many real-world applications. Probabilistic programming is a new approach which makes Bayesian learning easier to build and more applicable. 
 
 
@@ -80,7 +85,7 @@ Until recently, Bayesian Model learning have been limited in scope, and have bee
 % subsection steps (end)
 
 
-The separation of the model choices and the inference engine for generating machine algorithms have given rise to a new kind of software frameworks.
+The separation of the model choices and the inference engine for generating machine algorithms have given rise to a new kind of programming language.
 In the software framework you need to provide the description of your model and the selection of the inference engine, which internally produces the code for the machine learning algorithm.
 Examples of software frameworks that implement the probabilistic modelling philosophy  include CHURCH \cite{goodman_church_2012}, Venture \cite{mansinghka_venture_2014}, PyMC3 \cite{salvatier_probabilistic_2015}, BayesPy \cite{luttinen_bayespy_2014} and Infer.net \cite{minka_2010}.
 
