@@ -5,15 +5,34 @@
 In this background chapter, we review the statistical and probabilistic methodologies .
 The goal of this chapter is to provide the basic information regarding Bayesian methods of machine learning used in the thesis. A good introduction to the field can be found in books of \cite{bishop2007pattern}, \cite{kruschke2014doing} and \cite{lee2014bayesian} . 
 
+\section{Model Based Machine Learning}
+
+Model based machine learning (MBML) is a new paradigm of machine learning, which can be called as the logical convergence between 2 related fields, statistics and machine learning. MBML the goal is to provide a framework which supports the creation of a wide range of models \cite{Bishop20120222}.
+
+In traditional machine learning(SVM, Random Forest etc.) the approach is to map the problem onto a standard algorithm. Thus the algorithm is always fixed and the problem is modified to fit the algorithm.
+
+Model based machine learning has a different take on the problem. Here the approach is to find the model which can represent the problem. The designed model is now used to generate a algorithm which will learn from the data. Thus MBML seeks to create a tailored algorithm for each problem. Such an approach makes the machine learning more flexible and better to understand/explain.
+
+The framework emerged from an important convergence of three key ideas:
+   \begin{itemize}
+	\item the adoption of Bayesian methodologies for model learning.
+	\item the use of graphical models, and
+	\item the application of fast, deterministic, efficient and approximate inference algorithms
+\end{itemize}
+
+We give a short introduction to Bayesian model learning and graphical models. Inference algorithms is not covered, for a detailed discussion on inference algorithm please refer \cite{beal2003variational}, \cite{minka2001family}
+
 \section{Bayesian Model Learning}
 
-Bayesian models are represented as probability distributions. Probability is used to quantify "uncertainty" or "Degree of belief". The models are initialized with some prior probabilities(beliefs). The observed data are used to update the prior beliefs to become posterior beliefs.
+In MBML, models are used to represent the problem. Each problem in machine learning has a two parts: one a set of inputs called observed variables(input features and expected output); second a set of  quantities to be learned called latent unknown variables. In Bayesian modelling both these variables(observed and latent) are probabilities or probability distributions which are updated using Bayes theorem. 
 
-We can explain this with an example. Assume we have a bag with 50 marbles with 2 colours, red and blue. We randomly take 10 marbles out of the bag and observe their colour with replacement. What we have to model is, our belief of the numbers of colours inside the bag, in Bayesian  terms colour distribution in the bag, which we can define as $\theta$ . We cannot directly observe the bag. All that we can observe are the colours of the 10 picked marbles.
+Bayesian models are represented as probability distributions. Probability is used to quantify ``uncertainty" or ``Degree of belief". The models are initialized with some prior probabilities(beliefs). The observed data are used to update the prior beliefs to become posterior beliefs.
 
-Before we do anything else we need to specify our prior belief with respect to the colour distribution $\theta$ . This belief needs to be expressed as a probability distribution, called the \emph{prior distribution}. A reasonable "prior distribution" denoted by $p(\theta)$ is one which takes uniform value between 0 and 1. Lets assume $p(\theta)$ is belief of red marbles in bag then $1 - p(\theta)$  is the belief of blue marbles in the bag. This uniform distribution is shown as dotted line in the figure 
+We can explain this with an example \cite{lee2014bayesian}. Assume you
+are given a test that consists of 10 factual questions of equal difficulty. What we want to estimate is your ability, which we define as the rate $\theta$ with which you answer questions correctly. We cannot directly observe your ability $\theta$. All that we can observe is your score on the test. Before we do anything else (for example, before we start to look at your data) we need to specify our prior uncertainty with respect to your ability $\theta$. This uncertainty needs to be expressed as a probability distribution, called the ``prior distribution". In this case, keep in mind that $\theta$ can range from 0 to 1, and that we do not know anything about your familiarity with the topic or about the difficulty level of the questions. Then, a reasonable ``prior distribution,” denoted by $p(\theta)$, is one that assigns equalprobability to every value of $\theta$. This uniform distribution is shown by the dotted horizontal line in Figure \ref{fig: bayes}.
 
-Now we consider the observed colour of the 10 marbles from the bag. We observe 8 red marbles and 2 blue marbles. After observing the data, the updated knowledge about $\theta$ is described by a \emph{posterior distribution}, denoted by $p(\theta | D)$, where D indicates the observed data. The distribution represents the updated belief after observing the colour picked marbles. Bayes rule specifies how we can combine the information from the data, that is how to determine the posterior distribution $p (\theta | D)$ using  the prior distribution $p(\theta)$ and the likelihood  $p (D | \theta)$ :
+Now we consider your performance, and find that you answered 9
+out of 10 questions correctly. After observing the data, the updated knowledge about $\theta$ is described by a \emph{posterior distribution}, denoted by $p(\theta | D)$. This distribution expresses the uncertainty about the value of $\theta$, quantifying the relative probability that each possible value is the true value.. Bayes rule specifies how we can combine the information from the data, that is how to determine the posterior distribution $p (\theta | D)$ using  the prior distribution $p(\theta)$ and the likelihood  $p (D | \theta)$ :
 \begin{equation}
 	p(\theta | D) = \frac{p(D | \theta) p(\theta)}{p(D)}
 \end{equation}
@@ -25,43 +44,74 @@ The equation is often verbalized as :
 
 We note here that the posterior distribution is a combination of the prior information we had and what we have learned from the data. 
 
-
-
-\missingfigure{Image of the prior posterior}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.5\textwidth]{images/bayes.png}
+\caption[Bayesian parameter estimation]{Bayesian parameter estimation for rate parameter $\theta$
+, after observing 9 correctresponses and 1 incorrect response. The mode of the posterior distribution for $\theta$ is 0.9, equal to the maximum likelihood estimate (MLE), and the 95\% credible interval extends from 0.59 to 0.98}
+\label{fig: bayes}
+\end{figure}
 
 
 \section{Distributions }
 
-The basic idea of Bayesian analysis is that quantifying the \emph{state of belief} or the \emph{state of uncertainty}, about the variables of interest. These variable(latent and observed) are always represented by probability distributions. In this thesis we exhaustively use the Dirichlet, Categorical and Bernoulli distributions. 
+The basic idea of Bayesian analysis is that quantifying the \emph{state of belief} or the \emph{state of uncertainty}, about the variables of interest. These variable(latent and observed) are always represented by probability distributions.  Probability distribution is just another name for a probability measure.  In this thesis we exhaustively use the Dirichlet, Categorical and Bernoulli distributions. 
  
-\subsection*{Dirichlet distribution}
-The Dirichlet distribution is part of the exponential family. It has finite dimensional sufficient statistics. It is conjugate to the multinomial and categorical distribution. 
+
+\subsection*{Bernoulli distribution}
+\todo[inline]{Explain}
+Bernoulli distribution is used when there are a number of iterations of some activity, where each iteration (or observation) may turn out to be a ``success" or a ``failure". From the data on T observations, we want to estimate the probability of ``success"
+
 
 \subsection*{Categorical distribution}
 \todo[inline]{Explain}
 
-\subsection*{Bernoulli distribution}
-\todo[inline]{Explain}
-Bernoulli distribution is used when there are a number of iterations of some activity, where each iteration (or observation) may turn out to be a "success" or a "failure". From the data on T observations, we want to estimate the probability of "success"
+
+\subsection*{Dirichlet distribution}
+The Dirichlet distribution is part of the exponential family. It has finite dimensional sufficient statistics. It is conjugate to the multinomial and categorical distribution. 
 
 
-\section{Graphical Models}
 
-\todo[inline]{formal lingua franca for probabilistic Bayesian modelling}
-Graphical models is a method to visualize complete and interpretable representation of a Bayesian probabilistic model. The nodes in the graph represent variables of the problem, and the edges connecting them represents dependencies. The graph structure is used to indicate dependencies between the variables, with children depending on their parents. The plates are used to indicate replication. We use the conventions of representing unobserved variables without shading and observed variables with shading.
 
-\missingfigure{graphical model of above mentioned example}
 
+\section{Probabilistic Graphical Models}
+
+Probabilistic Graphical Models (PGM) is the formal lingua franca for probabilistic Bayesian modelling. PGM is a method to visualize complete and interpretable representation of a Bayesian probabilistic model. The nodes in the graph represent variables of the problem, and the edges connecting them represents dependencies. The graph structure is used to indicate dependencies between the variables, with children depending on their parents. The plates are used to indicate replication. We use the conventions of representing unobserved variables without shading and observed variables with shading.
+
+Lets draw the PGM for the problem defined above. Beta distribution with parameters (1,1) can be selected as the prior distribution, while the ability can be represented using Bernoulli distribution. Thus the model is defined as 
+\begin{equation}
+	\theta \sim Beta(1,1) \\
+	P(D|\theta) \sim Bernoulli(\theta)
+\end{equation}
+
+The graphical model can be shown as :
+
+\begin{figure}[!h]
+\centering
+
+
+\tikz {
+\centering
+ % Define nodes
+  \node[latent]                                 (theta) {$\theta$};
+  \node[obs, below=of theta]                    (D)     {$D$}; 
+  % Connect the nodes
+  \edge {theta} {D};
+  % plates
+  \plate {location} {(D)} {n=0,....,9};
+}
+\caption[Graphical Model]{Graphical Model: Shaded node observed variable and non-shaded node is latent variable}
+\end{figure}
 
 \section{Probabilistic Programming Languages}
 
 Probabilistic programming languages(PPL) are new languages developed to program probabilistic graphical models and to run inference in them. 
-Until recently, Bayesian Model learning have been limited in scope, and have been hard to apply to many real-world applications. Probabilistic programming is a new approach which makes Bayesian learning easier to build and more applicable. 
+Until recently, Bayesian Model learning have been limited in scope, and have been hard to apply to many real-world applications. Probabilistic programming is a new approach using which one can construct Bayesian models faster and in a less error-prone way. 
 
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=0.8\textwidth]{pictures/Lifecycle.png}
+\includegraphics[width=0.5\textwidth]{pictures/Lifecycle.png}
 \caption[Steps involved in probabilistic modelling ]{Steps involved in probabilistic modelling  \protect\footnotemark }
 \label{}
 \end{figure}
@@ -101,21 +151,3 @@ Examples of software frameworks that implement the probabilistic modelling philo
 \subsection{WebPPL}
 
 \textbf{WebPPL} is a javascript module for Bayesian modelling. The inference is using Markov chain Monto Carlo algorithms. Its particularly useful for doing learning inside web based database like MongoDB.
-
-\section{Notation and terminology}
-Throughout the thesis, we are referring to entities such as ``locations," ``hours," and ``observations".
-This helps to guide intuition and maintain continuity of thoughts as we guide through related problems involving collections of data.
-Formally we define the following terms:
-\begin{itemize}
-	\item A \emph{location} is the basic unit of the discrete data, defined to be an item from a set of locations. These locations can be rooms of the home or different compartments of the kitchen. 
-	\item An \emph{period} is a sequence of $N$ locations denoted by $\textbf{p} = {x_1;x_2;:::;x_N}$. These represents the locations observed in a particular period of time.
-	\item A \emph{observations} is a collection of $T$ periods denoted by $ D = {p_1;p_2;:::;p_T}$. These represents the complete data collected by the robot.
-\end{itemize}
-
-
-We also use the entities such as ``data," ``information," and ``knowledge" throughout the thesis. These can be define as:
-\begin{itemize}
-	\item A \emph{data} corresponds to sensor output. All the output of the sensors recorded by the robot is a data. For example RGB image from a camera, depth points from depth sensors etc.
-	\item A \emph{information} corresponds to output of algorithms which process on the above data. For example vision algorithms process RGB images data to extract information of objects or persons in the image.
-	\item A \emph{knowledge} corresponds to output of algorithms which process on the above information. For example vision algorithms can process detected object information in consecutive RGB frames to extract knowledge that the object was moving.
-\end{itemize}

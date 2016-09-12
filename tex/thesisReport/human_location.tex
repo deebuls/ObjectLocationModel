@@ -1,7 +1,7 @@
 
 
 \chapter{Modelling Indoor Human Location Behaviour }
-
+\label{chapter:Human location}
 Domestic service robots in future should be able to gather knowledge about all the locations in the home, the user likes to hang around. Additionally they should also know the time period when the users occupy their favourite places. This acquired knowledge of the human location behaviour shall enable the robots to make informed decisions for completing their tasks. For example what time to clean a particular room based  on least unoccupied time period or when to turn on the heater of the room. 
 
 In this chapter we focus on this knowledge accession of users location behaviour based on spatio-temporal observations made by the robot. The advancement in long term autonomous navigation \cite{krajnik_life-long_2015} and the rapid adoption of databases in the robots \cite{niemueller2012generic}, has made the information collection for such knowledge generation possible in service robots. However even with these advancements there are some challenges which still needs to be addressed.  In more details, these challenges are the (i) modelling human location behvioud (ii) prediction of future location (iii) learning all these with sparse observations made by the robots. 
@@ -18,7 +18,7 @@ Dirichlet Categorical model (DCM) is a two-level Bayesian model. The basic idea 
 
 The data are the observed human location $x_{ij}$ for $i = 1 \dots T$ time periods and then $j = 1, \dots , N$  are the observations.  We assume that the latent pattern in the persons location per period are distributed as a categorical distribution. The number of periods $T$ for our model is fixed to 24 corresponding to the number of hours in a day. 
 
-The Dirichlet-Categorical model is the generalization of the Beta-Binomial model to multiple classes of a categorical or multinomial distribution. The conjugate prior for the categorical distribution is the Dirichlet distribution. The model estimates the posterior distribution of $\theta_i$ given our current data and prior beliefs. Our prior beliefs are encoded in the model through the hyper-parameter $\alpha$, which represents pseudo-counts of what we believe the data should look like – typically set as 1's for weak uniform beliefs. The probabilistic graphical model of  DCM is shown in Figure \cite{dcm}
+The Dirichlet-Categorical model is the generalization of the Beta-Binomial model to multiple classes of a categorical or multinomial distribution. The conjugate prior for the categorical distribution is the Dirichlet distribution. The model estimates the posterior distribution of $\theta_i$ given our current data and prior beliefs. Our prior beliefs are encoded in the model through the hyper-parameter $\alpha$, which represents pseudo-counts of what we believe the data should look like – typically set as 1's for weak uniform beliefs. The probabilistic graphical model of  DCM is shown in Figure~\ref{dcm}
 
 \noindent
 \begin{figure}[htp]
@@ -133,10 +133,10 @@ The testbed where the dataset was collected is a  three-bedroom apartment locate
 \caption{Aruba apartment visualization}
 \label{aruba}
 \end{figure}
-As shown in Figure \cite{aruba}, the smart apartment test bed includes three bedrooms, one bathroom, a kitchen, and a living / dining room.  The apartment is equipped with motion sensors distributed approximately 1 meter apart throughout the space. The Aruba dataset was extracted from these motion sensor dataset provided by CASAS. The dataset contains the location of a person in the apartment every minute for 16 weeks.
+As shown in Figure~\ref{aruba}, the smart apartment test bed includes three bedrooms, one bathroom, a kitchen, and a living / dining room.  The apartment is equipped with motion sensors distributed approximately 1 meter apart throughout the space. The Aruba dataset was extracted from these motion sensor dataset provided by CASAS. The dataset contains the location of a person in the apartment every minute for 16 weeks.
 
 
-We visualize the dataset as a heatmap over locations distributed over different periods. As explained in chapter \ref{sec:Problem formulation}, we try to learn daily patterns by dividing the observations into per hour periods. As we can see there are some prominent patterns present which can be learned. For example the usage of the bedroom, living room, outside and kitchen.
+We visualize the dataset as a heatmap over locations distributed over different periods. As explained in chapter~\ref{sec:Problem formulation}, we try to learn daily patterns by dividing the observations into per hour periods. As we can see there are some prominent patterns present which can be learned. For example the usage of the bedroom, living room, outside and kitchen.
 
 \begin{figure}[htp]
 \centering
@@ -145,7 +145,7 @@ We visualize the dataset as a heatmap over locations distributed over different 
 \label{aruba-visual}
 \end{figure}
 
-A histogram visualization of the observations over different location in the home is show in Figure \cite{aruba-hist}
+A histogram visualization of the observations over different location in the home is show in Figure~\ref{aruba-hist}
 
 \begin{figure}[htp]
 \centering
@@ -160,7 +160,7 @@ Aruba dataset is a large dataset as compared to an person location dataset we as
 On the contrary the assumed dataset which will be collected by the robot by autonomously roaming in a home will be just 3-5 readings per day.
 So for simulating the sparsity in the object location dataset we will sparsify the ARUBA dataset by random selecting only selecting 3-5 readings each day.
 
-After sparsification by randomly selecting 5 readings per day the dataset is reduced to 590 observations. The heatmap the of the sparsified dataset is shown in Figure \ref{aruba-reduced-hist}. 
+After sparsification by randomly selecting 5 readings per day the dataset is reduced to 590 observations. The heatmap the of the sparsified dataset is shown in Figure~\ref{aruba-reduced-hist}. 
 
 \begin{figure}[htp]
 \centering
@@ -173,7 +173,7 @@ After sparsification by randomly selecting 5 readings per day the dataset is red
 
 \section{Evaluation}
 \todo[inline]{TODO}
-In these experiments, we estimated the parameters of the DCM using the sparsified observations. We then trained a support vector machine(SVM) and Random Forest on the same sparsified observations. Then compared the results of SVM\todo{cite}, Random forest\todo{cite}, DCM and HDCM by cross validation.
+In these experiments, we estimated the parameters of the DCM using the sparsified observations. We then trained a support vector machine(SVM) and Random Forest on the same sparsified observations. Then compared the results of SVM, Random forest, DCM and HDCM by cross validation.
 
 
 
@@ -196,11 +196,12 @@ The point of the story in that slide is that flat priors consistently give bad i
 
 todo[inline]{
 
-Why cross validation problem with SVM and probabilistic models
+Why cross validation problem with SVM and probabilistic models \\
 http://andrewgelman.com/2016/01/30/evaluating-models-with-predictive-accuracy/
 
 }
-\label{sec:}
+
+In chapter \ref{chapter: object} the models captured knowledge about each location separately, while in this chapter the models can capture knowledge about multiple locations can be captured in a single model.
 
 % section  (end)
 

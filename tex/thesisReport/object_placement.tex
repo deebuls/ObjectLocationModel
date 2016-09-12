@@ -80,7 +80,7 @@ The conjugate prior for the Bernoulli distribution is the Beta distribution. The
 \label{bbm}
 \end{figure}
 
-The models are implemented using the PyMC3 software framework.
+The models are implemented using the PyMC3 probabilistic programming language.
 
 \FloatBarrier
 \section{Experiments}
@@ -93,9 +93,9 @@ The goal of the experiments were to verify that
 	\item the resulting model allows for accurate prediction and control.
 \end{itemize}
 
-\subsection*{Evaluation of number of observations required}
+\subsection{Evaluation of number of observations required}
 
-To quantitatively evaluate the accuracy of the learned model we generated dataset of object location, of which we know the ground truth. The dataset consist of observations made by a mobile domestic robot, of a cup on the counter during different times of the day. The robot while doing its daily chores scans the counter-top of the kitchen. While doing so it records all the instance whenever it finds the cup on the counter. Figure \ref{simulation} shows the ground truth probabilities as well as the count of the different observations generated from the ground truth.
+To quantitatively evaluate the accuracy of the learned model we generated a synthetic dataset of object locations,with know ground truth. The dataset consist of observations made by a mobile domestic robot, of a cup on the counter during different times of the day. The robot while doing its daily chores scans the counter-top of the kitchen. While doing so it records all the instance whenever it finds the cup on the counter. Figure \ref{simulation} shows the ground truth probabilities as well as the count of the different observations generated from the ground truth.
 
 \begin{figure}[htp]
 \centering
@@ -123,7 +123,9 @@ We evaluated the number of observations required to learn a pattern by comparing
     \end{subfigure}
     \caption[Evaluation of number of observation required]{Evaluation of number of observation required: Distance between ground truth and learned probabilities \ref{fig:object_simulation_distance}. The accuracy of the learned models using different number of observations \ref{fig:object_simulation_accuracy} }\label{fig:object_simulation_accuracy}
 \end{figure}
-\subsection*{Evaluation of Model Accuracy}
+
+\FloatBarrier
+\subsection{Evaluation of Model Accuracy}
 
 In this section we evaluate the accuracy of the model by using a real world dataset. The KTH Object dataset was collected in the Computer Vision and Active Perception lab at KTH Stockholm, by a SCITOS-G5 mobile robot over  the  course  of  five  weeks.  During  this  time  the  robot conducted  between  two  and  six  autonomous  patrol  runs per  day  (weekends  were  excluded),  visiting  three  specific waypoints  during  each  run.  Upon  reaching  a  waypoint,  the robot  would  execute  a  pan-tilt  sweep  and  collect  data  from its RGB-D sensor; the RGB-D frames collected during one sweep were then registered spatially to form an observation of  that  particular  waypoint  at  that  time.  The  KTH  dataset contains  approximately  100 observations  per  waypoint,  and at  each  waypoint, the  dynamic  elements  of the  environment  using  the  ‘MetaRoom’  method  described in \cite{ambrucs2014meta}. These  dynamic  elements  correspond  to  movable  objects such  as  jackets,  backpacks,  laptops,  chairs,  bottles,  mugs, etc. These dynamic clusters,  manually labelled  to obtain 37 different objects, out  of  which  14  tend  to  appear  and  disappear  periodically \cite{krajnik_wheres_2015}. 
 
@@ -155,15 +157,15 @@ Out of the 37 objects \textbf{26} objects have a accuracy rate of above \textbf{
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width=\textwidth]{images/kth_dataset_accuracy.png}
+\includegraphics[width=\textwidth]{images/evaluation_kth.png}
 \caption[Cross validation results]{Cross validation results. x-axis is the name of the object, y-axis represents the accuracy in predicting the locations of the objects. }
 \label{fig:kth_object_evaluation}
 \end{figure}
 
-
+\FloatBarrier
 \section{Discussion}
-In this chapter, we presented a probabilistic framework for learning the preferences of the user on placing objects in the environment. Our first contribution is to represent the user preferences of object placement using graphical model. Our second contribution is that the graphical model has been implemented using a probabilistic programming language. We continuously learn from the set of object location observations made by the robot about where the user likes to keep his objects in the home. Since the observations are not continuous trace but just random instances of the objects, the model was designed to be able to capture the latent knowledge in the placement preferences from such sporadic observations.
+In this chapter, we presented a probabilistic framework for learning the preferences of the user on placing objects in the environment. Our first contribution is to represent the user preferences of object placement using graphical model. Our second contribution is that the graphical model has been implemented using a probabilistic programming language. The robot continuously learns about where the user prefers to keep his objects in the home from the set of object location observations. Since the observations are not continuous trace but just random instances of the objects, the model was designed to be able to capture the latent knowledge in the placement preferences from such sporadic observations.
 
 We have shown by evaluation that the robot needs around 25 observations for gaining knowledge about the object in that location. As seen from evaluation objects which are not moved very often are learned very easily by our models using very less observations. The model performs badly when there is no preference in the user placement i.e. the user places the objects randomly. 
 From the real world experiments we can conclude that a majority of the objects in our home environments are rarely moved by the user, therefore our models are able to learn and predict accurately for most of the objects. 
-The approaches here capture knowledge about each object in each location separately, we will see in chapter \ref{} how knowledge about multiple locations of the object can be captured in a single model.
+The approaches here capture knowledge about each object in each location separately, we will see in chapter \ref{chapter:Human location} how knowledge about multiple locations of the object can be captured in a single model.

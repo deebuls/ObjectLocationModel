@@ -103,10 +103,11 @@ The model is an extension as explained in \ref{sec: HDCM} . We combine a Bernoul
 
 \section{Experiments}
 
-The goal of the experiments was to verify the performance of the proposed model with the HDCM introduce in \ref{}. 
+In this section, we present the results of a thorough evaluation of all aspects of our proposed model. We present a detailed analysis of our model on synthetic data. In particular, we study the performance of the model as compared to the HDC model discussed in chapter ~\ref{chapter:Human location}.
 
 
-The goal of the experiments was to comparatively evaluate the proposed method with the HDCM introduced in \ref{}, based on the number of experiments. For this we created a simulated dataset with known ground truth distributions. The observations were then by the models to learn the latent probabilities. The learned probabilities were then compared with the ground truth. The above experiments were run 
+The goal of the experiments was to comparatively evaluate the proposed method with the HDC model, based on the number of experiments. For this we created a simulated dataset with known ground truth distributions. The observations were then by the models to learn the latent probabilities. The learned probabilities were then compared with the ground truth. 
+
 \subsection{Simulated Dataset: Kitchen Object Dataset}
 
 To demonstrate the proposed approach we have generated a kitchen object dataset. The dataset consist of observations(presence and absence) of a cup in a kitchen environment made by a domestic robot. The robot can scan 4 locations in the kitchen: sink, counter-top, stove and cabinet. The time of the scan is discretized into 3 times of the day: morning, afternoon and night. 
@@ -119,7 +120,7 @@ The generative process for each possible observation(present and absent) in the 
 	\item Choose the presence of object $p_n$, in time period $i$ and location $x_n$  $p_n$ $\sim$ Bernoulli$(\beta) $
 \end{itemize}
 
-Ground truth of the distribution in the object location distribution over time in shown in Figure \ref{absent-gt}.
+Ground truth of the distribution in the object location distribution over time in shown in Figure \ref{absent-gt}. The figure represents the hinton plot of the underlying dirichlet distributions. Hinton plot are a way of visualizing probabilities. The size of the white square in the plot quantifies the belief of the probability. Higher the size of the box higher the probability. Thus for probability 1 we have a complete white box and gray means 0 probability. In the ground truth probability in Figure \ref{absent-gt} the each row represents the distribution of the object cup at the particular time period. We see a big white box at location:sink and time:night on the bottom left of the plot, while all other boxes for row night are comparatively small. This signifies that the box is more likely to be found in the sink in the night than the other places.
 
 
 \begin{figure}[htp]
@@ -130,14 +131,11 @@ The x-axis represents the locations the y axis represents the timezones. The siz
 \label{absent-gt}
 \end{figure}
 
-From the ground truth we can observe that there is higher probability to find the object in the sink during night time and in the cabinet during the other time periods. We need to develop models which can learn these temporal patterns from the observations
+From the ground truth we can observe that there is higher probability to find the object in the sink during night time and in the cabinet during the other time periods. We evaluate our models on these synthetic observations.
 
-\section{Evaluation}
+\section{Learned probability visualization}
+The first method was to visually compare the learned probabilities with the ground truth.  Figure~\ref{fig:absent-eval} we can visually analyse the difference between the learned models of both HDC model and HDCB model. The leftmost plot \ref{fig:absent-gt} as explained above is the ground truth from which the observations were generated. We generated a dataset with 100 observations. Out of the 100 observations 33 were positive samples while remaining were 77 were negative samples. Thus the dataset had more absent information than presence of the object. The models learned from the generated dataset. The middle plot \ref{fig:absent-hdcm} is the learned posterior probabilities using the HDC model while the last plot \ref{fig:absent-hdcmb} is the posterior probabilities using the HDCB model presented in this chapter. We can conclude from the plots that the posterior of the HDCB model resembles more with the ground truth probability. 
 
-\todo[inline]{TODO}
-
-We compare the Dirichlet-Categorical-Bernoulli model with the Hierarchical-Dirichlet-Categorical model explained in \ref{sec: HDCM}. We compare the ground truth dirichlet probabilities, used to generate the simulated dataset and the learned probabilities and evaluate the performance of the learning. 
-We use the adopted  Bhattacharyya distance \cite{rauber2008bhattacharyya} to quantify the similarity between the simulated and the learned Dirichlet distribution.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/absent_learned.png}
@@ -155,18 +153,42 @@ We use the adopted  Bhattacharyya distance \cite{rauber2008bhattacharyya} to qua
     \subcaption{HDCB model}\label{fig:absent-hdcmb}
     \end{minipage}
 
-\caption[Model Evaluation of HDC and HDCB ]{Model Evaluation: \ref{fig:absent-gt} is ground truth of the distribution. \ref{fig:absent-hdcm} is the learned distribution using the HDC model. \ref{fig:absent-hdcmb} is the learned distribution using the HDCB  model }
-        \label{fig:absent-eval}
+\caption[Posterior probabilities of HDC and HDCB ]{Posterior probabilities of the models : \ref{fig:absent-gt} is ground truth of the distribution. \ref{fig:absent-hdcm} is the learned distribution using the HDC model. \ref{fig:absent-hdcmb} is the learned distribution using the HDCB  model . The x-axis represents the locations the y axis represents the timezones. The size of the white box indicates the probability of the object presence }\label{fig:absent-eval}
     
 \end{figure}
 
 
+\section{Model Comparison}
+
+We now quantitatively compare the Dirichlet-Categorical-Bernoulli model with the Hierarchical-Dirichlet-Categorical model. We adopted  the Bhattacharyya distance \cite{bhattacharyya1946measure} and Kullback–Leibler divergence \cite{kullback1951information} (KL Divergence)to quantify the similarity between the simulated and the learned Dirichlet  distribution.   Bhattacharyya distance measures the similarity of two discrete or continuous probability distributions. The  adopted Bhattacharyya distance \cite{rauber2008bhattacharyya} for comparing dirichlet distributions were used for our purpose please refer to appendix for the proofs. Similarly KL divergence also measures the similarity of two discrete or continuous probability distributions. The only difference being that KL divergence is unsymmetrical while Bhattacharyya distance is symmetric.
+
+We generated dataset with increasing number of observations from 30 to 1000. For each sample set we trained both the models and their corresponding distance with the ground truth were recorded. The process was repeated 1000 times for each sample set.
+
+
+
 \begin{figure}[htp]
 \centering
-\includegraphics[width=\textwidth]{images/bhatta-distance.png}
-\caption[Model evaluation : Bhattacharyya distance]{Bhattacharyya distance between the ground truth and the learned distributions for different size of training data. }
-\label{}
+
+\begin{subfigure}{.45\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/HDCB-Bhattacharya-Distance.png}
+    \caption{Bhattacharyya distance}
+\end{subfigure}
+\begin{subfigure}{.45\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/HDCB-KL-Distance.png}
+    \caption{Kullback–Leibler divergence}
+\end{subfigure}
+
+\caption[Model evaluation]{Measure of the distance between the learned probabilities and ground truth for models HDC and HDCB. The x-axis represents the different sample size.}
+\label{fig:B-KL-evaluation}
 \end{figure}
 
+Figure~\ref{fig:B-KL-evaluation} comparatively plots the distance with the ground truth with different sample set. As expected with increasing number of sample set the distance between the learned and the ground truth reduces after 500 observations the learning is almost stable and saturated. Also the spread of the results is decreasing with increasing number of samples, thus indicating the model is getting more confident on its learning. 
 
+From the Figure~\ref{fig:B-KL-evaluation} we observe that for 30 observations the Bhattacharyya distance  and KL divergence for the HDCB model is 3 and 125 respectively. While for the HDC model is quite high around 4.5 and 150 respectively. For the HDC model to reduce its distance around to the 3/125 it needs to have a dataset with more than 100 observations, this is shown by the dashed line in the figure. From this we can experiments we can conclusively conclude the HDCB model can learn with less observations as compared to HDC model.
+ 
 
+\section{Discussions}
+
+n this chapter, we presented a Bayesian probabilistic model for learning user preferences in object placement in highly occluded environments like home. We include the information of the absence of the object at particular location to increase the probability of other locations. In extensive experiments carried out using simulated dataset, we demonstrated that the proposed model learns with lesser number of demonstrations as compared to the model which only learns from presence of object observations. Our model combines the features of Beta-Bernoulli and Dirichlet-Categorical models. Our approach enables domestic service robots to learn about user preferences about object location home environments more robustly.
