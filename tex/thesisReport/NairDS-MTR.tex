@@ -5,36 +5,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 % document definition 
-\documentclass[a4paper,11pt,chap, twoside]{report}
-\usepackage[hmarginratio=2:3]{geometry}
+\documentclass[a4paper,11pt,chap, twoside, openright]{report}
+\usepackage[hmarginratio=3:2]{geometry}
 % Use the first command below if you want captions over 1 line indented. A side
 % effect of this is to remove the use of bold for captions. To restore bold,
 % also include the second line below.
 
-%\usepackage[hang]{caption2}     
 
-% to indent subsequent lines of captions
-%\renewcommand{\captionfont}{\bfseries} 
-																			 % 
-% create the following file in the input from the template
 \input{ThesisInformation}
 \input{Preamble}
 
 
 \begin{document}
 \pagenumbering{gobble}
+
+% Declare new goemetry for the title page only.
+\newgeometry{margin=1.4in}
 \input{Title}   
+\cleardoublepage
 \onehalfspacing
 \pagenumbering{roman}
-
+\cleardoublepage
 \include{statementpage}
+\cleardoublepage
 \include{abstract}
-\include{acknowledgement}
+\cleardoublepage
+\include{acknowledgment}
+\cleardoublepage
+% Ends the declared geometry for the titlepage
+\restoregeometry
+%--------------------------
+
 
 \tableofcontents
+\cleardoublepage
 \listoffigures
-
+\cleardoublepage
 \include{00Abbreviations}
+\cleardoublepage
 % the main contents %
 \pagenumbering{arabic}
 \include{introduction}
@@ -45,7 +53,7 @@
 \include{human_location}
 \include{absent_information}
 \include{search}
-
+\include{related_work}
 \include{conclusions}
 % bibliography and appendixes
 \include{bibliography}

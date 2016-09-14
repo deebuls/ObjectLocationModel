@@ -28,9 +28,10 @@ The above mentioned researchers have demonstrated how probabilities about locati
 The robot is assumed to begin with map of the environment, learned knowledge as a probability distributions over where the people and objects might be located and the detection probability for each object and person. The robot can move around in the environment to look for the person or object, perceives the environment. 
 The idea is to use the learned knowledge of the object locations as the first guess (prior ) of the probabilities that the object in question is located in each of the possible object locations \cite{cressie2015statistics}. The prior probabilities suggest which location to search first. If the object is not found in that location, the prior probabilities are then updated (yielding the posterior), and the process is repeated until the object is found. 
 
+The following problem formulation is from \cite[p. 25]{cressie2015statistics}.
 Assume that the domain of interest is a home we call $D_s$, which is made up of n spatial areas. Let $Y_i = 1$ if the object is in the \emph{i}th location, and then $Y_i = 0$ if it is not; $ i = 1, .... , n$. Now as discussed above object detectors can fail to detect the object. So, let $Z_i = 1$ if the object is found in the \emph{i}th location, and $Z_i = 0$ if not.
 
-We can define two terms \emph{detection probability},
+We can define two terms \emph{detection probability} ,
 \begin{equation}
 	p_i = Pr(Z_i = 1| Y_i =1), \qquad  i = 1,...,n,
 \end{equation}

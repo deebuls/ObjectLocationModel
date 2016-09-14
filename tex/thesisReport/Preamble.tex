@@ -8,9 +8,9 @@
 \usepackage{transparent} 
 \usepackage{hyperref}
 \usepackage{tabto}
+\usepackage{wrapfig}
 
-
-\usepackage[final]{graphicx}
+\usepackage[draft]{graphicx}
 %\usepackage{epstopdf}
 \usepackage{url}
 %\usepackage[expert,vargreek]{lucidbrb}
@@ -117,4 +117,24 @@ aboveskip=\bigskipamount,
   \fancyhf{} % remove everything
   \renewcommand{\headrulewidth}{0pt} % remove lines as well
   \renewcommand{\footrulewidth}{0pt}
+}
+\lstset{
+    numbers=none,                
+    tabsize=4,
+    rulecolor=,
+    language=Python,
+        basicstyle=\scriptsize,
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\ttfamily
 }

@@ -1,12 +1,11 @@
 \chapter{Learning user preferences in object placement}
 \label{chapter: object}
 
-As robots achieve long term autonomy and they intend to stay longer in human environments, they should be able to adapt quickly to the corresponding environments and the user.  In a series of interviews to understand the needs of people with robots \cite{pantofaru_exploring_2012} concludes, one of the
-expectation from robots was help in organizing things based on the user preferences. Since they are service robots its acceptable for a new robot to ask for help from its user in the initial days it moves to a new home, for eg. Where to find a cup?. But as the robot stays longer in a home it becomes less acceptable that the robots ask the user for the same questions, i.e. they should have the capabilities to learn from previous information provided by the user. Robots should also be able to reason and learn from its own observations of the user and the environment. It should be have mechanisms to generate new knowledge about the user and environment from all information gathered. For example, the robot can learn about the user preferences in the cutlery used to setup a breakfast table from previous days observations of breakfast tables. In this chapter we look at such one example of knowledge generation based on previous observations, for learning the user preferences in object placement.
+As robots achieve long term autonomy and they intend to stay longer in human environments, they should be able to adapt quickly to the corresponding environments and the user.  In a series of interviews to understand the needs of people with robots \cite{pantofaru_exploring_2012} concludes that one of the
+expectation from robots was help in organizing things based on the user preferences. Since they are service robots its acceptable for a new robot to ask for help from its user in the initial days it moves to a new home. But as the robot stays longer in a home it becomes less acceptable that the robots ask the user for the same questions, i.e. they should have the capabilities to learn from previous information provided by the user. Robots should also be able to reason and learn from its own observations of the user and the environment. It should have mechanisms to generate new knowledge about the user and environment from all information gathered. For example, the robot can learn about the user preferences of the cutlery used to setup a breakfast table from observations of breakfast tables in the past. In this chapter we look at such one example of knowledge generation based on previous observations, for learning the user preferences in object placement.
 
-The main advantage of learning user preference about object placement would be in object search. In classical object search, the search is improved based on the knowledge of object locations in a generic home (For eg: cups are found in kitchen, books in shelves)\cite{samadi_using_2012, joho_learning_2011}. Another use of the user preference will be in organizing the home. Here the robot should know what are the objects default locations, so that the robot can place any misplaced objects back to their locations. Understanding user preferences in organizing objects in home has 
-been studied by  \cite{abdo_collaborative_2014}, where robots learn about user
-preferences in organizing objects, based on the data collected is via crowd-sourcing.  From practical experience we know that even though homes have same base structure in space but the usage of the space is based on the user preferences. Each home is different from other home because of the humans which reside in them use it according to their likes (For eg: some users the keep books on the study table and not on shelves). The proposed methods in this chapter will try to make the robot learn these user preferences specific to each home. So rather than the robot learning object locations in a generic home the proposed methods shall learn object locations in a specific home.
+The main advantage of learning user preference about object placement would be in object search. In classical object search, the search is improved based on the knowledge of object locations in a generic home (For eg: cups are found in kitchen, books in shelves) by \cite{samadi_using_2012, joho_learning_2011}. The above method is good for a new robot but after long time stay, the robot needs to adapt its beliefs for searching based on the users preferences. Another use of the user preference will be in organizing the home. Here the robot should learn  about the default locations of different objects, so that the robot can place any misplaced objects back to their locations. Understanding user preferences in organizing objects in a home has 
+been studied by  \cite{abdo_collaborative_2014}, where robots learn based on the data collected via crowd-sourcing.  From practical experience we know that even though homes have same base structure in space the usage of the space is based on the user preferences. Each home is different from other home because of the humans which reside in them use it according to their likes (For eg: some users the keep books on the study table and not on shelves). The proposed methods in this chapter will try to enable the robot learn these user preferences specific to each home. So rather than the robot learning object locations in a generic home the proposed methods shall learn object locations in a specific home.
 
 
 \begin{figure}[htp]
@@ -18,22 +17,58 @@ Images courtesy : \url{https://www.flickr.com/photos/willowgarage} }
 \label{scenario}
 \end{figure}
 
-As robots achieve long-term autonomy in dynamic human environments, the robots can collect a lot of observations of it environment and the user. These self collected information can be used by the robot to generate knowledge about the user preferences. We explain this with the help of an illustrative example: 
-Consider a domestic robot which has been placed in a home environment with a known map and semantic information of the different locations in the home. The domestic robot while doing its daily activities  makes a record of the objects seen in the environment with their location and time. Now the robot has been asked to bring the coffee mug of the user.
+Autonomous robots in dynamic human environments, convert raw data(eg: image) to information(eg: cup on table) for completing their tasks. If these generated information can be used by the robot to generate knowledge about user preferences. We explain this in the context of the ``make coffee" example introduced in the Chapter~\ref{chapter:Introduction}. 
+Consider a domestic robot which has been placed in a home environment with a known map and semantic information of the different locations in the home. The domestic robot while doing its daily activities over the course of weeks or months, makes a record. Now the robot has been asked to bring the coffee mug of the user.
 The robot has to make a decision which part of the home it has to go to look for
-the coffee mug. The robot can make this decision based on the previous observations of the  location of the coffee mug.
+the coffee mug. The robot can make this decision based on the previous observations of locations of the coffee mug.
 The robot using these previous observations and the time of those observations 
 makes a prediction about where the coffee mug can be found at the current time.
-Based on previous observation it can be inferred that the coffee mug is usually found in any of the following three location dishwasher/platform/cupboard. Assuming that the time now is morning, from previous observations it can be found that the coffee mug was always found  in the dishwasher. The above example illustrate the main aspects of object location prediction we wish to capture in this chapter.
+Based on previous observation it can be inferred that the coffee mug is usually found in any of the following three location dishwasher/counter/cupboard. Assuming that the time now is morning, from previous observations it can be found that the coffee mug was always found  in the dishwasher. The above example illustrate the main aspects of object location prediction we wish to capture in this chapter.
+
+\section{Approach}
+
+We formulate the problem of learning user preference in object placement, by modelling the belief of \emph{finding an object at a location}. The robot tries to learn the chances of the user of keeping an object (eg: cup ) at a location (eg: cupboard). The robot whenever it scans a particular location as illustrated in Figure~\ref{fig:counter_scan}, it records present and absent of objects at that location along-with the time of the scan ~\ref{tab:robot_record}.
+  
+  
+  \begin{minipage}{\textwidth}
+  \begin{minipage}[b]{0.49\textwidth}
+    \centering
+        \includegraphics[width=0.9\textwidth]{images/counter_ano.png}
+
+    \captionof{figure}{Robot scanning kitchen counter}
+    \label{fig:counter_scan}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.49\textwidth}
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+	        Time & Location & Object & Present\\
+        \hline
+        \hline
+	        09.03 & counter & kettle & True\\
+        \hline
+	        09.03 & counter & tea-bag & True\\
+        \hline
+	        09.03 & counter & sugar & True\\
+        \hline
+	        09.03 & counter & cup & True\\
+        \hline
+	        09.03 & counter & plate & False\\
+        \hline
+	        09.03 & counter & milk & False\\
+        \hline
+        \end{tabular}
+      \captionof{table}{Robot record}
+      \label{tab:robot_record}
+    \end{minipage}
+  \end{minipage}
 
 
-The model needs to capture two main elements; first that objects in a human environment are not placed randomly but usually have a certain set of places where they are placed. These places of object placement differ from home to home. These object locations entirely depends on the users preferences.  
-Second, that human behaviour is related to time i.e. Humans have daily routines  and the object locations are influenced by these routines.
-Thus human behaviour not only  has a spatial behaviour but also has a temporal behaviour.
-The model will reason on both user preference of the object placement and the
-object-time relation.
+This recorded information about each object at each location is modelled using Bayesian models to learn about the belief of person placing an object at any location.
 
-We now explain a generative Bayesian model which can capture knowledge about user preference in object placement in the environment.
+The observations made by the robot are boolean values(present or absent). As discussed in chapter~\ref{chapter:basics}, when the data type is boolean we can use the Bernoulli Distribution with a Beta distribution prior to model the observations. To capture the belief at different times of the day, we create 24 Bernoulli variables, one for each hour. For coping with the problem of sparsity of observations in all time periods, we also add a hyper-prior. The addition of the hyper-prior causes of sharing of learning knowledge in one time period with other time periods. The model is called as the \textbf{Hierarchical Beta Bernoulli}  model. In the next section we explain the generative model along with the graphical diagram. 
+
 
 \section{Hierarchical Beta Bernoulli model}
 
@@ -85,12 +120,12 @@ The models are implemented using the PyMC3 probabilistic programming language.
 \FloatBarrier
 \section{Experiments}
 
-We tested our approach on artificially generated datasets as well as on dataset of object locations collected by a long term robot.
-The goal of the experiments were to verify that
+We tested our approach on artificially generated datasets as well as on real dataset of object locations collected by a long term robot.
+The goal of the experiments were to
 \begin{itemize}
-    \item the robot is able to learn the object occurrence probability.
-	\item the minimum number of observations required to learn a pattern.
-	\item the resulting model allows for accurate prediction and control.
+    \item verify that the robot is able to learn the user preference in placing an object at a particular location
+	\item empirically conclude on the minimum number of times a location needs to be scanned.
+	\item evaluate the accuracy of the developed model.
 \end{itemize}
 
 \subsection{Evaluation of number of observations required}
@@ -104,7 +139,32 @@ To quantitatively evaluate the accuracy of the learned model we generated a synt
 \label{simulation}
 \end{figure}
 
-We evaluated the number of observations required to learn a pattern by comparing the learned models  probabilities with the ground truth per time period. The model is trained with increasing number of observations, and the learned probabilities are compared with the ground truth. The procedure is repeated 100 times over different ground truth probabilities. The distance between the two probabilities is shown in Figure \ref{fig:object_simulation_distance}. The dataset is then evaluated for its accuracy by cross validation. Figure \ref {fig:object_simulation_accuracy} plots the accuracy of the model using increasing number of training set. We can observe from the results that with \textbf{25} observations the mean distance is reduced below 0.01 and the accuracy is above 80\%. Thus we can empirically conclude that a minimum of \textbf{25} observations has to be made by the robot to make valid predictions of the object locations. 
+We evaluated the number of observations required to learn a pattern by comparing the learned models  probabilities with the ground truth per time period. The model is trained with increasing number of observations, and the learned probabilities are compared with the ground truth. The procedure is repeated 100 times using different ground truth probabilities.  
+
+\subsubsection*{Bhattacharyya distance}
+We use the Bhattacharyya distance \cite{bhattacharyya1946measure} to quantify the distance between the learned probability and the ground truth. Bhattacharyya distance measures the similarity of two discrete or continuous probability distributions. 
+Let  $p$ and $q$ be two discrete probability distributions over the same domain $X$.The Bhattacharyya co-efficient \cite{bhattacharyya1946measure} is a divergence-type measure between distributions, defined as,
+\begin{equation}
+	BC = \sum_{x\in X}\sqrt{p(x)  q(x)} 
+\end{equation}
+
+If $p(\theta_i)$ and $p(\theta_j)$ represent two Bernoulli distributions, then the Bhattacharyya co-efficient is derived as,
+\begin{equation}
+	BC(p(\theta_i), p(\theta_j)) = \sqrt{p(\theta_i) p(\theta_j)} + \sqrt{p(1- \theta_i) p(1 - \theta_j)}
+\end{equation}
+
+When both the probabilities are same $BC = 1$ . The Bhattacharyya distance is then provided by 
+\begin{equation}
+    D_B = -\log(BC)
+\end{equation}
+
+The Bhattacharyya distance ranges from 0 to $\inf$, with \textbf{0} meaning both probabilities are identical. 
+
+
+
+
+\subsubsection*{Results}
+The distance between the two probabilities is shown in Figure \ref{fig:object_simulation_distance}. The dataset is then evaluated for its accuracy by cross validation. Figure \ref {fig:object_simulation_accuracy} plots the accuracy of the model using increasing number of training set. We can observe from the results that with \textbf{25} observations the mean distance is reduced below 0.01 and the accuracy is above 80\%. Thus we can empirically conclude that a minimum of \textbf{25} observations has to be made by the robot to make valid predictions of the object locations. 
 
 \begin{figure}
     \centering
@@ -121,13 +181,13 @@ We evaluated the number of observations required to learn a pattern by comparing
         \caption{}
         \label{fig:object_simulation_accuracy}
     \end{subfigure}
-    \caption[Evaluation of number of observation required]{Evaluation of number of observation required: Distance between ground truth and learned probabilities \ref{fig:object_simulation_distance}. The accuracy of the learned models using different number of observations \ref{fig:object_simulation_accuracy} }\label{fig:object_simulation_accuracy}
+    \caption[Evaluation of number of observation required]{Evaluation of number of observation required: Distance between ground truth and learned probabilities a. The accuracy of the learned models using different number of observations b }\label{fig:object_simulation_accuracy}
 \end{figure}
 
 \FloatBarrier
 \subsection{Evaluation of Model Accuracy}
 
-In this section we evaluate the accuracy of the model by using a real world dataset. The KTH Object dataset was collected in the Computer Vision and Active Perception lab at KTH Stockholm, by a SCITOS-G5 mobile robot over  the  course  of  five  weeks.  During  this  time  the  robot conducted  between  two  and  six  autonomous  patrol  runs per  day  (weekends  were  excluded),  visiting  three  specific waypoints  during  each  run.  Upon  reaching  a  waypoint,  the robot  would  execute  a  pan-tilt  sweep  and  collect  data  from its RGB-D sensor; the RGB-D frames collected during one sweep were then registered spatially to form an observation of  that  particular  waypoint  at  that  time.  The  KTH  dataset contains  approximately  100 observations  per  waypoint,  and at  each  waypoint, the  dynamic  elements  of the  environment  using  the  ‘MetaRoom’  method  described in \cite{ambrucs2014meta}. These  dynamic  elements  correspond  to  movable  objects such  as  jackets,  backpacks,  laptops,  chairs,  bottles,  mugs, etc. These dynamic clusters,  manually labelled  to obtain 37 different objects, out  of  which  14  tend  to  appear  and  disappear  periodically \cite{krajnik_wheres_2015}. 
+In this section we evaluate the accuracy of the model by using a real world dataset. The KTH Object dataset \cite{krajnik_wheres_2015}, was collected in the Computer Vision and Active Perception lab at KTH Stockholm, by a SCITOS-G5 mobile robot over  the  course  of  five  weeks.  The robot conducts around two to six autonomous patrols per day, around the lab visiting three waypoints. On reaching each waypoint the robot would scan the area using a pan-tilt sweep. In each seep the data from its RGB-D sensor are collected. The KTH dataset contains approximately 100 observations per waypoint. The dynamic objects of the environment were identified  using the `MetaRoom' method by \cite{ambrucs2014meta}. There were 37 different dynamic objects were identified by the algorithms. These objects were manually labelled by \cite{krajnik_wheres_2015}.
 
 \begin{figure}
     \centering
@@ -143,17 +203,27 @@ In this section we evaluate the accuracy of the model by using a real world data
         \caption{}
         \label{fig:robot-view}
     \end{subfigure}
-    \caption[KTH dataset collection]{KTH Dataset collection: SCITOS-G5\footnotemark Robot used for data collection \ref{fig:scitos} \protect. Images \footnotemark as seen by the robot at the different waypoints in the lab \ref{fig:robot-view}}\label{fig:kth-dataset}
+    \caption[KTH dataset collection]{KTH Dataset collection: \cite{SCITOS_G5} Robot used for data collection. Images  as seen by the robot at the different waypoints in the lab (b) \cite{krajnik_wheres_2015} }\label{fig:kth-dataset}
 \end{figure}
 
-\footnotetext{\url{ http://www.hanheide.net/2013/06/brand-new-robot.html}}
-\footnotetext{\url{https://www.youtube.com/watch?v=aTr9KD4XMGc }}
 
 
 
+\subsubsection*{Accuracy }
 
-The first four weeks of the KTH dataset, is used to train the models and the fifth week is used to evaluate the learned model using cross validation. The accuracy results of 37 objects is plotted in \ref{fig:kth_object_evaluation} . 
-Out of the 37 objects \textbf{26} objects have a accuracy rate of above \textbf{70\%} which is denoted by the dotted line. 
+The accuracy is the proportion of correct predictions \cite{scikit-learn} . If $p_i$ is the predicted value of the $i_th$ sample and $o_i$ is the corresponding true value, then the fraction of correct predictions over $n_{samples}$ is defined as 
+
+\begin{equation}
+	accuracy(p, o) = \frac{1}{n_samples} \sum_{i=0}^{n_{samples} -1 }1(p_i = o_i)
+\end{equation} 
+
+where 1(x) is the indicator function.
+
+
+\subsubsection*{Results}
+
+The first four weeks of the KTH dataset is used to train the models and the fifth week is used to evaluate the learned model. The accuracy results of 37 objects is plotted in Figure~\ref{fig:kth_object_evaluation} . 
+Out of the 37 objects \textbf{26} objects have a accuracy rate of above \textbf{70\%} which is denoted by the dotted line. Out of the 26 objects most of the objects were static objects like chair, computers etc. as a result they had good accuracy. While things that are highly random the model is not able to predict accurately.
 
 \begin{figure}[htp]
 \centering
