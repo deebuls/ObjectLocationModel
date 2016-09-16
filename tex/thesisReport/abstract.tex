@@ -5,11 +5,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{abstract}
 
-The goal of this thesis is to enable domestic service robots to gain knowledge about common behaviours and preferences of the user in a non-intrusive manner. Specifically, we address how Bayesian methods can be used to provide a flexible and computationally efficient structure for acquiring knowledge using limited spatio-temporal information collected by these service robots.
 
-Domestic service robots are envisioned to provide assistance to humans both in domestic environments as well as in the industrial context. One of the ways domestic service robots can better serve humans in assisting, is by providing personalized, predictive and context-aware services. Robots can learn observing human activities and work-life patterns of humans and provide predictions that enable time based contextual assistance.  This thesis aims to enable domestic robots to empirically learn about human behaviour and preferences. 
-Robots generate a lot of information using the raw data from its sensors, which is often discarded after use. If these informations are recorded it can be used to generate new knowledge. The thesis aims to generate knowledge about the human preferences and behaviour using these stored informations. The developed approaches in this thesis cover the following two knowledge generation topics: (1) learning about the temporal human location behaviour using previously observed locations (2) learning users preference in object placement. 
-All knowledge generation techniques developed in this thesis are based on Bayesian modelling and been implemented using probabilistic programming languages. They have been evaluated on datasets  collected using real robots as well as on synthetic datasets.
-\todo[inline]{TODO : need to be add results and revise}
-\todo[inline]{All the models were developed using probabilistic programming languages }
+One of the ways domestic service robots can better assist humans is by providing personalized, predictive and context-aware services. Robots can observe human activities and work patterns to provide time-based contextual assistance. This thesis aims to enable domestic robots to empirically learn about human behaviour and preferences. In the current literature, user preferences are learned over a generic home environment, on the contrary we learn preferences over a specific home.
+Robots generate a lot of information using the raw data from their sensors, which is often discarded after use. If this information is recorded, it can be used to generate new knowledge. The thesis proposes models to generate knowledge about user preferences using stored information. The developed approaches in this thesis cover the following two knowledge generation topics: (1) learning user location preferences (2) learning user preferences in object placement. 
+
+All knowledge generation techniques developed in this thesis are based on Bayesian modelling and have been implemented using probabilistic programming languages
+The learned user preferences were used by the robot for predicting: (1) location of non-stationary objects (2) location of users in home and (3) room occupancy.  
+The models were evaluated on three datasets collected over several months containing person and object occurrences in home and office environments. 
+The efficiency of the models was accessed by measuring the accuracy score of each models. Our model for predicting location of non-stationary objects was able to predict with 70\% accuracy for 25 objects, while model for room occupancy could predict for 3 rooms with more than 80\% accuracy. The model for user location preference showed a poor performance of 63\%.
+
 \end{abstract}

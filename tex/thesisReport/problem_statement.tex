@@ -1,4 +1,3 @@
-
 \chapter{Approach}
 \label{cha:approach}
 
@@ -11,7 +10,7 @@ In this thesis we use Bayesian models for representing the learned knowledge abo
 	    P(l_i | t_i, D_{o_i})
     \end{equation}
 
-   Various temporal information related to periodic patterns can be implied by $T$, to indicate the location distribution. Such as specific hours of the day (11:00 pm), a day of the week(Friday), or a month of the year(February). We use the \textbf{temporal state} to represent such information and introduce $r(t)$ to denote temporal state extracted from time $T$,.  Dependency on the type of the temporal state $r(t)$ can be a different function. For example,if $r(t)$ denotes temporal state in terms of hours of the day then $r(t) \in {0,1 ... , 23}$, if $r(t)$ denotes temporal state in terms of day of the week, then $r(t) \in {0,1, .. 6}$ . Without loss of generality, we use $r(t)$ to denote a type of temporal state in the following description, Equation \ref{eq:1} is reformulated as 
+   Various temporal information related to periodic patterns can be implied by $T$, to indicate the location distribution, such as specific hours of the day (11:00 pm), a day of the week (Friday), or a month of the year (February). We use the \textbf{temporal state} to represent such information and introduce $r(t)$ to denote temporal state extracted from time $T$,.  Dependency on the type of the temporal state $r(t)$ can be a different function. For example, if $r(t)$ denotes temporal state in terms of hours of the day then $r(t) \in {0,1 ... , 23}$, if $r(t)$ denotes temporal state in terms of day of the week, then $r(t) \in {0,1, .. 6}$. Without loss of generality, we use $r(t)$ to denote a type of temporal state in the following description, Equation \ref{eq:1} is reformulated as 
     
     \begin{equation}
 	    P( l_i | r(t), D_{o_i})
@@ -28,7 +27,7 @@ In this thesis we use Bayesian models for representing the learned knowledge abo
     \item $P(l_i | D_{o_i})$ : Spatial context
     \end{itemize}
     
-     The spatial context $P(l_i | D_{o_i})$ indicates the location distribution of object or person $o_i$ given the previous observed location $D_{o_i}$ . The temporal context $P(r(t) | l_i, D_{o_i})$ represents the temporal state distribution of object $o_i$, being observed at location $l_i$ with corresponding $D_{o_i}$
+     The spatial context $P(l_i | D_{o_i})$ indicates the location distribution of object or person $o_i$ given the previous observed location $D_{o_i}$. The temporal context $P(r(t) | l_i, D_{o_i})$ represents the temporal state distribution of object $o_i$, being observed at location $l_i$ with corresponding $D_{o_i}$
     
 
 
@@ -52,47 +51,49 @@ In this thesis we use Bayesian models for representing the learned knowledge abo
 \end{tabular}
 % section Problem formulati (end)
 
-\section{Model Implementation}
-
-In this thesis, we use probabilistic approach to knowledge acquisitions, which models learning and reasoning as inference in complex probabilistic models. In particular, we examine how robots can quantitatively  develop knowledge from information,  modelled using  functional probabilistic programming languages. 
 
 
-\section{DIKW pyramid}
-\todo[inline]{TODD}
+\section{Data-Information-Knowledge-Wisdom Hierarchy}
+
+The knowledge generation in the thesis is modelled as a Data-Information-Knowledge-Wisdom (DIKW) Hierarchy\citep{rowley2007wisdom} \citep{ackoff1989data}. \cite{niemueller2012generic} classified the content of the robot mind into this hierarchy and presented a way of knowledge generation using the hierarchy. 
+\begin{figure}[htp]
+\centering
+\includegraphics[width=0.8\textwidth]{images/data-info-knowledge.pdf}
+\caption{Knowledge tree for learning user preference in cup positions. Adopted from \citep{niemueller2012generic}}
+\label{fig:dikw}
+\end{figure}
+We use this approach in the knowledge generation of user preferences in our thesis. The approach can be explained using the Figure~\ref{fig:dikw}, where knowledge about the user preference of the cup is generated. The \emph{Data} from different sensors are accessed by the robot. The Data is used to generate \emph{Information} about the location of the cup in the environment. As time progresses more information of the location of the cup are recorded. This recorded informations can then be processed to generate \emph{Knowledge} about the user preferences in cup placement.
+
+
 
 \section{Architecture}
-\todo[inline]{TODO
-Robot uses records it sensors values ,
-Robot uses the sensors readings and converts to information ,
-the information is stored in robot memory. 
-On regular basis or on trigger the the knowledge generation software is trigger which generates the knowledge and adds back to the robot memory 
-
-}
 \label{cha:}
+The overall architecture of learning user preferences can be summarized in the Figure~\ref{fig:architecture}. The robot while, interacting with the environment records all the data (e.g. rgb image ) accumulated by it. Some of the data is used by the robot and converted into useful information (e.g. object location) for completing a particular task. The robot stores this information also in its robot memory. Now periodically or on trigger the robot queries its memory and gathers clusters of information (e.g all the locations of a cup). This queried information is then processed and knowledge is generated from it. This knowledge is again stored back into the robot memory.
+
 \begin{figure}[htp]
 \centering
 \includegraphics[width=\textwidth]{images/integration.png}
 \caption{Integration with the robot memory}
-\label{}
+\label{fig:architecture}
 \end{figure}
 
 
-\section{Notation and terminology}
+\section{Notation and Terminology}
 Throughout the thesis, we are referring to entities such as ``locations," ``hours," and ``observations".
-This helps to guide intuition and maintain continuity of thoughts as we guide through related problems involving collections of data.
+This helps to guide intuition and maintain continuity of thoughts as we go through related problems involving collections of data.
 Formally we define the following terms:
 \begin{itemize}
 	\item A \emph{location} is the basic unit of the discrete data, defined to be an item from a set of locations. These locations can be rooms of the home or different compartments of the kitchen. 
-	\item An \emph{period} is a sequence of $N$ locations denoted by $\textbf{p} = {x_1;x_2;:::;x_N}$. These represents the locations observed in a particular period of time.
-	\item A \emph{observations} is a collection of $T$ periods denoted by $ D = {p_1;p_2;:::;p_T}$. These represents the complete data collected by the robot.
+	\item A \emph{period} is a sequence of $N$ locations denoted by $\textbf{p} = {x_1;x_2; \dots ;x_N}$. These represents the locations observed in a particular period of time.
+	\item An \emph{observations} is a collection of $T$ periods denoted by $ D = {p_1;p_2; \dots ;p_T}$. These represents the complete data collected by the robot.
 \end{itemize}
 
 
-We also use the entities such as ``data," ``information," and ``knowledge" throughout the thesis. These can be define as:
+We also use the entities such as ``data," ``information," and ``knowledge" throughout the thesis \cite{niemueller2012generic}. These can be defined as:
 \begin{itemize}
-	\item A \emph{data} corresponds to sensor output. All the output of the sensors recorded by the robot is a data. For example RGB image from a camera, depth points from depth sensors etc.
-	\item A \emph{information} corresponds to output of algorithms which process on the above data. For example vision algorithms process RGB images data to extract information of objects or persons in the image.
-	\item A \emph{knowledge} corresponds to output of algorithms which process on the above information. For example vision algorithms can process detected object information in consecutive RGB frames to extract knowledge that the object was moving.
+	\item \emph{Data} corresponds to sensor output. All the output of the sensors recorded by the robot is a data. For example, RGB image from a camera, depth points from depth sensors etc.
+	\item \emph{Information} corresponds to output of algorithms which process on the above data. For example vision algorithms process RGB images data to extract information of objects or persons in the image.
+	\item \emph{Knowledge} corresponds to output of algorithms which process on the above information. For example vision algorithms can process detected object information in consecutive RGB frames to extract knowledge that the object was moving.
 \end{itemize}
 
 % section  Things to study (end)

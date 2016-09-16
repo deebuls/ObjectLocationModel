@@ -20,7 +20,7 @@
 \pagenumbering{gobble}
 
 % Declare new goemetry for the title page only.
-\newgeometry{margin=1.4in}
+%\newgeometry{margin=1.4in}
 \input{Title}   
 \cleardoublepage
 \onehalfspacing
@@ -36,7 +36,7 @@
 \restoregeometry
 %--------------------------
 
-
+\onehalfspacing
 \tableofcontents
 \cleardoublepage
 \listoffigures
@@ -46,6 +46,7 @@
 % the main contents %
 \pagenumbering{arabic}
 \include{introduction}
+\include{related_work}
 \include{basics}
 \include{problem_statement}
 \include{object_placement}
@@ -53,11 +54,10 @@
 \include{human_location}
 \include{absent_information}
 \include{search}
-\include{related_work}
 \include{conclusions}
 % bibliography and appendixes
 \include{bibliography}
-\include{appendix}
+
 %\emptypage
 %\emptypage
 

@@ -1,18 +1,19 @@
-\chapter{Modelling Users Location Preference }
+\chapter{Modelling User Location Preferences }
 \label{chapter:Human location}
 Domestic service robots in future should be able to gather knowledge about all the locations in the home, the user likes to hang around. Additionally they should also know the time period when the users occupy their favourite places. This acquired knowledge of the users location preference shall enable the robots to make informed decisions while assisting the user. For example what time to clean a particular room based on least unoccupied time period or when to turn on the heater of the room. 
 
-In this chapter we focus on this knowledge accession of users location preference based on spatio-temporal observations made by the robot. The advancement in long term autonomous navigation \cite{krajnik_life-long_2015} and the rapid adoption of databases in the robots \cite{niemueller2012generic}, has made the information collection for such knowledge generation possible in service robots. However even with these advancements there are some challenges which still needs to be addressed.  In more details, these challenges are the (i) modelling users location preference (ii) prediction of users future locations (iii) learning all these with sporadic observations made by the robots. 
+In this chapter we focus on this knowledge accession of users location preference based on spatio-temporal observations made by the robot. The advancement in long term autonomous navigation \cite{krajnik_life-long_2015} and the rapid adoption of databases in the robots \cite{niemueller2012generic}, has made the information collection for such knowledge generation possible in service robots. However even with these advancements there are some challenges which still needs to be addressed.  In more details, these challenges are the  (i) modelling users location preference  (ii) prediction of users future locations  (iii) learning all these with sporadic observations made by the robots. 
 
-Significant progress has been made the problem by researchers in the field of human location behaviour, which is to learn the patterns in human location outdoors. Approaches for learning routine mobility  range from purely temporal (\cite{mcinerney2013modelling, scellato2011nextplace}), spatial (\cite{gao2012exploring,song2006evaluating}), to a combination  of  both  (\cite{eagle2009eigenbehaviors}). Non-parametric Bayesian methods are also gaining popularity given their ability to refine models as more data arrives. Chen et al. (2012) used a Gaussian process to model congestion on road networks, while Gao et al. (2012) used a hierarchical Pitman Yor process to model check-in behaviour on location-based social networks. Indoor human location behaviour was studied by \cite{krajnik_wheres_2015} using Fourier transform methods and Gaussian mixture models. 
+Significant progress has been made the problem by researchers in the field of human location behaviour, which is to learn the patterns in human location outdoors. Approaches for learning routine mobility  range from purely temporal  (\cite{mcinerney2013modelling, scellato2011nextplace}), spatial  (\cite{gao2012exploring,song2006evaluating}), to a combination  of  both   (\cite{eagle2009eigenbehaviors}). Non-parametric Bayesian methods are also gaining popularity given their ability to refine models as more data arrives. Chen et al.  (2012) used a Gaussian process to model congestion on road networks, while Gao et al.  (2012) used a hierarchical Pitman Yor process to model check-in behaviour on location-based social networks. Indoor human location behaviour was studied by \cite{krajnik_wheres_2015} using Fourier transform methods and Gaussian mixture models. 
 
 While \cite{krajnik_wheres_2015}  work is first step towards learning human mobility behaviour in indoor environments, it failed to address the challenge of sparse dataset in domestic robots. As we have discussed earlier the observations on which the knowledge has to be learned, are sparse. We aim to demonstrate in this chapter that, by using Bayesian models, we can capture the human behaviour patterns in a sparse dataset.
 
 We build Bayesian models which incorporate explicit domain knowledge and the structural knowledge about our data. Human behaviours are periodic in nature with a daily cycle. The models developed use this domain knowledge to extract the patterns emerging from the data caused by periodicity.
 
-\section{Dirichlet Categorical model }
 
-Dirichlet Categorical(DC) model  is a two-level Bayesian model. The basic idea is that observations of each time period is characterized by a distribution over the possible locations.
+\section{Dirichlet Categorical Model }
+
+Dirichlet Categorical (DC) model  is a two-level Bayesian model. The basic idea is that observations of each time period is characterized by a distribution over the possible locations.
 
 In chapter \ref{chapter: object} and \ref{chapter:occupancy} we learned the pattern in the user preference in a single location. For modelling single location based on the presence and absence data we used the Bernoulli distribution to quantify the preference. Here we would like to model the user preference over multiple location in a single model. For modelling more than 2 discrete outcomes, we can use Multinomial or Categorical distribution. In our model we have selected Categorical distribution as the input data to our problem comes sequentially. 
 
@@ -27,13 +28,13 @@ The Dirichlet-Categorical model is the generalization of the Beta-Binomial model
 \centering
 
 \tikz {
-\node [const]                  (alpha) {$\alpha$};
-\node [below=of alpha, latent]  (theta) {$\theta_i$};
-\node [below=of theta, obs]     (x)     {$x_{ij}$};
+\node [const]                   (alpha) {$\alpha$};
+\node [below=of alpha, latent]   (theta) {$\theta_i$};
+\node [below=of theta, obs]      (x)     {$x_{ij}$};
 \edge {alpha} {theta};
 \edge {theta} {x};
-\plate {trials} {(x)} {j location};
-\plate {bags} {(theta)(x)(trials)} {i time};
+\plate {trials} { (x)} {j location};
+\plate {bags} { (theta) (x) (trials)} {i time};
 }
 
 \end{minipage}%
@@ -43,10 +44,10 @@ The Dirichlet-Categorical model is the generalization of the Beta-Binomial model
 	\alpha = <1, 1, .... , 1 > 
 \end{equation*}
 \begin{equation*}
-	\theta_i  \sim Dirichlet(\alpha)
+	\theta_i  \sim Dirichlet (\alpha)
 \end{equation*}
 \begin{equation*}
-	x_{ij} \sim Categorical(\theta_i)
+	x_{ij} \sim Categorical (\theta_i)
 \end{equation*}
 \end{minipage}
 \caption[Dirichlet categorical graphical model representation]{Graphical model representation of DCM. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
@@ -68,7 +69,7 @@ The $ x_{ij}$ are the only observable variables, and the other variables are lat
 
 Observations made only by a domestic robot using internal sensors and not using any external sensors creates the serious problem of sparsity. There are very much likely that some time periods there will be no observations available to learn. Maximum likelihood estimates of the categorical parameters assign uniform probability to the locations in these time periods. The standard approach to cope with this problem is to sharing statistical strength between time periods: it is as if the location we observe for each time period also provides weaker indirect location relevant to other time periods. In machine learning and statistical science this phenomenon is often called \emph{learning to learn} or \emph{transfer learning}. Intuitively, knowing something about the location of person in the 9'o clock can help in gaining some information at 10'o clock. 
 
-By placing a Dirichlet hyper-prior on the several Dirichlet parameter we obtain the  Hierarchical Dirichlet Categorical (HDC) model. The hyper-prior makes it possible for sharing the learned knowledge from one prior to another. Thus learning about the location pattern at a higher level of abstraction helps to share it with the lower levels which have no observations.
+By placing a Dirichlet hyper-prior on the several Dirichlet parameter we obtain the  Hierarchical Dirichlet Categorical  (HDC) model. The hyper-prior makes it possible for sharing the learned knowledge from one prior to another. Thus learning about the location pattern at a higher level of abstraction helps to share it with the lower levels which have no observations.
 
 The probabilistic graphical model of  hierarchical model is shown in Figure \cite{hdcm}
 
@@ -79,15 +80,15 @@ The probabilistic graphical model of  hierarchical model is shown in Figure \cit
 \centering
 
 \tikz {
-\node [const]                   (alpha) {$\alpha$};
-\node [below=of alpha, latent]  (beta)  {$\beta$};
-\node [below=of beta, latent]   (theta) {$\theta_i$};
-\node [below=of theta, obs]     (x)     {$x_{ij}$};
+\node [const]                    (alpha) {$\alpha$};
+\node [below=of alpha, latent]   (beta)  {$\beta$};
+\node [below=of beta, latent]    (theta) {$\theta_i$};
+\node [below=of theta, obs]      (x)     {$x_{ij}$};
 \edge {alpha} {beta};
 \edge {beta} {theta};
 \edge {theta} {x};
-\plate {trials} {(x)} {j location};
-\plate {bags} {(theta)(x)(trials)} {i time};
+\plate {trials} { (x)} {j location};
+\plate {bags} { (theta) (x) (trials)} {i time};
 }
 
 \end{minipage}%
@@ -97,13 +98,13 @@ The probabilistic graphical model of  hierarchical model is shown in Figure \cit
 	\alpha = <1, 1, .... , 1 > 
 \end{equation*}
 \begin{equation*}
-	\beta \sim Dirichlet(\alpha)
+	\beta \sim Dirichlet (\alpha)
 \end{equation*}
 \begin{equation*}
-	\theta_i  \sim Dirichlet(\beta)
+	\theta_i  \sim Dirichlet (\beta)
 \end{equation*}
 \begin{equation*}
-	x_{ij} \sim Categorical(\theta_i)
+	x_{ij} \sim Categorical (\theta_i)
 \end{equation*}
 \end{minipage}
 \caption[Hierarchical dirichlet categorical graphical model representation]{Hierarchical Dirichlet Categorical Model. The boxes are ``plates" representing replicates. The outer plates represents hours of a day, while the inner plate represents the choice of locations within each hour.}
@@ -136,22 +137,22 @@ The goal of the experiments are to verify
 \end{itemize}
 
 
-\section{Model learning validation}
+\section{Model Learning Validation}
 
 Before we start learning on the real dataset we want to validate the proposed models using synthetic dataset. The synthetic dataset consist of observations made by a robot generated using known ground truth probabilities. The models learn using the synthetic dataset and generate the learned probabilities. The distance between the learned probability and ground truth probability is used to quantify the learning of the model. 
 
 \subsection{Simulated Dataset: Kitchen Object Dataset}
 
-To demonstrate the proposed approach we have generated a kitchen object dataset. The dataset consist of simulated observations of a cup in a kitchen environment made by a domestic robot \cite{fig:eval_cup}. The robot can scan 4 locations in the kitchen: sink, counter-top, stove and cabinet. The time of the scan is discretized into 3 times of the day: morning, afternoon and night. 
+To demonstrate the learning in the proposed approach we have generated a kitchen object dataset. The dataset consist of simulated observations of a cup in a kitchen environment made by a domestic robot \cite{fig:eval_cup}. The robot can scan 4 locations in the kitchen: sink, counter-top, stove and cabinet. The time of the scan is discretized into 3 times of the day: morning, afternoon and night. 
 
 The generative process for each possible observation in the dataset 
 \begin{itemize}
-    \item Choose $ \theta \sim Dirichlet(\alpha)$ (Distribution of object over location-time)
+    \item Choose $ \theta \sim Dirichlet (\alpha)$  (Distribution of object over location-time)
     \item Choose randomly the time period $i$.
-	\item Choose the location $x_n$ $\sim$ Categorical$(\theta_i)$ , where the object was observed.
+	\item Choose the location $x_n$ $\sim$ Categorical$ (\theta_i)$ , where the object was observed.
 	\end{itemize}
 
-Ground truth of the distribution in the object location distribution over time in shown in Figure \ref{absent-gt}. The figure represents the hinton plot of the underlying Dirichlet distributions. Hinton plot are a way of visualizing probabilities. The size of the white square in the plot quantifies the belief of the probability. Higher the size of the box higher the probability. Thus for probability 1 we have a complete white box and gray means 0 probability. In the ground truth probability in Figure \ref{fig:eval_gt} the each row represents the distribution of the object cup at the particular time period. We see a big white box at location:sink and time:night on the bottom left of the plot, while all other boxes for row night are comparatively small. This signifies that the box is more likely to be found in the sink in the night than the other places.
+Ground truth of the distribution in the object location distribution over time in shown in Figure \ref{absent-gt}. The figure represents the hinton plot of the underlying Dirichlet distributions. Hinton plot are a way of visualizing probabilities. The size of the white square in the plot quantifies the belief of the probability. Higher the size of the box higher the probability. Thus for probability 1 we have a complete white box and gray means 0 probability. In the ground truth probability in Figure \ref{fig:eval_gt} the each row represents the distribution of the object cup at the particular time period. We see a big white box at location:sink and time:night on the bottom left of the plot, while all other boxes for row night are comparatively small. This signifies that the box is more likely to be found in the cabinet in the night than the other places.  We evaluate our models on these synthetic observations.
 
 \begin{figure}
     \centering
@@ -161,22 +162,21 @@ Ground truth of the distribution in the object location distribution over time i
         \label{fig:eval_cup}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
+      % (or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.5\textwidth}
         \includegraphics[width=\textwidth]{images/eval_ground_truth.png}
         \caption{}
         \label{fig:eval_gt}
     \end{subfigure}
-    \caption[Model Validation dataset generation]{Simulated dataset generationf of the cup in different location at different times of the day. Simulated cup locations ground truth probability distribution.
+    \caption[Model Validation dataset generation]{Simulated dataset generation of the cup in different location at different times of the day. Simulated cup locations ground truth probability distribution.
 The x-axis represents the locations the y axis represents the timezones. The size of the white box indicates the probability of the object presence.}
 \label{}
 \end{figure}
 
 
-From the ground truth we can observe that there is higher probability to find the object in the sink during night time and in the cabinet during the other time periods. We evaluate our models on these synthetic observations.
 
 
-\subsection{Learned probability visualization}
+\subsection{Posterior Probability Check}
 The first method was to visually compare the learned probabilities with the ground truth.  Figure~\ref{fig:eval_gt} we can visually analyse the difference between the learned models of both DC model and HDC model. The leftmost plot \ref{fig:eval_gt} as explained above is the ground truth probabilities from which the observations were generated. We generated a dataset with \textbf{100} observations. The models use the observations and creates its posterior distribution. The middle plot \ref{fig:eval-dc} is the learned posterior probabilities using the DC model while the last plot \ref{fig:eval-hdc} is the posterior probabilities using the DC model presented in this chapter. 
 
 Visually we can observe from the plots both the posterior probabilities of both the models are similar to the ground truth probabilities. Thus we can conclude that the proposed models are converging to the true probabilities. In the next section we quantitatively compare the models using different data size.
@@ -207,8 +207,37 @@ Visually we can observe from the plots both the posterior probabilities of both 
 The goal of the experiments is to empirically validate both Dirichlet-Categorical and Hierarchical-Dirichlet-Categorical model 
 learning using different data size. We also validate that HDC can compensate  for lack of observations in some time period by sharing information.
 
-We employ two methods for evaluating the performance of the devloped models on the synthetic dataset. We use the adopted Bhattacharyya distance \cite{bhattacharyya1946measure} and Kullback–Leibler divergence \cite{kullback1951information} (KL Divergence)to quantify the distance between the simulated and the learned Dirichlet distribution.   Bhattacharyya distance measures the similarity of two discrete or continuous probability distributions. The distance ranges from 0 to $\inf$ with \textbf{0} meaning both probabilities are identical. The  adopted Bhattacharyya distance \cite{rauber2008bhattacharyya} for comparing dirichlet distributions were used for our purpose please refer to appendix for the proofs. Similarly KL divergence also measures the similarity of two discrete or continuous probability distributions. Even for KL divergence, 0 signifies both probabilities are identical.  The only difference being that KL divergence is unsymmetrical while Bhattacharyya distance is symmetric. 
+We employ two methods for evaluating the performance of the developed models on the synthetic dataset. We use the adopted Bhattacharyya distance \cite{bhattacharyya1946measure} and Kullback–Leibler divergence \cite{kullback1951information}  (KL Divergence)to quantify the distance between the simulated and the learned Dirichlet distribution.   
 
+\subsection{Bhattacharyya Distance}
+Bhattacharyya distance measures the similarity of two discrete or continuous probability distributions. The distance ranges from 0 to $\inf$ with \textbf{0} meaning both probabilities are identical. The  adopted Bhattacharyya distance \cite{rauber2008bhattacharyya} for comparing dirichlet distributions is given by :
+\begin{multline}
+	D_B (Dir_a (x_1, \dots ,x+n), Dir (y_1, \dots , y_n)) = \nonumber\\
+	 \Gamma \Bigg ( \frac{1}{2}  \sum_{i \in {1, \dots, n}} x_i +  \frac{1}{2}\sum_{i \in {1, \dots, n}} y_i\Bigg) + 
+	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma  (x_i) + 
+	\frac{1}{2}  \sum_{i \in {1, \dots, n}} \Gamma  (y_i) - \\ 
+	\sum_{i \in {1, \dots, n}} \Gamma \bigg (\frac{1}{2}  (x_i + y_i) \bigg) - \frac{1}{2}  \Gamma \Bigg (  \sum_{i \in {1, \dots, n}} x_i \Bigg) + \frac{1}{2}  \Gamma \Bigg ( \sum_{i \in {1, \dots, n}} y_i\Bigg)
+\end{multline}
+
+\subsection{Kullback–Leibler Divergence}
+Similarly KL divergence also measures the similarity of two discrete or continuous probability distributions. Even for KL divergence, 0 signifies both probabilities are identical.  
+The KL divergence between two distributions $p$ and $q$ is given by
+\begin{equation*}
+	KL (p||q) = \int p (x) \log \frac{p (x)}{q (x)} dx = \left < \log \frac{p (x)}{q (x)}  \right>_{p (x)}
+\end{equation*}
+
+Lets suppose we have two Dirichlet distributions $p$ and $q$ with parameters $\alpha$ and $\beta$ respectively, then the KL divergence between Dirichlet distributions\cite{kurt2013} is given by
+\begin{equation*}
+	\begin{split} 
+ KL (p||q) &= \log \Gamma (\alpha_0) - \sum_{k=1}^K \log \Gamma (\alpha_k)   
+ - \log \Gamma (\beta_0) \\ &+ \sum_{k=1}^K \log \Gamma (\beta_k)  + \sum_{k=1}^K  (\alpha_k – \beta_k)  (\psi (\alpha_k)-\psi (\alpha_0)) 
+\end{split}
+\end{equation*}
+
+
+The only difference being that KL divergence is unsymmetrical while Bhattacharyya distance is symmetric. 
+
+\subsection{Results}
 We generated dataset with increasing number of observations from 20 to 800. For each observation set we trained both the models and their corresponding distance with the ground truth were recorded. The process was repeated 100 times for each sample set.
 
 \begin{figure}[htp]
@@ -238,7 +267,7 @@ From the figure we can also conclude that when the observations are very few the
 We have validated the working of the models on synthetic dataset in this section we validate HDC model on real world dataset. The aim of the experiments is to learn human location preference on real world dataset of location of a human in a house. We employ two methods for evaluating the performance of preference learning models. In addition to the traditional \emph{accuracy} measurements, we also evaluate the models based on the \emph{mean time to find the person}.  In the following section we explain the data collection procedure, data processing to information and then the two evaluation procedures.
  
 \subsection{Aruba Dataset}
-In our thesis, we have used a  publicly-available  dataset Aruba, published by the Lincoln Center for Autonomous Systems(LCAS). The dataset is of a person's location in a home collected at a smart apartment by the Center for Advanced Studies in Adaptive Systems(CASAS) \cite{aruba} .
+In our thesis, we have used a  publicly-available  dataset Aruba, published by the Lincoln Center for Autonomous Systems (LCAS). The dataset is of a person's location in a home collected at a smart apartment by the Center for Advanced Studies in Adaptive Systems (CASAS) \cite{aruba} .
 
 The testbed where the dataset was collected is a  three-bedroom apartment located on the Washington State University that is part of CASAS smart home project \cite{aruba}. 
 
@@ -252,7 +281,7 @@ The testbed where the dataset was collected is a  three-bedroom apartment locate
         \label{aruba}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
+      % (or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.5\textwidth}
         \includegraphics[width=\textwidth]{images/aruba-data.png}
         \caption{Heatmap}
@@ -265,14 +294,14 @@ The testbed where the dataset was collected is a  three-bedroom apartment locate
 
 As shown in Figure~\ref{aruba}, the smart apartment test bed includes three bedrooms, one bathroom, a kitchen, and a living / dining room.  The apartment is equipped with motion sensors distributed approximately 1 meter apart throughout the space. The Aruba dataset was extracted from these motion sensor dataset provided by CASAS. The dataset contains the location of a person in the apartment every minute for 16 weeks.
 
-We process the dataset and  order it as a (hour,location) tuple. We visualize the dataset as a heatmap over locations distributed over different periods. As explained in chapter~\ref{sec:Problem formulation}, we try to learn daily patterns by dividing the observations into per hour periods. As we can see there are some prominent patterns present which can be learned. For example the usage of the bedroom, living room, outside and kitchen.
+We process the dataset and  order it as a  (hour,location) tuple. We visualize the dataset as a heatmap over locations distributed over different periods. As explained in chapter~\ref{sec:Problem formulation}, we try to learn daily patterns by dividing the observations into per hour periods. As we can see there are some prominent patterns present which can be learned. For example the usage of the bedroom, living room, outside and kitchen.
 
 A histogram visualization of the observations over different location in the home is show in Figure~\ref{aruba-hist}
 
 \begin{figure}[htp]
 \centering
 \includegraphics[width=\textwidth]{images/aruba-hist.png}
-\caption[Aruba dataset histogram]{Aruba Dataset Histogram : Each box corresponds to histogram of each locations. The x - axis represents the time of the day(0-24) }
+\caption[Aruba dataset histogram]{Aruba Dataset Histogram : Each box corresponds to histogram of each locations. The x - axis represents the time of the day (0-24) }
 \label{aruba-hist}
 \end{figure}
 
@@ -294,14 +323,14 @@ After sparsification by randomly selecting 5 readings per day the dataset is red
 \FloatBarrier
 
 
-\subsection{Comparison with state-of-art machine learning algorithms}
+\subsection{Comparison With State-Of-Art Machine Learning Algorithms}
 
-In this section we evaluate the predictive capabilities of our learned model. The accuracy of the predictions are measured and then compared with other state of the art machine learning algorithms. Two state-of the-art machine learning algorithms: Support Vector Machine(SVM)\cite{boser1992training, cortes1995support} and Random Forest \cite{breiman2001random, geurts2006extremely}. Scikit-learn \cite{sklearn_api} implementation of the algorithm were used for testing.
+In this section we evaluate the predictive capabilities of our learned model. The accuracy of the predictions are measured and then compared with other state of the art machine learning algorithms. Two state-of the-art machine learning algorithms: Support Vector Machine (SVM)\cite{boser1992training, cortes1995support} and Random Forest \cite{breiman2001random, geurts2006extremely}. Scikit-learn \cite{sklearn_api} implementation of the algorithm were used for testing.
 
-The goal of learning users location preference is to predict the location of the user based. We interpret the problem as a supervised machine learning with known input and outputs.In supervised learning the data comes a finite learning set $L = (X, y)$ where, $X = input values$ and $y = output values$. 
+The goal of learning users location preference is to predict the location of the user based. We interpret the problem as a supervised machine learning with known input and outputs.In supervised learning the data comes a finite learning set $L =  (X, y)$ where, $X = input values$ and $y = output values$. 
 For our problem statement the input is single feature, the time of the observation $X = [time]$, the output is the location of the person $y=[location]$
 
-The learning was conducted using training set of different sizes, ranging from 0.0003\%(484 observations i.e. around 5 observations per day by the robot) to 0.2\%(32256 observations) of the dataset. The remaining data was used as testing set. The accuracy score for the classification is plotted in Figure~\ref{fig:SVM_vs_DCM}. 
+The learning was conducted using training set of different sizes, ranging from 0.0003\% (484 observations i.e. around 5 observations per day by the robot) to 0.2\% (32256 observations) of the dataset. The remaining data was used as testing set. The accuracy score for the classification is plotted in Figure~\ref{fig:SVM_vs_DCM}. 
 
 \begin{figure}
     \centering
@@ -322,9 +351,9 @@ As per the accuracy plot there is no considerable difference between the accurac
 \subsection{Search time evaluation}
 The models were also evaluated on the basis of the \emph{search time} to find the person. As mentioned above the goal of modelling human presence is to predict the persons location and reduce the time of search. Thus by calculating the time required to search the person based on the predictions of the model we can evaluate the accuracy of the learning.
 
-\cite{krajnik_wheres_2015} in their seminal paper have proposed a path-planning search algorithm. This algorithm is used to determine the shortest path to be taken by the robot based on each locations probability. Thus it goes first to the most probable location first, then to other locations in decreasing order of the probabilities. \cite{krajnik_wheres_2015} solve the problem of learning preference of user location using temporal models. Two temporal models, frequency map enhancement  model (FreMEn) and periodic Gaussian model(PerGaM) were used to learn the location preferences. 
+\cite{krajnik_wheres_2015} in their seminal paper have proposed a path-planning search algorithm. This algorithm is used to determine the shortest path to be taken by the robot based on each locations probability. Thus it goes first to the most probable location first, then to other locations in decreasing order of the probabilities. \cite{krajnik_wheres_2015} solve the problem of learning preference of user location using temporal models. Two temporal models, frequency map enhancement  model  (FreMEn) and periodic Gaussian model (PerGaM) were used to learn the location preferences. 
 
-We compare our developed model HDC along-with the FreMEn model based on the search time. A 'Static' model represented by static probability is used as a reference. Out of the 16 weeks of the Aruba dataset, first 4 weeks were used by \cite{krajnik_wheres_2015} to learn the models and last 12 weeks were used for testing. While in our case we learned using the sparse Aruba dataset (~550 observations), and testing using same the last 12 weeks as above.
+We compare our developed model HDC along-with the FreMEn model based on the search time. A 'Static' model represented by static probability is used as a reference. Out of the 16 weeks of the Aruba dataset, first 4 weeks were used by \cite{krajnik_wheres_2015} to learn the models and last 12 weeks were used for testing. While in our case we learned using the sparse Aruba dataset  (~550 observations), and testing using same the last 12 weeks as above.
 
 \begin{figure}[htp]
 \centering
@@ -336,13 +365,13 @@ We compare our developed model HDC along-with the FreMEn model based on the sear
 As shown in Figure~\ref{fig:search_time} that compared to the stationary models the temporal model and our Bayesian models perform better in search time. The average search time of the temporal models are better than the Bayesian model.
 
 \section{Discussions}
-In this chapter, we presented an approach to learn the user location preference from previous observations.  In chapter \ref{chapter:occupancy} the models captured knowledge about each location separately, while in this chapter the models are able to capture knowledge about multiple locations can be captured in a single model. 
 
-In an extensive experiments on synthetic dataset, we found that our model is capable of learning underlying patterns in user preferences. In first set of experiments we did a sanity check of our learning by visualizing the learned probability. Then we compared DC and HDC model and validated how adding a hyper-prior helps learning when the observations are sparse. Furthermore, we evaluated the performance of the models predicting capability on a real world dataset, where the accuracy result were around 63\% . The reason for such low accuracy result even with increasing number of dataset, can be explained by \cite{Bishop20120222} reasoning of ``Large" dataset. The author explains that learning is bad in some computationally large (size) dataset as their statistical size in relation to the model is small. For example consider a dataset with single input variable and single output variable with linear relationship. In such a dataset the model can learn with modest(20) examples even in the presence of noise. Such a dataset is computationally small but statistically small. However, a image dataset with millions of images for doing object detection is computationally large is statistically small as it may contain only a tiny fraction of the different possible combinations. Thus the Aruba dataset can be described as a computationally large but the statistically small dataset.
+In this chapter, we presented probabilistic model to learn user location preferences.  In chapter \ref{chapter:occupancy} the models captured knowledge about each location separately, while in this chapter the models are able to capture knowledge about multiple locations in a single model. 
 
-Finally, we compared the search time required by the robot to find the person in the home. The average search time of the model is reduced than the static search timings. Thus by learning user preferences the robot can make informed decisions that significantly decrease the time required to complete their task.
+In an extensive experiments on synthetic dataset, we found that our model is capable of learning underlying patterns in user preferences. In first set of experiments we did a sanity check of our learning by visualizing the learned probability. Then we compared DC and HDC model and validated that addition of a hyper-prior improves learning when the observations are sparse. Furthermore, we evaluated the performance of the models predicting capability on a real world dataset, where the predictive accuracy results were around 63\% . The reason for such low accuracy result even with increasing number of dataset, can be explained by \cite{Bishop20120222} reasoning of ``Large" dataset. The author explains that learning is bad in some computationally large  (size) dataset as their statistical size in relation to the model is small. For example, consider a dataset with single input variable and single output variable with linear relationship. In such a dataset the model can learn with modest (20) examples even in the presence of noise. Such a dataset is computationally small but statistically large. However, a image dataset with millions of images for doing object detection is computationally large but statistically small, as it may contain only a tiny fraction of the different possible combinations. The Aruba dataset can be described as a computationally large but the statistically small dataset.
 
-% section  (end)
+Finally, we compared the search time required by the robot to find the person in the home. The average search time of the model is reduced than the static search timings, but the median search time is very high as compared to the temporal model, FreMEn \citep{krajnik_wheres_2015}. One of the reasons can be that our models had a hour level dataset while FreMEn was learned at minute level dataset. Thus by learning user preferences the robot can make informed decisions that decrease the search time.
+% section   (end)
 
 
 

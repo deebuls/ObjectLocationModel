@@ -4,10 +4,20 @@
 \chapter{Related Work}
 
 
+\subsection{User Preferences}
+\label{sub:user preference}
+Researchers have tried to figure out the challenges which will be involved in
+placing robots in a human environment.\cite{pantofaru_exploring_2012} conducts
+interviews with people to understand the needs of people with robots. One of the
+suggestion was help in organizing things based on the user preferences.
+For understanding user preferences in organizing objects in home work has 
+been done by  \cite{abdo2015robot}, where robots learn about user
+preferences in organizing objects. The learning uses data collected by 
+crowdsourced data collected from thousands of users to predict location of 
+novel objects. Our work differs from above as we only use data collected from a single home and predict object locations for the same home. Thus the learning is to understand and reason about a single home and not about a generalized home.
 
-\subsection{Knowledge acquisition}
-Current state of the art knowledge reasoning systems such as KnowRob \cite{c1} use publicly available knowledge bases like Cyc \cite{c2} and Open-Mind Indoor Common Sense (OMICS) database \cite{c3} for gaining base knowledge about environments.  Searching the web to find common places of object locations in mobile robots was demonstrated by \cite{c4}. Although these methods capture generic information of human environments they lack in capturing the knowledge about user preferences and habits. 
-
+\subsection{Knowledge acquisition in mobile robots}
+Current state of the art knowledge reasoning systems such as KnowRob \cite{tenorth2013knowrob} use publicly available knowledge bases like Cyc \cite{lenat1995cyc} and Open-Mind Indoor Common Sense (OMICS) database \cite{singh2002open} for gaining base knowledge about environments.  Although these methods capture generic information of human environments they lack in capturing the knowledge about single user preferences and habits. \cite{niemueller2012generic} proposes the use of document-oriented, schema-less database as robot memory, and using the database to generate knowledge. \cite{mason2012object} also proposes on same front where the robot continuously records its observations and then queries to find knowledge about change in the environments.
 
 
 \subsection{Knowledge enabled search of objects}
@@ -21,30 +31,4 @@ Finally, \cite{joho_learning_2011} illustrated one way of combining both types o
 \cite{wong_using_2014} considered the case of occluded objects. Occluding objects in the front typically need to be moved away to enable further perception and eventual discovery of such occluded objects. 
 % subsection partially known objects (end)
 
-\subsection{Known Non-stationary Objects}
-\label{sub:known non-stationary objects}
-For successful execution of task for mobile-manipulation robots, should have a estimate of the state of the environment. \cite{elfring_semantic_2013} have addressed this problem by creating a model based object tracking framework. It tracks objects in the environment by modelling the uncertainty in the object location.
-\cite{wong_manipulation-based_2013} have proposed a world model representation based on the objects. 
-\cite{krajnik_wheres_2015}  propose a novel  approach  to  mobile  robot
-search  for  non-stationary  objects  in known  environments. They use spatio temporal models for object locations .
-This approach, forms the baseline for comparison of our models. Its the only approach in which long-term data from a single environment is used to make analysis of the object locations. They argue that the  probability of object occurrences at particular locations is function of time.
 
-
-% subsection known non-stationary objects (end)
-
-\subsection{User Preferences}
-\label{sub:user preference}
-Researchers have tried to figure out the challenges which will be involved in
-placing robots in a human environment.\cite{pantofaru_exploring_2012} conducts
-interviews with people to understand the needs of people with robots. One of the
-suggestion was help in organizing things based on the user preferences.
-For understanding user preferences in organizing objects in home work has 
-been done by  \cite{abdo_collaborative_2014}, where robots learn about user
-preferences in organizing objects. The learning uses data collected by 
-crowdsourced data collected from thousands of users to predict location of 
-novel objects. Our work differs from above as we only use data collected from a single home and predict object locations for the same home. Thus the learning is to understand and reason about a single home and not about a generalized home.
-
-
-\subsection{Probabilistic Bayesian Learning}
-
-Bishop Model based machine learning , Bayes model for learning small dataset.
