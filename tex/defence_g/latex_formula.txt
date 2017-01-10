@@ -1,0 +1,7 @@
+\(\displaystyle P(A|B) = \frac{P(B | A ) P(A)}{P(B)}\)
+
+\(\displaystyle {B} \)
+
+\(\displaystyle P(latent|data) = \frac{P(data | latent ) P(latent)}{P(data)}\)
+
+\(\displaystyle P(preferences|data) = \frac{P(data | preferences ) P(preferences)}{P(data)}\)
