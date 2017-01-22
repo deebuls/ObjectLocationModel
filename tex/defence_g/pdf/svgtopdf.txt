@@ -1,0 +1,6 @@
+https://lastlog.de/blog/posts/converting_jessyink_svg_based_presentations_to_png_and_pdf.html
+
+
+
+
+for i in 0 `seq 1 36`; do phantomjs rasterize.js file:///data/dataDeebul/rnd/RecommenderSystemInRobotics/proposal/RndDefence/Nair_Deebul_Rnd_Presentation.svg#${i}_3 slide$(printf %02d $i).png 1024px*768px ; done
