@@ -148,6 +148,15 @@ The Dirichlet distribution is part of the exponential family. It has finite dime
 
 $\alpha$ is a vector with the same size as $\theta$, and it is known as a ``hyperparameter''.  The choice of $\alpha$ determines the shape of $\theta$'s distribution, which you can see by varying it.  If $\alpha$ is simply a vector of ones, we just get a uniform distribution; all $\theta$s are equally probable.
 
+
+\section{Observations Data Types}
+
+Observations can be represented as continuous of discrete. In this thesis we use only discrete data types. The two different discrete data types are:
+\begin{itemize}
+	\item Nominal : Nominal data is data that has variables that are basically a category e.g. : (a, b , c ,d)
+	\item Ordinal : Ordinal data is data that can be  measured. It is numerical in form. e.g. : (1, 2, 3) , (Low, Medium, High)
+\end{itemize} 
+
 The below table summarizes which distribution to use and what are their conjugate priors.
 
 \begin{tabular}[htp]{|c|c|c|}
@@ -210,13 +219,14 @@ Probabilistic programming languages (PPL) are new languages developed to program
 \centering
 \includegraphics[width=0.5\textwidth]{pictures/Lifecycle.png}
 \caption[Steps involved in probabilistic modelling ]{Steps involved in probabilistic modelling  \cite{winn2016} }
-\label{}
+\label{fig:steps}
 \end{figure}
 
 
 \textbf{Probabilistic Programming  (PP)} gives us a framework in which we can create any Bayesian model, based on our assumptions of the process \cite{winn2016}. The model is basically expressing the assumptions in a mathematical form. The assumptions are the number of variables in the model, the relation between these variables, changes in which variables affects which other variables. This model is then used to generate a problem specific algorithm which can be used to solve the machine learning problem in hand. 
 
-\subsection*{Steps required in Probabilistic Modelling \cite{winn2016}}
+Probabilistic Programming needs to follow a set of steps \cite{winn2016}, Figure~\ref{fig:steps} summarizes its steps.
+\subsection*{Steps required in Probabilistic Modelling}
 \label{sub:steps}
 \begin{enumerate}
 	\item \textbf{Gather data} to be used for training and evaluation.

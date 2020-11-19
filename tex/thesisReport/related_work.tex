@@ -6,29 +6,27 @@
 
 \subsection{User Preferences}
 \label{sub:user preference}
-Researchers have tried to figure out the challenges which will be involved in
-placing robots in a human environment.\cite{pantofaru_exploring_2012} conducts
-interviews with people to understand the needs of people with robots. One of the
-suggestion was help in organizing things based on the user preferences.
-For understanding user preferences in organizing objects in home work has 
-been done by  \cite{abdo2015robot}, where robots learn about user
-preferences in organizing objects. The learning uses data collected by 
-crowdsourced data collected from thousands of users to predict location of 
-novel objects. Our work differs from above as we only use data collected from a single home and predict object locations for the same home. Thus the learning is to understand and reason about a single home and not about a generalized home.
+Researchers have tried to figure out the challenges which will be involved in placing robots in a human environment. Over interviews and interactions with people,  \cite{pantofaru_exploring_2012} reports that one of the thing people would like from robots is help in organizing things based on their preferences.
+\cite{Fink2013}, worked extensively with existing cleaning robots and finds that one of the problems for quick adaptation was lack of adaptation of the robot to the user habits and behaviours. \cite{fong2003survey}, concludes that humans and robots must be able to coordinate their actions so that they interact productively with each other by robot learning about user preferences. For understanding user preferences in organizing objects in home work has  been done by  \cite{abdo2015robot}, where robots learn about user preferences in organizing objects. The learning uses data collected by  crowd sourced data collected from thousands of users to predict location of novel objects. \cite{nikolaidis2013human} teaches the robot to iteratively learn the preference of the user for a collaborative task.
 
-\subsection{Knowledge acquisition in mobile robots}
-Current state of the art knowledge reasoning systems such as KnowRob \cite{tenorth2013knowrob} use publicly available knowledge bases like Cyc \cite{lenat1995cyc} and Open-Mind Indoor Common Sense (OMICS) database \cite{singh2002open} for gaining base knowledge about environments.  Although these methods capture generic information of human environments they lack in capturing the knowledge about single user preferences and habits. \cite{niemueller2012generic} proposes the use of document-oriented, schema-less database as robot memory, and using the database to generate knowledge. \cite{mason2012object} also proposes on same front where the robot continuously records its observations and then queries to find knowledge about change in the environments.
+\subsection{Knowledge Acquisition In Mobile Robots}
+Current state of the art knowledge reasoning systems such as KnowRob \citep{tenorth2013knowrob} use publicly available knowledge bases like Cyc \citep{lenat1995cyc} and Open-Mind Indoor Common Sense (OMICS) database \citep{singh2002open} for gaining base knowledge about environments.  Although these methods capture generic information of human environments they lack in capturing the knowledge about single user preferences and habits. \cite{niemueller2012generic} proposes the use of document-oriented, schema-less database as robot memory, and using the database to generate knowledge. \cite{mason2012object} also proposes on same front where the robot continuously records its observations and then queries to find knowledge about change in the environments.
 
-
-\subsection{Knowledge enabled search of objects}
+\subsection{Knowledge Enabled Search Of Objects}
 \label{sub:partially known objects}
 Object contextual information for searching objects as been repeatedly proven good results. Many search strategies involving searching based on known object locations have been developed
 \cite{kollar_utilizing_2009} utilize object-object and object-place co-occurrences probabilities as a way to shape the prior on the object location over the search space. Using prior map of the environment and knowledge about some of the objects in it, they try to search for location of novel objects.
-Extension to this approach involving information retrieval from the web has been explored by \cite {samadi_using_2012}
+Extension to this approach involving information retrieval from the web has been explored by \cite {samadi_using_2012} and
 \cite{kunze_searching_2012} applied the semantic similarity measure for object search by using prior information from a web-trained ontology.
 Finally, \cite{joho_learning_2011} illustrated one way of combining both types of information by extracting features to train a reactive search heuristics.
-
 \cite{wong_using_2014} considered the case of occluded objects. Occluding objects in the front typically need to be moved away to enable further perception and eventual discovery of such occluded objects. 
+
+\subsection{Predicting Non-stationary Objects}
+For successful execution of task for mobile-manipulation robots, should have a estimate of the state of the environment. \cite{elfring_semantic_2013} have addressed this problem by creating a model based object tracking framework. It tracks objects in the environment by modelling the uncertainty in the object location.
+\cite{wong_manipulation-based_2013} have proposed a world model representation based on the objects. 
+\cite{krajnik_wheres_2015}  propose a novel  approach  to  mobile  robot
+search  for  non-stationary  objects  in known  environments. They use spatio temporal models for object locations .
+This approach, forms the baseline for comparison of our models. Its the only approach in which long-term data from a single environment is used to make analysis of the object locations. They argue that the  probability of object occurrences at particular locations is function of time.
 % subsection partially known objects (end)
 
 

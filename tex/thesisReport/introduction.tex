@@ -17,7 +17,22 @@ Domestic service robots need to have the ability to automatically and quickly ad
 
 To illustrate the relevance of the topics presented in this thesis, we motivate our work using a typical task of a domestic service robot.   We revisit the task of ``making coffee" for the user, which requires the robot to locate the coffee cup of the user first, make coffee and then to locate the user, for delivering the coffee to him. To begin the search for the coffee cup, it would help the robot to have some prior knowledge about the user's habits; in particular the typical locations where he keeps his cup. This enables the robot to funnel its search for the object from a large number of locations to the most probable ones. Once the coffee is made the robot needs to reason about where it can currently find the user for delivering it to him. This in turn, requires the robot to have knowledge about the likely locations of the user at that time.
 
-\begin{figure}[htp]
+
+
+This motivating example leads us to the three research topics in knowledge acquisition we address in this thesis:
+\begin{enumerate}
+	\item How can a domestic service robot acquire knowledge about the user preferences in placing objects in the environment?
+	\item How can a domestic service robot acquire knowledge about the user location preferences?
+	\item How can a domestic service robot acquire the above knowledge using small amounts of information?
+\end{enumerate}
+
+
+Domestic service robots, while interacting with the user and environment, produce information which are discarded after being processed in perception, actuation, or decision making. \cite{niemueller2012generic} proposed an approach of storing this information in a database and querying the memory for meaningful insights. 
+The domestic robot will continuously record sightings of objects and persons with position and time in a database to form a spatio-temporal robot memory.
+Information thus collected in the robot memory can be used to build a model of the user preferences. These models represent the internal beliefs of the robot about the user preferences. These models acquire knowledge about the user preferences. But in order to adapt quickly the robot needs to able to extract valuable knowledge from a small amount of information, i.e., the learning algorithms need to be data efficient. There are many approaches that demonstrate that data-efficient machine learning is possible, including methods like: explicit domain knowledge modelling, exploiting structural knowledge of data, bootstrapping and data augmentation, semi-supervised learning, transfer learning, active learning and Bayesian optimization, non-parametric methods, one-shot learning and Bayesian deep learning \citep{MarcICML2016}. Bayesian probabilistic formulation of the model is an approach for data-efficient machine learning \cite{Bishop20120222}.
+
+
+\begin{figure}[tp]
 \centering
 \begin{subfigure}{\textwidth}
   \centering
@@ -47,20 +62,6 @@ To illustrate the relevance of the topics presented in this thesis, we motivate 
 
 \caption[Illustrative example of robot information collection]{Illustrative example of the robot making a record of location of cup}
 \end{figure}
-
-\FloatBarrier
-This motivating example leads us to the three research topics in knowledge acquisition we address in this thesis:
-\begin{enumerate}
-	\item How can a domestic service robot acquire knowledge about the user preferences in placing objects in the environment?
-	\item How can a domestic service robot acquire knowledge about the user location preferences?
-	\item How can a domestic service robot acquire the above knowledge using small amounts of information?
-\end{enumerate}
-
-
-Domestic service robots, while interacting with the user and environment, produce information which are discarded after being processed in perception, actuation, or decision making. \cite{niemueller2012generic} proposed an approach of storing this information in a database and querying the memory for meaningful insights. 
-The domestic robot will continuously record sightings of objects and persons with position and time in a database to form a spatio-temporal robot memory.
-Information thus collected in the robot memory can be used to build a model of the user preferences. These models represent the internal beliefs of the robot about the user preferences. These models acquire knowledge about the user preferences. But in order to adapt quickly the robot needs to able to extract valuable knowledge from a small amount of information, i.e., the learning algorithms need to be data efficient. There are many approaches that demonstrate that data-efficient machine learning is possible, including methods like: explicit domain knowledge modelling, exploiting structural knowledge of data, bootstrapping and data augmentation, semi-supervised learning, transfer learning, active learning and Bayesian optimization, non-parametric methods, one-shot learning and Bayesian deep learning \citep{MarcICML2016}. Bayesian probabilistic formulation of the model is an approach for data-efficient machine learning \cite{Bishop20120222}.
-
 
 This thesis provides Bayesian probabilistic techniques that enable a domestic service robot
 \begin{itemize}

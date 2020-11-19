@@ -4,3 +4,13 @@ https://lastlog.de/blog/posts/converting_jessyink_svg_based_presentations_to_png
 
 
 for i in 0 `seq 1 36`; do phantomjs rasterize.js file:///data/dataDeebul/rnd/RecommenderSystemInRobotics/proposal/RndDefence/Nair_Deebul_Rnd_Presentation.svg#${i}_3 slide$(printf %02d $i).png 1024px*768px ; done
+
+
+
+
+## 28 is the number of slieds 
+## 20 is the maxiumum number is any slide
+for i in 0 `seq 1 28`; do phantomjs rasterize.js fiebul/thesis/tex/defence_g/defence_nair_short.svg#${i}_20  slide$(printf %02d $i).png 1024px*768px ; done
+
+
+convert "*.{png,jpeg}" deebul_nair_defence.pdf

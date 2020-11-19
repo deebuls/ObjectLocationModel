@@ -6,7 +6,9 @@
 
 % document definition 
 \documentclass[a4paper,11pt,chap, twoside, openright]{report}
-\usepackage[hmarginratio=3:2]{geometry}
+%\usepackage[hmarginratio=3:2]{geometry}
+%\usepackage[top=2cm,bottom=4cm,left=1.5cm,right=3cm,asymmetric]{geometry}
+\usepackage[a4paper,width=150mm,top=35mm,bottom=35mm,bindingoffset=6mm]{geometry}
 % Use the first command below if you want captions over 1 line indented. A side
 % effect of this is to remove the use of bold for captions. To restore bold,
 % also include the second line below.
@@ -20,7 +22,7 @@
 \pagenumbering{gobble}
 
 % Declare new goemetry for the title page only.
-%\newgeometry{margin=1.4in}
+\newgeometry{margin=1.4in}
 \input{Title}   
 \cleardoublepage
 \onehalfspacing

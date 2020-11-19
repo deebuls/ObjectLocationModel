@@ -1,35 +1,22 @@
 \chapter{Conclusions}
 \label{cha:}
+In the thesis we were able to formulate the problem of knowledge generation from information using Bayesian models. Different Bayesian models, like the Hierarchical Beta Bernoulli, Dirichlet Categorical, Hierarchical Dirichlet Categorical and Hierarchical Dirichlet Categorical Bernoulli, were implemented to encode information. All the models were first evaluated with a synthetic dataset to validate their learning characteristics. Once validated that the models are working as they should, we applied the models on real-world datasets, which is captured by autonomous domestic robots. 
+
+In addition, the synthetic datasets were also used to compare the performance of each model. For example, the Hierarchical Beta Bernoulli model is able to learn with just a few observations when the data is of a binary nature (i.e True or False data types). Knowledge about the user preferences in object placement and room occupancy was learned using this model. In addition, further evaluation of this model on the synthetic datasets helped to determine a minimum number of observations a robot has to make before it is confident of what it has learned. The model was also evaluated on KTH dataset, which contained locations of 37 objects in an office for a duration of 5 weeks. The learning on this dataset showed the model could predict 26 objects with 70\% accuracy. The HBB model was also used to model the room occupancy which was evaluated on a Brayford dataset. Evaluation results showed that the robot was able to learn with more than 60\% accuracy for all the rooms. Hierarchical Dirichlet Categorical distribution was used to model the knowledge about user location preference. HDC model had the capability of learning knowledge about multiple locations in a single model. We compared DC and HDC model and validated that addition of a hyper-prior in HDC improved the learning when the observations are sparse. HDC model for learning the user location preferences was evaluated in the Aruba dataset.The evaluation results showed that the model was consistently predicting with 63\% accuracy. The search time evaluation results showed that the average time required to search the person is reduced as compared to the a search without any knowledge about human preference. For learning in occluded environments we have used the HDCB model. This model was comparatively evaluated using synthetic dataset with the HDC model. We found empirically that the HDCB learns quickly with fewer number of observations as compared to HDC. The Hierarchical Dirichlet Categorical Bernoulli model is suitable for learning in environments where occlusion of objects are common. This is because the model is able to learn from absence of information.
+
+The key contributions of the thesis are,
+\begin{itemize}
+	\item Bayesian modelling of knowledge generation about user preferences.
+	\item Validating Hierarchical models learn faster with less observations. 
+	\item Implementing all the models using Probabilistic Programming languages (BayesPy, PyMC3). 
+	\item Learning in occluded environments like home where data collection is very difficult.
+	\item Simple application example of usage of learned probabilities in fault tolerant search.
+\end{itemize}
 
 
-Summary 
-
-In the thesis we were able to formulate the problem of knowledge generation from information using Bayesian models. Different Bayesian models were developed like Hierarchical Beta Bernoulli, Dirichlet Categorical, Hierarchical Dirichlet Categorical and Hierarchical Dirichlet Categorical Bernoulli.
-
-main evaluation
-
-
-We believe as and as robots become more autonomous, the robot will be able to record more and more obserations. This will help the approaches discussed in the thesis to be more accurate and make better predictions.
- create a behavioural map of the house and its occupants, including room function and occupancy modelling, household activities and routines.
-
-Uncover habits and predict human behaviour 
-
-
-enhance the quality of life by  ... 
-
-All models are developed with the user at the center. 
-
-All the models were developed using probabilistic programming languages 
-
-
-We have demonstrated the  powerful aspects of model-based machine learning is the ability to extend the model to take account of more complex situations. 
-Model was first developed for learning from single location,  which was extended to model which could learn multiple locations. 
 \section{Future Work}
 
-\subsection{Detecting Changes}
-One of the basic assumption, on which the thesis is based on that humans have preferences and these can be learned. However, its observed that humans change their preferences. Humans are highly adaptive beings and change their behaviour and preferences frequently. Robots should also have capabilities to detect these changes. One of the future extension would be for doing Bayesian change point detection.
+A probable future work could be in detecting a change in user preferences using Bayesian change point detection. One of the basic assumption, on which the thesis is that humans have preferences and these can be learned. However, it is observed that humans change their preferences. Humans are highly adaptive beings and change their behaviour and preferences frequently. Robots should also have capabilities to detect these changes and behave accordingly. 
 
-\subsection{Merging Object State Estimation and Object Location Prediction}
-Object state estimation is an active field of research\cite{schulz2001probabilistic} where the objects are recognized by a detector and the future states are estimated. State estimator are very useful in predicting short time future states/locations. On the contrary object location predictors are good for long term prediction. A good future work would be to merge both state estimation and location prediction for robots to perform search better.
-
+Another probable future work  will be to merge robot state estimation and user preference based prediction. State estimators are very useful in predicting short time future states or locations. On the contrary user preference based object location predictors are good for long term prediction. A good future work would be to merge both state estimation and location prediction for robots to perform search better.
 % chapter  (end)

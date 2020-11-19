@@ -104,7 +104,7 @@ The model is an extension as explained in \ref{sec: HDCM} . We combine a Bernoul
 
 \section{Experiments}
 
-In this section, we present the results of a thorough evaluation of all aspects of our proposed model. We present a detailed analysis of our model on synthetic data. In particular, we study the performance of the model as compared to the HDC model discussed in chapter ~\ref{chapter:Human location}.
+In this section, we present the results of a thorough evaluation of all aspects of our proposed model. We present  analysis of our model on synthetic data. In particular, we study the performance of the model as compared to the HDC model discussed in chapter ~\ref{chapter:Human location}.
 
 
 The goal of the experiments was to comparatively evaluate the proposed method with the HDC model, based on the number of experiments. For this we created a simulated dataset with known ground truth distributions. The observations were then by the models to learn the latent probabilities. The learned probabilities were then compared with the ground truth. 
@@ -191,4 +191,4 @@ From the Figure~\ref{fig:B-KL-evaluation} we observe that for 30 observations th
 
 \section{Discussions}
 
-In this chapter, we presented a Bayesian probabilistic model for learning user preferences in object placement in highly occluded environments like home. We include the information of the absence of the object at particular location to increase the probability of other locations. In extensive experiments carried out using simulated dataset, we demonstrated that the proposed model learns with lesser number of demonstrations as compared to the model which only learns from presence of object observations. Our model combines the features of Beta-Bernoulli and Dirichlet-Categorical models. Our approach enables domestic service robots to learn about user preferences about object location home environments more robustly.
+In this chapter, we presented a Bayesian probabilistic model for learning user preferences in object placement in highly occluded environments like home. We include the information of the absence of the object at particular location to increase the probability of other locations. In experiments carried out using simulated dataset, we demonstrated that the proposed model learns with fewer number of demonstrations as compared to the model which only learns from presence of object observations. Our model combines the features of Beta-Bernoulli and Dirichlet-Categorical models. Our approach enables domestic service robots to learn about user preferences about object location home environments more robustly.
